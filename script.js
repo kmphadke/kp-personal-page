@@ -7,11 +7,11 @@
  *
  * 1. Mobile Menu Toggle
  * 2. Smooth Scrolling Navigation
- * 3. Scroll Animations (Intersection Observer)
- * 4. Navbar Shadow on Scroll
+ * 3. Scroll Animations (Intersection Observer) - with detailed explanation
+ * 4. Navbar Shadow on Scroll & Scroll-to-Top Button
  * 5. Contact Modal Functions
- * 6. Form Submission Handler
- * 7. Dark Mode Toggle (NEW)
+ * 6. Form Validation & Submission (with localStorage storage)
+ * 7. Dark Mode Toggle
  *
  * The code is organized into logical sections with comments explaining
  * what each part does for learning purposes.
@@ -70,58 +70,245 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 /* ==========================================================================
    3. SCROLL ANIMATIONS (Intersection Observer)
    ==========================================================================
-   Elements with the 'animate-on-scroll' class start invisible.
-   When they scroll into view, we add the 'visible' class to animate them in.
 
-   The Intersection Observer API is more performant than scroll events
-   because it doesn't fire on every pixel scrolled.
+   What is Intersection Observer?
+   ==============================
+   The Intersection Observer API provides a way to asynchronously observe
+   changes in the intersection of a target element with an ancestor element
+   or with the document's viewport.
+
+   In simpler terms: It tells you when an element becomes visible on screen.
+
+   Why use it instead of scroll events?
+   ====================================
+   Traditional approach (scroll events):
+     window.addEventListener('scroll', () => {
+         // This runs on EVERY pixel scrolled - very inefficient!
+         // Checking element positions here can cause "jank" (stuttering)
+     });
+
+   Intersection Observer advantages:
+   - Runs asynchronously (doesn't block the main thread)
+   - Browser optimizes when callbacks fire (not every pixel)
+   - More accurate - you specify exactly when to trigger
+   - Better for battery life on mobile devices
+
+   How it works:
+   =============
+   1. Create an observer with options (when to trigger)
+   2. Define a callback function (what to do when triggered)
+   3. Tell the observer which elements to watch
+   4. When elements enter/exit the viewport, the callback fires
+
+   The callback receives "entries" - an array of observed elements
+   that have changed their intersection state.
 */
 
 // Configuration options for the observer
 const observerOptions = {
-    threshold: 0.1,                    // Trigger when 10% of element is visible
-    rootMargin: '0px 0px -50px 0px'   // Trigger 50px before element enters viewport
+    /*
+        threshold: What percentage of the element must be visible to trigger
+        =====================================================================
+        - 0 = Trigger as soon as even 1 pixel is visible
+        - 0.1 = Trigger when 10% is visible (our choice - good for fade-ins)
+        - 0.5 = Trigger when half the element is visible
+        - 1 = Trigger only when 100% of element is visible
+
+        You can also pass an array: [0, 0.25, 0.5, 0.75, 1]
+        This would fire the callback at each of those thresholds.
+    */
+    threshold: 0.15,
+
+    /*
+        rootMargin: Adjust the "detection zone" of the viewport
+        =======================================================
+        Format: 'top right bottom left' (like CSS margin)
+
+        '0px 0px -80px 0px' means:
+        - The detection zone is shrunk by 80px from the bottom
+        - Elements trigger BEFORE they fully enter the viewport
+        - This creates a more natural "anticipation" effect
+
+        Positive values expand the zone (trigger earlier)
+        Negative values shrink the zone (trigger later)
+    */
+    rootMargin: '0px 0px -80px 0px'
 };
 
-// Create the observer with a callback function
-const observer = new IntersectionObserver((entries) => {
-    // Loop through all observed elements
-    entries.forEach(entry => {
-        // If the element is now visible in the viewport
-        if (entry.isIntersecting) {
-            // Add the 'visible' class to trigger the CSS animation
-            entry.target.classList.add('visible');
+/*
+    Create the Intersection Observer
+    =================================
+    The constructor takes two arguments:
+    1. Callback function - runs when intersection changes
+    2. Options object - configures when to trigger
+*/
+const observer = new IntersectionObserver((entries, observerInstance) => {
+    /*
+        The callback receives:
+        - entries: Array of IntersectionObserverEntry objects
+        - observerInstance: Reference to the observer itself
 
-            // Optional: Stop observing once animated (uncomment to use)
-            // observer.unobserve(entry.target);
+        Each entry contains:
+        - entry.target: The DOM element being observed
+        - entry.isIntersecting: Boolean - is it currently visible?
+        - entry.intersectionRatio: How much is visible (0 to 1)
+        - entry.boundingClientRect: Element's position/size
+        - entry.intersectionRect: The visible portion's position/size
+    */
+
+    // Loop through all elements that changed intersection state
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            /*
+                Element is entering the viewport (scrolling into view)
+                ======================================================
+                Add the 'visible' class to trigger the fade-in animation.
+                The CSS transition handles the actual animation.
+            */
+            entry.target.classList.add('visible');
+        } else {
+            /*
+                Element is leaving the viewport (scrolling out of view)
+                =======================================================
+                Remove the 'visible' class to reset the element.
+                This allows the animation to play again when scrolling back.
+
+                The element returns to its initial state:
+                - opacity: 0 (invisible)
+                - transform: translateY(40px) (shifted down)
+
+                When it comes back into view, it will animate in again.
+            */
+            entry.target.classList.remove('visible');
         }
+
+        /*
+            Note: We're NOT using observerInstance.unobserve() here
+            =======================================================
+            If we stopped observing after the first animation, elements
+            would only animate once. By continuing to observe, we can
+            detect when elements leave AND re-enter the viewport.
+
+            This creates a "repeating" animation effect - elements animate
+            every time they scroll into view, whether going up or down.
+
+            Trade-off: This uses slightly more resources than one-time
+            animations, but the effect is minimal for a reasonable number
+            of animated elements (under 50 or so).
+        */
     });
 }, observerOptions);
 
-// Find all elements with 'animate-on-scroll' class and observe them
+/*
+    Start observing all elements with 'animate-on-scroll' class
+    ============================================================
+    querySelectorAll returns a NodeList (array-like) of matching elements.
+    forEach loops through each one and tells the observer to watch it.
+
+    In the HTML, elements look like:
+    <div class="skill-category animate-on-scroll">...</div>
+
+    The CSS makes them start invisible:
+    .animate-on-scroll { opacity: 0; transform: translateY(40px); }
+
+    When visible class is added, they animate in:
+    .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+*/
 document.querySelectorAll('.animate-on-scroll').forEach(element => {
     observer.observe(element);
 });
 
 
 /* ==========================================================================
-   4. NAVBAR SHADOW ON SCROLL
+   4. NAVBAR SHADOW ON SCROLL & SCROLL-TO-TOP BUTTON
    ==========================================================================
-   Adds a stronger shadow to the navbar when the user scrolls down,
-   making it more prominent against the content below.
+
+   This section handles two scroll-related features:
+   1. Navbar shadow - gets stronger as you scroll down
+   2. Scroll-to-top button - appears after scrolling down 300px
+
+   Both features use the same scroll event listener for efficiency.
+   Combining related scroll logic prevents multiple listeners from
+   running simultaneously.
+*/
+
+// Get references to elements we'll be manipulating
+const nav = document.querySelector('nav');
+const scrollToTopBtn = document.getElementById('scrollToTop');
+
+/*
+    Scroll Event Listener
+    =====================
+    This runs whenever the user scrolls the page.
+
+    Note: Scroll events CAN be expensive because they fire frequently.
+    For complex logic, consider using:
+    - requestAnimationFrame() to throttle updates
+    - Intersection Observer (like we use for animations)
+
+    For simple checks like these, scroll events are fine.
 */
 window.addEventListener('scroll', () => {
-    const nav = document.querySelector('nav');
+    // Get current scroll position (pixels from top)
+    const scrollPosition = window.scrollY;
 
-    // Check if user has scrolled more than 100 pixels from the top
-    if (window.scrollY > 100) {
-        // Add stronger shadow when scrolled
+    /*
+        Navbar Shadow Effect
+        ====================
+        When user scrolls past 100px, add a more prominent shadow
+        to make the navbar stand out from the content.
+    */
+    if (scrollPosition > 100) {
         nav.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
     } else {
-        // Use lighter shadow when at top
         nav.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.05)';
     }
+
+    /*
+        Scroll-to-Top Button Visibility
+        ================================
+        Show the button after user scrolls down 300px.
+        This prevents it from appearing immediately on page load.
+
+        The CSS handles the actual show/hide animation:
+        - .scroll-to-top { opacity: 0; visibility: hidden; }
+        - .scroll-to-top.visible { opacity: 1; visibility: visible; }
+    */
+    if (scrollPosition > 300) {
+        scrollToTopBtn.classList.add('visible');
+    } else {
+        scrollToTopBtn.classList.remove('visible');
+    }
 });
+
+/*
+    Scroll to Top Function
+    ======================
+    Smoothly scrolls the page back to the top when the button is clicked.
+
+    window.scrollTo() options:
+    - top: 0 = scroll to the very top (0 pixels from top)
+    - behavior: 'smooth' = animate the scroll instead of jumping
+*/
+scrollToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+/*
+    Alternative: scrollIntoView approach
+    ====================================
+    Another way to scroll to top is to scroll to a specific element:
+
+    document.body.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    Or if you have an element at the top:
+    document.getElementById('hero').scrollIntoView({ behavior: 'smooth' });
+
+    window.scrollTo() is simpler when you just want to go to the top.
+*/
 
 
 /* ==========================================================================
@@ -181,56 +368,322 @@ document.addEventListener('keydown', function(e) {
 
 
 /* ==========================================================================
-   6. FORM SUBMISSION HANDLER
+   6. FORM VALIDATION & SUBMISSION
    ==========================================================================
-   Handles the contact form submission.
-   Currently shows a simulated success - will be updated to use Resend API.
+
+   This section handles:
+   - Real-time form validation
+   - Visual feedback for errors (red borders, error messages)
+   - Storing submitted messages in localStorage
+   - Success/error status messages
+
+   Form Validation Approach:
+   =========================
+   We use custom JavaScript validation instead of HTML5 validation because:
+   1. Better control over error message styling
+   2. Consistent experience across browsers
+   3. Can add complex validation rules (like email format checking)
+   4. Real-time feedback as user types
+
+   The 'novalidate' attribute on the form disables browser validation.
 */
 
 /**
- * Handles form submission
+ * Validation Rules Configuration
+ * ===============================
+ * Define validation rules for each field in one place.
+ * This makes it easy to modify rules without changing validation logic.
+ */
+const validationRules = {
+    senderName: {
+        required: true,
+        minLength: 2,
+        maxLength: 100,
+        errorMessages: {
+            required: 'Please enter your name',
+            minLength: 'Name must be at least 2 characters',
+            maxLength: 'Name must be less than 100 characters'
+        }
+    },
+    senderEmail: {
+        required: true,
+        pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,  // Basic email regex
+        errorMessages: {
+            required: 'Please enter your email address',
+            pattern: 'Please enter a valid email address (e.g., name@example.com)'
+        }
+    },
+    subject: {
+        required: true,
+        minLength: 3,
+        maxLength: 200,
+        errorMessages: {
+            required: 'Please enter a subject',
+            minLength: 'Subject must be at least 3 characters',
+            maxLength: 'Subject must be less than 200 characters'
+        }
+    },
+    message: {
+        required: true,
+        minLength: 10,
+        maxLength: 5000,
+        errorMessages: {
+            required: 'Please enter your message',
+            minLength: 'Message must be at least 10 characters',
+            maxLength: 'Message must be less than 5000 characters'
+        }
+    }
+};
+
+/**
+ * Validate a single field against its rules
+ * ==========================================
+ * @param {string} fieldId - The ID of the input field
+ * @param {string} value - The current value of the field
+ * @returns {object} - { isValid: boolean, errorMessage: string }
+ *
+ * This function checks a field's value against all applicable rules
+ * and returns the first error found (or success if all pass).
+ */
+function validateField(fieldId, value) {
+    const rules = validationRules[fieldId];
+
+    // If no rules defined for this field, it's valid
+    if (!rules) {
+        return { isValid: true, errorMessage: '' };
+    }
+
+    // Trim whitespace from value for validation
+    const trimmedValue = value.trim();
+
+    /*
+        Check each rule in order of importance:
+        1. Required - field must not be empty
+        2. MinLength - minimum character count
+        3. MaxLength - maximum character count
+        4. Pattern - regex pattern match (for email)
+    */
+
+    // Rule: Required
+    if (rules.required && trimmedValue === '') {
+        return {
+            isValid: false,
+            errorMessage: rules.errorMessages.required
+        };
+    }
+
+    // Rule: Minimum Length
+    if (rules.minLength && trimmedValue.length < rules.minLength) {
+        return {
+            isValid: false,
+            errorMessage: rules.errorMessages.minLength
+        };
+    }
+
+    // Rule: Maximum Length
+    if (rules.maxLength && trimmedValue.length > rules.maxLength) {
+        return {
+            isValid: false,
+            errorMessage: rules.errorMessages.maxLength
+        };
+    }
+
+    // Rule: Pattern (regex)
+    if (rules.pattern && !rules.pattern.test(trimmedValue)) {
+        return {
+            isValid: false,
+            errorMessage: rules.errorMessages.pattern
+        };
+    }
+
+    // All rules passed
+    return { isValid: true, errorMessage: '' };
+}
+
+/**
+ * Show validation error for a field
+ * ==================================
+ * @param {HTMLElement} input - The input element
+ * @param {string} message - The error message to display
+ *
+ * This function:
+ * 1. Adds error styling to the input (red border)
+ * 2. Shows the error message below the field
+ * 3. Triggers a shake animation for emphasis
+ */
+function showFieldError(input, message) {
+    // Add error class to input (red border)
+    input.classList.add('error');
+    input.classList.remove('valid');
+
+    // Find the error message element (sibling span)
+    const errorSpan = input.parentElement.querySelector('.error-message');
+    if (errorSpan) {
+        errorSpan.textContent = message;
+        errorSpan.classList.add('visible');
+    }
+
+    // Trigger shake animation
+    input.classList.add('shake');
+    // Remove shake class after animation completes
+    setTimeout(() => input.classList.remove('shake'), 500);
+}
+
+/**
+ * Clear validation error for a field
+ * ====================================
+ * @param {HTMLElement} input - The input element
+ * @param {boolean} showValid - Whether to show valid styling (green border)
+ */
+function clearFieldError(input, showValid = false) {
+    // Remove error styling
+    input.classList.remove('error');
+
+    // Optionally add valid styling
+    if (showValid) {
+        input.classList.add('valid');
+    } else {
+        input.classList.remove('valid');
+    }
+
+    // Hide the error message
+    const errorSpan = input.parentElement.querySelector('.error-message');
+    if (errorSpan) {
+        errorSpan.classList.remove('visible');
+        // Clear text after fade out
+        setTimeout(() => {
+            if (!errorSpan.classList.contains('visible')) {
+                errorSpan.textContent = '';
+            }
+        }, 200);
+    }
+}
+
+/**
+ * Validate the entire form
+ * =========================
+ * @returns {boolean} - True if all fields are valid
+ *
+ * Loops through all fields and validates each one.
+ * Returns false if ANY field fails validation.
+ */
+function validateForm() {
+    const fields = ['senderName', 'senderEmail', 'subject', 'message'];
+    let isFormValid = true;
+    let firstInvalidField = null;
+
+    fields.forEach(fieldId => {
+        const input = document.getElementById(fieldId);
+        const result = validateField(fieldId, input.value);
+
+        if (!result.isValid) {
+            showFieldError(input, result.errorMessage);
+            isFormValid = false;
+            // Track first invalid field for focus
+            if (!firstInvalidField) {
+                firstInvalidField = input;
+            }
+        } else {
+            clearFieldError(input, true);  // Show green border for valid fields
+        }
+    });
+
+    // Focus the first invalid field so user knows where to start fixing
+    if (firstInvalidField) {
+        firstInvalidField.focus();
+    }
+
+    return isFormValid;
+}
+
+/**
+ * Set up real-time validation on input fields
+ * =============================================
+ * Add event listeners to validate fields as user types.
+ * This provides immediate feedback without waiting for form submission.
+ */
+function setupRealtimeValidation() {
+    const fields = ['senderName', 'senderEmail', 'subject', 'message'];
+
+    fields.forEach(fieldId => {
+        const input = document.getElementById(fieldId);
+
+        // Validate on blur (when user leaves the field)
+        input.addEventListener('blur', () => {
+            const result = validateField(fieldId, input.value);
+            if (!result.isValid && input.value.trim() !== '') {
+                showFieldError(input, result.errorMessage);
+            } else if (input.value.trim() !== '') {
+                clearFieldError(input, true);
+            }
+        });
+
+        // Clear error styling when user starts typing
+        input.addEventListener('input', () => {
+            // Only clear if there was an error
+            if (input.classList.contains('error')) {
+                const result = validateField(fieldId, input.value);
+                if (result.isValid) {
+                    clearFieldError(input, true);
+                }
+            }
+        });
+    });
+}
+
+// Initialize real-time validation when page loads
+setupRealtimeValidation();
+
+/**
+ * Handle form submission
+ * =======================
  * @param {Event} event - The form submit event
+ *
+ * This function:
+ * 1. Prevents default form submission
+ * 2. Validates all fields
+ * 3. If valid, saves message to localStorage
+ * 4. Shows success message and closes modal
  */
 function handleSubmit(event) {
-    // Prevent the default form submission (which would reload the page)
+    // Prevent the default form submission (would reload the page)
     event.preventDefault();
 
     // Get references to UI elements
     const submitBtn = document.getElementById('submitBtn');
     const formStatus = document.getElementById('formStatus');
 
-    // Collect form data into an object
+    // Clear any previous status message
+    formStatus.className = 'form-status';
+    formStatus.textContent = '';
+
+    // Validate all fields
+    if (!validateForm()) {
+        // Validation failed - show error status
+        formStatus.className = 'form-status error';
+        formStatus.textContent = 'Please fix the errors above and try again.';
+        return;  // Stop here, don't submit
+    }
+
+    // Collect form data
     const formData = {
-        email: document.getElementById('senderEmail').value,
-        subject: document.getElementById('subject').value,
-        message: document.getElementById('message').value
+        id: Date.now(),  // Unique ID based on timestamp
+        name: document.getElementById('senderName').value.trim(),
+        email: document.getElementById('senderEmail').value.trim(),
+        subject: document.getElementById('subject').value.trim(),
+        message: document.getElementById('message').value.trim(),
+        date: new Date().toISOString()  // ISO format for easy sorting/display
     };
 
     // Show loading state
     submitBtn.disabled = true;
     submitBtn.textContent = 'Sending...';
 
-    /*
-     * TODO: Replace this setTimeout with actual Resend API call
-     *
-     * Example with fetch (requires backend):
-     *
-     * fetch('/api/send-email', {
-     *     method: 'POST',
-     *     headers: { 'Content-Type': 'application/json' },
-     *     body: JSON.stringify(formData)
-     * })
-     * .then(response => response.json())
-     * .then(data => {
-     *     // Handle success
-     * })
-     * .catch(error => {
-     *     // Handle error
-     * });
-     */
-
-    // Simulate API call with a delay (remove this when adding real API)
+    // Simulate a brief delay (like an API call would have)
     setTimeout(() => {
+        // Save message to localStorage
+        saveMessageToStorage(formData);
+
         // Show success message
         formStatus.className = 'form-status success';
         formStatus.textContent = 'Message sent successfully! I\'ll get back to you soon.';
@@ -239,16 +692,208 @@ function handleSubmit(event) {
         submitBtn.textContent = 'Send Message';
         submitBtn.disabled = false;
 
-        // Clear the form
+        // Clear the form and validation states
         document.getElementById('contactForm').reset();
+        ['senderName', 'senderEmail', 'subject', 'message'].forEach(fieldId => {
+            clearFieldError(document.getElementById(fieldId), false);
+        });
 
-        // Auto-close modal after showing success message
+        // Log for debugging
+        console.log('Message saved:', formData);
+
+        // Auto-close modal after showing success
         setTimeout(() => {
             closeModal();
         }, 2000);
 
-    }, 1500); // 1.5 second simulated delay
+    }, 800);  // Brief delay for UX
 }
+
+/**
+ * Save a message to localStorage
+ * ===============================
+ * @param {object} message - The message object to save
+ *
+ * localStorage stores data as strings, so we:
+ * 1. Get existing messages array (or create empty array)
+ * 2. Add new message to the beginning (most recent first)
+ * 3. Convert back to string and save
+ */
+function saveMessageToStorage(message) {
+    // Get existing messages from localStorage
+    // JSON.parse converts the string back to an array
+    // If nothing exists, start with empty array
+    const messages = JSON.parse(localStorage.getItem('contactMessages')) || [];
+
+    // Add new message at the beginning (unshift adds to start of array)
+    messages.unshift(message);
+
+    // Save back to localStorage
+    // JSON.stringify converts the array to a string
+    localStorage.setItem('contactMessages', JSON.stringify(messages));
+}
+
+/**
+ * Get all messages from localStorage
+ * ====================================
+ * @returns {array} - Array of message objects
+ */
+function getMessagesFromStorage() {
+    return JSON.parse(localStorage.getItem('contactMessages')) || [];
+}
+
+/**
+ * Delete a single message from localStorage
+ * ==========================================
+ * @param {number} messageId - The ID of the message to delete
+ */
+function deleteMessage(messageId) {
+    // Get all messages
+    let messages = getMessagesFromStorage();
+
+    // Filter out the message with matching ID
+    messages = messages.filter(msg => msg.id !== messageId);
+
+    // Save the filtered array back to localStorage
+    localStorage.setItem('contactMessages', JSON.stringify(messages));
+
+    // Re-render the messages list
+    renderMessagesList();
+}
+
+/**
+ * Clear all messages from localStorage
+ * ======================================
+ * Called when user clicks "Clear All" button.
+ */
+function clearAllMessages() {
+    // Confirm before deleting (destructive action)
+    if (confirm('Are you sure you want to delete all messages? This cannot be undone.')) {
+        localStorage.removeItem('contactMessages');
+        renderMessagesList();
+    }
+}
+
+/**
+ * Format a date string for display
+ * ==================================
+ * @param {string} isoDate - ISO date string
+ * @returns {string} - Formatted date like "Jan 29, 2026 at 3:45 PM"
+ */
+function formatDate(isoDate) {
+    const date = new Date(isoDate);
+
+    // Format options for toLocaleDateString
+    const options = {
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric',
+        hour: 'numeric',
+        minute: '2-digit',
+        hour12: true
+    };
+
+    return date.toLocaleDateString('en-US', options).replace(',', ' at');
+}
+
+/**
+ * Render the messages list in the modal
+ * ======================================
+ * Gets messages from localStorage and creates HTML for each one.
+ */
+function renderMessagesList() {
+    const messages = getMessagesFromStorage();
+    const messagesList = document.getElementById('messagesList');
+    const messagesEmpty = document.getElementById('messagesEmpty');
+    const messageCount = document.getElementById('messageCount');
+    const clearBtn = document.getElementById('clearMessagesBtn');
+
+    // Update message count
+    const count = messages.length;
+    messageCount.textContent = `${count} message${count !== 1 ? 's' : ''}`;
+
+    // Enable/disable clear button
+    clearBtn.disabled = count === 0;
+
+    // Show empty state or messages
+    if (count === 0) {
+        messagesList.innerHTML = '';
+        messagesEmpty.classList.add('visible');
+    } else {
+        messagesEmpty.classList.remove('visible');
+
+        // Build HTML for each message
+        messagesList.innerHTML = messages.map(msg => `
+            <div class="message-card" data-id="${msg.id}">
+                <div class="message-header">
+                    <div class="message-sender">
+                        <div class="message-name">${escapeHtml(msg.name)}</div>
+                        <div class="message-email">${escapeHtml(msg.email)}</div>
+                    </div>
+                    <div class="message-date">${formatDate(msg.date)}</div>
+                    <button class="message-delete" onclick="deleteMessage(${msg.id})" title="Delete message">&times;</button>
+                </div>
+                <div class="message-subject">${escapeHtml(msg.subject)}</div>
+                <div class="message-body">${escapeHtml(msg.message)}</div>
+            </div>
+        `).join('');
+    }
+}
+
+/**
+ * Escape HTML to prevent XSS attacks
+ * ====================================
+ * @param {string} text - Raw text that might contain HTML
+ * @returns {string} - Safe text with HTML entities escaped
+ *
+ * IMPORTANT: Always escape user input before displaying it!
+ * This prevents Cross-Site Scripting (XSS) attacks where
+ * malicious users could inject JavaScript into their message.
+ */
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+/**
+ * Open the messages modal
+ * ========================
+ * Called when user clicks "View Messages" button.
+ */
+function openMessagesModal() {
+    // Render fresh messages list
+    renderMessagesList();
+
+    // Show the modal
+    document.getElementById('messagesModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+/**
+ * Close the messages modal
+ * =========================
+ */
+function closeMessagesModal() {
+    document.getElementById('messagesModal').classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// Close messages modal when clicking overlay
+document.getElementById('messagesModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeMessagesModal();
+    }
+});
+
+// Close messages modal with Escape key (extend existing listener)
+// Note: The existing keydown listener for contact modal is already set up,
+// but we need to also handle the messages modal
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeMessagesModal();
+    }
+});
 
 
 /* ==========================================================================
@@ -334,14 +979,39 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e)
 
    Key concepts used:
    - DOM manipulation (getElementById, querySelector, classList)
-   - Event listeners (click, scroll, keydown, submit)
-   - Intersection Observer API (for scroll animations)
+   - Event listeners (click, scroll, keydown, submit, blur, input)
+   - Intersection Observer API (for performant scroll animations)
    - CSS class toggling for showing/hiding elements
-   - localStorage for persisting user preferences (dark mode)
+   - localStorage for persisting data (theme preference, messages)
+   - Smooth scrolling (scrollTo, scrollIntoView)
+   - Form validation with regex patterns
+   - XSS prevention with HTML escaping
+
+   Animation techniques demonstrated:
+   1. Intersection Observer - Efficient scroll-triggered animations
+   2. CSS transitions - Smooth opacity and transform changes
+   3. Class-based animations - Adding/removing 'visible' class
+   4. Shake animation - CSS keyframes for form validation feedback
+
+   Form Validation concepts:
+   1. Configuration-based rules - Easy to modify validation rules
+   2. Real-time validation - Feedback as user types
+   3. Visual feedback - Error/success states with colors
+   4. Accessibility - Focus management for errors
+
+   Security concepts:
+   1. XSS Prevention - Always escape user input before displaying
+   2. Input validation - Sanitize and validate all form inputs
+
+   localStorage usage:
+   1. Theme preference - Remember dark/light mode choice
+   2. Contact messages - Store form submissions locally
+   3. JSON serialization - Convert objects to/from strings
 
    To extend this code:
-   1. Add form validation before submission
-   2. Integrate with Resend API (requires backend)
-   3. Add loading spinners or animations
-   4. Implement localStorage to save form drafts
+   1. Integrate with Resend API or other email service (requires backend)
+   2. Add more complex validation (phone numbers, URLs)
+   3. Implement localStorage to save form drafts
+   4. Add export/import functionality for messages
+   5. Add search/filter for messages list
 */

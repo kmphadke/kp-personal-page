@@ -12,7 +12,7 @@
         styles.css - All our custom styling (separate file for maintainability)
     -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=2">
+    <link rel="stylesheet" href="styles.css?v=4">
 </head>
 <body>
     <!--
@@ -401,7 +401,15 @@
                 <div class="contact-card animate-on-scroll">
                     <h4>Open for Opportunities</h4>
                     <p>Whether you're looking for a visiting faculty member, a project management consultant, or a collaborator on educational initiatives, I'd love to hear from you.</p>
-                    <a href="#" class="btn btn-primary" onclick="openModal(); return false;">Send a Message</a>
+                    <div class="contact-card-buttons">
+                        <a href="#" class="btn btn-primary" onclick="openModal(); return false;">Send a Message</a>
+                        <a href="#" class="btn btn-secondary btn-view-messages" onclick="openMessagesModal(); return false;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                            </svg>
+                            View Messages
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -422,6 +430,11 @@
         =====================================================================
         Popup form for sending messages.
         Hidden by default, shown when user clicks email link or CTA button.
+
+        Features:
+        - Form validation with visual feedback
+        - localStorage storage for messages
+        - Success/error messages
     -->
     <div class="modal-overlay" id="contactModal">
         <div class="modal">
@@ -432,37 +445,60 @@
             <div class="modal-body">
                 <p>I'd love to hear from you. Fill out the form below and I'll get back to you as soon as possible.</p>
 
-                <!-- Contact form -->
-                <form id="contactForm" onsubmit="handleSubmit(event)">
+                <!-- Contact form with validation -->
+                <form id="contactForm" onsubmit="handleSubmit(event)" novalidate>
+                    <!--
+                        novalidate attribute disables browser's default validation
+                        so we can use our own custom validation with better UX
+                    -->
+
+                    <!-- Name Field -->
                     <div class="form-group">
-                        <label for="senderEmail">Your Email</label>
+                        <label for="senderName">Your Name <span class="required">*</span></label>
+                        <input
+                            type="text"
+                            id="senderName"
+                            name="senderName"
+                            placeholder="John Doe"
+                        >
+                        <span class="error-message" id="nameError"></span>
+                    </div>
+
+                    <!-- Email Field -->
+                    <div class="form-group">
+                        <label for="senderEmail">Your Email <span class="required">*</span></label>
                         <input
                             type="email"
                             id="senderEmail"
                             name="senderEmail"
                             placeholder="your@email.com"
-                            required
                         >
+                        <span class="error-message" id="emailError"></span>
                     </div>
+
+                    <!-- Subject Field -->
                     <div class="form-group">
-                        <label for="subject">Subject</label>
+                        <label for="subject">Subject <span class="required">*</span></label>
                         <input
                             type="text"
                             id="subject"
                             name="subject"
                             placeholder="What is this regarding?"
-                            required
                         >
+                        <span class="error-message" id="subjectError"></span>
                     </div>
+
+                    <!-- Message Field -->
                     <div class="form-group">
-                        <label for="message">Message</label>
+                        <label for="message">Message <span class="required">*</span></label>
                         <textarea
                             id="message"
                             name="message"
                             placeholder="Write your message here..."
-                            required
                         ></textarea>
+                        <span class="error-message" id="messageError"></span>
                     </div>
+
                     <button type="submit" class="modal-submit" id="submitBtn">Send Message</button>
                 </form>
 
@@ -474,11 +510,62 @@
 
     <!--
         =====================================================================
+        VIEW MESSAGES MODAL
+        =====================================================================
+        Shows all messages stored in localStorage.
+        Accessible via a button in the contact section.
+    -->
+    <div class="modal-overlay" id="messagesModal">
+        <div class="modal modal-wide">
+            <div class="modal-header">
+                <h3>Stored Messages</h3>
+                <button class="modal-close" onclick="closeMessagesModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p class="messages-intro">Messages are stored locally in your browser. In a production environment, these would be sent to a server.</p>
+
+                <!-- Message count and clear button -->
+                <div class="messages-toolbar">
+                    <span class="message-count" id="messageCount">0 messages</span>
+                    <button class="btn-clear" id="clearMessagesBtn" onclick="clearAllMessages()">Clear All</button>
+                </div>
+
+                <!-- Messages list container -->
+                <div class="messages-list" id="messagesList">
+                    <!-- Messages will be dynamically inserted here by JavaScript -->
+                </div>
+
+                <!-- Empty state (shown when no messages) -->
+                <div class="messages-empty" id="messagesEmpty">
+                    <span class="empty-icon">&#128233;</span>
+                    <p>No messages yet</p>
+                    <span class="empty-hint">Messages submitted through the contact form will appear here.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--
+        =====================================================================
+        SCROLL TO TOP BUTTON
+        =====================================================================
+        Floating button that appears when user scrolls down.
+        Clicking it smoothly scrolls back to the top of the page.
+    -->
+    <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
+        <!-- Upward arrow icon -->
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 15l-6-6-6 6"></path>
+        </svg>
+    </button>
+
+    <!--
+        =====================================================================
         JAVASCRIPT
         =====================================================================
         External script file loaded at the end of body for better performance.
         This ensures all HTML elements exist before JavaScript runs.
     -->
-    <script src="script.js"></script>
+    <script src="script.js?v=4"></script>
 </body>
 </html>

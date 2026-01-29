@@ -965,9 +965,280 @@ footer p {
 
 
 /* ==========================================================================
+   12b. FORM VALIDATION STYLES
+   ==========================================================================
+   Visual feedback for form validation errors.
+*/
+
+/* Required field asterisk */
+.required {
+    color: #fc8181;
+    font-weight: 600;
+}
+
+/* Error message below each field */
+.error-message {
+    display: block;
+    color: #fc8181;
+    font-size: 0.8rem;
+    margin-top: 0.4rem;
+    min-height: 1.2rem;  /* Reserve space to prevent layout shift */
+    opacity: 0;
+    transform: translateY(-5px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* Show error message when it has content */
+.error-message.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Input field error state - red border */
+.form-group input.error,
+.form-group textarea.error {
+    border-color: #fc8181;
+    background: rgba(245, 101, 101, 0.1);
+}
+
+/* Input field success state - green border */
+.form-group input.valid,
+.form-group textarea.valid {
+    border-color: #48bb78;
+}
+
+/* Shake animation for invalid fields */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+.form-group input.shake,
+.form-group textarea.shake {
+    animation: shake 0.5s ease;
+}
+
+
+/* ==========================================================================
+   12c. VIEW MESSAGES MODAL
+   ==========================================================================
+   Styles for the messages viewer modal.
+*/
+
+/* Wider modal for messages list */
+.modal-wide {
+    max-width: 650px;
+}
+
+.messages-intro {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+/* Toolbar with count and clear button */
+.messages-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.message-count {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+}
+
+.btn-clear {
+    background: rgba(245, 101, 101, 0.2);
+    color: #fc8181;
+    border: 1px solid rgba(245, 101, 101, 0.3);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+}
+
+.btn-clear:hover {
+    background: rgba(245, 101, 101, 0.3);
+    border-color: #fc8181;
+}
+
+.btn-clear:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Messages list container */
+.messages-list {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+}
+
+/* Custom scrollbar for messages list */
+.messages-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.messages-list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+.messages-list::-webkit-scrollbar-thumb {
+    background: var(--gold);
+    border-radius: 3px;
+}
+
+/* Individual message card */
+.message-card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+.message-card:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.message-card:last-child {
+    margin-bottom: 0;
+}
+
+/* Message header with name, email, date */
+.message-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.75rem;
+    gap: 1rem;
+}
+
+.message-sender {
+    flex: 1;
+}
+
+.message-name {
+    color: var(--white);
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+}
+
+.message-email {
+    color: var(--gold);
+    font-size: 0.85rem;
+}
+
+.message-date {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.75rem;
+    white-space: nowrap;
+}
+
+/* Message subject */
+.message-subject {
+    color: var(--accent-light);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+/* Message body */
+.message-body {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    white-space: pre-wrap;  /* Preserve line breaks */
+    word-break: break-word;
+}
+
+/* Delete button for individual message */
+.message-delete {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    padding: 0.25rem;
+    font-size: 1.2rem;
+    line-height: 1;
+    transition: color 0.2s ease;
+}
+
+.message-delete:hover {
+    color: #fc8181;
+}
+
+/* Empty state when no messages */
+.messages-empty {
+    text-align: center;
+    padding: 3rem 1rem;
+    display: none;  /* Hidden by default, shown via JS */
+}
+
+.messages-empty.visible {
+    display: block;
+}
+
+.empty-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.messages-empty p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.empty-hint {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.85rem;
+}
+
+/* Contact card buttons layout */
+.contact-card-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn-view-messages {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.btn-view-messages svg {
+    opacity: 0.8;
+}
+
+
+/* ==========================================================================
    13. ANIMATIONS
    ==========================================================================
+
+   Animations are triggered using the Intersection Observer API in JavaScript.
+   This is more performant than listening to scroll events because:
+   - It doesn't fire on every pixel scrolled
+   - The browser optimizes when and how often callbacks run
+   - It works asynchronously, not blocking the main thread
 */
+
+/* Initial page load animations */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -990,16 +1261,128 @@ footer p {
     }
 }
 
-/* Scroll-triggered animations */
+/*
+    Scroll-triggered animations
+    ============================
+    Elements with 'animate-on-scroll' start invisible and below their final position.
+    When JavaScript adds the 'visible' class, they fade in and slide up smoothly.
+
+    The transition property controls how the animation looks:
+    - opacity: fades the element in
+    - transform: moves the element from below to its final position
+    - The cubic-bezier timing function creates a smooth, slightly bouncy feel
+*/
 .animate-on-scroll {
     opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.6s ease;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .animate-on-scroll.visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+/*
+    Staggered animation delays
+    ===========================
+    These classes create a cascading effect when multiple elements
+    animate at once. Each subsequent element starts slightly later,
+    creating a "wave" effect that looks more polished.
+
+    Apply these in addition to 'animate-on-scroll':
+    <div class="animate-on-scroll delay-1">First</div>
+    <div class="animate-on-scroll delay-2">Second</div>
+*/
+.animate-on-scroll.delay-1 { transition-delay: 0.1s; }
+.animate-on-scroll.delay-2 { transition-delay: 0.2s; }
+.animate-on-scroll.delay-3 { transition-delay: 0.3s; }
+.animate-on-scroll.delay-4 { transition-delay: 0.4s; }
+
+
+/* ==========================================================================
+   13b. SCROLL TO TOP BUTTON
+   ==========================================================================
+
+   A floating button that appears when the user scrolls down the page.
+   Clicking it smoothly scrolls back to the top.
+
+   Features:
+   - Hidden by default (opacity: 0, visibility: hidden)
+   - Appears when 'visible' class is added by JavaScript
+   - Smooth hover effects with scale and shadow
+   - Fixed position in bottom-right corner
+*/
+.scroll-to-top {
+    /* Positioning - fixed to viewport, bottom-right corner */
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 1000;
+
+    /* Sizing and shape - circular button */
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+
+    /* Appearance */
+    background: var(--gold);
+    border: none;
+    cursor: pointer;
+
+    /* Center the arrow icon */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Shadow for depth */
+    box-shadow: 0 4px 20px rgba(214, 158, 46, 0.4);
+
+    /* Hidden by default - JavaScript adds 'visible' class to show */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+
+    /* Smooth transitions for appearing/disappearing and hover effects */
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Icon styling */
+.scroll-to-top svg {
+    stroke: var(--dark);
+    transition: transform 0.3s ease;
+}
+
+/* Visible state - shown when user scrolls down */
+.scroll-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Hover effects - grows slightly with deeper shadow */
+.scroll-to-top:hover {
+    background: #b7791f;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(214, 158, 46, 0.5);
+}
+
+/* Arrow bounces up slightly on hover */
+.scroll-to-top:hover svg {
+    transform: translateY(-2px);
+}
+
+/* Active/click state - pressed effect */
+.scroll-to-top:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(214, 158, 46, 0.4);
+}
+
+/* Focus state for keyboard accessibility */
+.scroll-to-top:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--accent-light), 0 4px 20px rgba(214, 158, 46, 0.4);
 }
 
 
@@ -1336,4 +1719,32 @@ body.dark-mode .modal-overlay {
 body.dark-mode .modal {
     background: linear-gradient(135deg, #161b22 0%, #21262d 100%);
     border-color: #30363d;
+}
+
+/*
+    Dark Mode - Scroll to Top Button
+    ==================================
+*/
+body.dark-mode .scroll-to-top {
+    background: var(--gold);
+    box-shadow: 0 4px 20px rgba(214, 158, 46, 0.3);
+}
+
+body.dark-mode .scroll-to-top:hover {
+    background: #e6a020;
+    box-shadow: 0 8px 30px rgba(214, 158, 46, 0.4);
+}
+
+/*
+    Dark Mode - Messages Modal
+    ===========================
+*/
+body.dark-mode .message-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: #30363d;
+}
+
+body.dark-mode .message-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: #484f58;
 }
