@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My To-Do List</title>
+
+    <!--
+        STYLES SECTION
+        This is where we define how our app looks.
+        CSS (Cascading Style Sheets) controls colors, sizes, spacing, etc.
+    -->
+    <style>
+        /*
+            The * selector applies to ALL elements.
+            box-sizing: border-box makes sizing more intuitive
+            by including padding in width calculations.
+        */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /*
+            Body styles - this affects the whole page.
+            We're using a soft gradient background and centering everything.
+        */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        /*
+            The main container that holds our app.
+            max-width keeps it readable on large screens.
+            margin: 0 auto centers it horizontally.
+        */
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        /* App title styling */
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+
+        /*
+            Input area - contains the text input and add button.
+            display: flex puts them side by side.
+            gap adds space between them.
+        */
+        .input-area {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        /*
+            Text input styling.
+            flex: 1 makes it take up all available space.
+        */
+        .task-input {
+            flex: 1;
+            padding: 14px 18px;
+            font-size: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        /* When the input is focused (clicked into), change border color */
+        .task-input:focus {
+            border-color: #667eea;
+        }
+
+        /* Add button styling */
+        .add-btn {
+            padding: 14px 24px;
+            font-size: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        /* Hover effect - slight lift and shadow */
+        .add-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        /* The list container - removes default bullet points */
+        .task-list {
+            list-style: none;
+        }
+
+        /*
+            Individual task item styling.
+            display: flex aligns the text and delete button.
+            justify-content: space-between pushes them to opposite ends.
+        */
+        .task-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            animation: slideIn 0.3s ease;
+        }
+
+        /* Animation for when a new task appears */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Task text styling */
+        .task-text {
+            color: #333;
+            font-size: 1rem;
+            word-break: break-word;
+            cursor: pointer;          /* Shows hand cursor to indicate it's clickable */
+            transition: all 0.3s;     /* Smooth transition for strikethrough effect */
+        }
+
+        /* Hover effect on task text to show it's clickable */
+        .task-text:hover {
+            color: #667eea;
+        }
+
+        /*
+            Completed task styling.
+            When a task is done, it gets a strikethrough and faded appearance.
+        */
+        .task-text.completed {
+            text-decoration: line-through;  /* The strikethrough line */
+            color: #999;                    /* Faded gray color */
+        }
+
+        /* Completed task item gets a slightly different background */
+        .task-item.completed {
+            background: #e8e8e8;
+        }
+
+        /* Delete button styling */
+        .delete-btn {
+            padding: 8px 16px;
+            font-size: 0.875rem;
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-left: 10px;
+            flex-shrink: 0;
+        }
+
+        /* Delete button hover - darker red */
+        .delete-btn:hover {
+            background: #ee5a5a;
+        }
+
+        /* Message shown when there are no tasks */
+        .empty-message {
+            text-align: center;
+            color: #999;
+            font-style: italic;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!--
+        HTML STRUCTURE
+        This defines what elements are on the page.
+    -->
+    <div class="container">
+        <h1>My To-Do List</h1>
+
+        <!-- Input area with text field and add button -->
+        <div class="input-area">
+            <!--
+                The input field where users type their task.
+                'id' lets us find this element in JavaScript.
+                'placeholder' shows hint text when empty.
+            -->
+            <input
+                type="text"
+                id="taskInput"
+                class="task-input"
+                placeholder="What do you need to do?"
+            >
+            <!--
+                The add button.
+                'onclick' tells it what function to run when clicked.
+            -->
+            <button class="add-btn" onclick="addTask()">Add Task</button>
+        </div>
+
+        <!--
+            The list where tasks will appear.
+            It starts empty - JavaScript will add items here.
+        -->
+        <ul id="taskList" class="task-list">
+            <!-- Tasks will be added here by JavaScript -->
+        </ul>
+    </div>
+
+    <!--
+        JAVASCRIPT SECTION
+        This is where we define how our app behaves.
+        JavaScript makes the page interactive.
+    -->
+    <script>
+        /*
+            Array to store our tasks.
+            Each task is an OBJECT with two properties:
+            - text: the task description (string)
+            - completed: whether it's done (true/false)
+        */
+        let tasks = [];
+
+        /*
+            Function to add a new task.
+            This runs when the "Add Task" button is clicked.
+        */
+        function addTask() {
+            // Get the input element from the page
+            const input = document.getElementById('taskInput');
+
+            // Get the text the user typed, and remove extra spaces with trim()
+            const taskText = input.value.trim();
+
+            // If the input is empty, don't add anything
+            if (taskText === '') {
+                alert('Please enter a task!');
+                return; // Exit the function early
+            }
+
+            // Add the new task to our array as an object
+            // { text: "...", completed: false } is an object literal
+            tasks.push({
+                text: taskText,
+                completed: false
+            });
+
+            // Clear the input field so user can type a new task
+            input.value = '';
+
+            // Update the display to show the new task
+            renderTasks();
+
+            // Put the cursor back in the input for convenience
+            input.focus();
+        }
+
+        /*
+            Function to toggle a task's completed status.
+            'index' tells us which task to toggle.
+        */
+        function toggleComplete(index) {
+            // Flip the completed status: true becomes false, false becomes true
+            // The ! operator means "not" - it reverses a boolean value
+            tasks[index].completed = !tasks[index].completed;
+
+            // Update the display to show the change
+            renderTasks();
+        }
+
+        /*
+            Function to delete a task.
+            'index' tells us which task to remove (0 is the first, 1 is second, etc.)
+        */
+        function deleteTask(index) {
+            // splice removes items from an array
+            // Here we remove 1 item at the given index
+            tasks.splice(index, 1);
+
+            // Update the display to reflect the change
+            renderTasks();
+        }
+
+        /*
+            Function to display all tasks on the page.
+            We call this whenever tasks are added or removed.
+        */
+        function renderTasks() {
+            // Get the list element from the page
+            const taskList = document.getElementById('taskList');
+
+            // If there are no tasks, show a helpful message
+            if (tasks.length === 0) {
+                taskList.innerHTML = '<li class="empty-message">No tasks yet. Add one above!</li>';
+                return;
+            }
+
+            // Build the HTML for all tasks
+            // map() goes through each task and creates HTML for it
+            // join('') combines all the HTML pieces into one string
+            taskList.innerHTML = tasks.map((task, index) => `
+                <li class="task-item ${task.completed ? 'completed' : ''}">
+                    <!--
+                        The task text is clickable to toggle completion.
+                        We add the 'completed' class if task.completed is true.
+                        The ? : is a "ternary operator" - a short way to write if/else.
+                    -->
+                    <span
+                        class="task-text ${task.completed ? 'completed' : ''}"
+                        onclick="toggleComplete(${index})"
+                        title="Click to mark as ${task.completed ? 'incomplete' : 'complete'}"
+                    >
+                        ${escapeHtml(task.text)}
+                    </span>
+                    <button class="delete-btn" onclick="deleteTask(${index})">Delete</button>
+                </li>
+            `).join('');
+        }
+
+        /*
+            Helper function to prevent XSS (cross-site scripting) attacks.
+            This converts special HTML characters to safe text.
+            For example, < becomes &lt; so it displays as text, not HTML.
+        */
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        /*
+            Allow pressing Enter to add a task (instead of clicking the button).
+            This listens for keyboard events on the input field.
+        */
+        document.getElementById('taskInput').addEventListener('keypress', function(event) {
+            // Check if the key pressed was Enter (key code 'Enter')
+            if (event.key === 'Enter') {
+                addTask();
+            }
+        });
+
+        // Show the initial empty state when the page loads
+        renderTasks();
+    </script>
+</body>
+</html>
