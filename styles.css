@@ -152,6 +152,50 @@ nav {
     transition: all 0.3s ease;
 }
 
+/*
+    Theme Toggle Button
+    ===================
+    Button to switch between light and dark mode.
+    Contains sun and moon icons that swap based on current theme.
+*/
+.theme-toggle {
+    background: var(--light);
+    border: 2px solid var(--primary);
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    margin-left: 1rem;
+}
+
+.theme-toggle:hover {
+    background: var(--primary);
+    transform: rotate(15deg);
+}
+
+.theme-toggle:hover svg {
+    stroke: var(--white);
+}
+
+.theme-toggle svg {
+    stroke: var(--primary);
+    transition: all 0.3s ease;
+}
+
+/* Sun icon - hidden by default, shown in dark mode */
+.theme-toggle .sun-icon {
+    display: none;
+}
+
+/* Moon icon - shown by default in light mode */
+.theme-toggle .moon-icon {
+    display: block;
+}
+
 
 /* ==========================================================================
    4. HERO SECTION
@@ -1052,4 +1096,244 @@ footer p {
     section {
         padding: 4rem 1.5rem;
     }
+}
+
+
+/* ==========================================================================
+   15. DARK MODE
+   ==========================================================================
+   Dark color scheme applied when 'dark-mode' class is on the body.
+
+   How it works:
+   - JavaScript adds/removes 'dark-mode' class on the <body> element
+   - These styles override the light mode defaults
+   - CSS transitions create smooth color changes
+   - User preference is saved to localStorage
+*/
+
+/*
+    Global transition for smooth theme switching
+    =============================================
+    This adds a transition to all elements so colors change smoothly
+    when toggling between light and dark mode.
+*/
+body.dark-mode,
+body.dark-mode * {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/*
+    Dark Mode Theme Toggle Button
+    ==============================
+    Swap which icon is visible in dark mode.
+*/
+body.dark-mode .theme-toggle {
+    background: var(--dark);
+    border-color: var(--gold);
+}
+
+body.dark-mode .theme-toggle svg {
+    stroke: var(--gold);
+}
+
+body.dark-mode .theme-toggle:hover {
+    background: var(--gold);
+}
+
+body.dark-mode .theme-toggle:hover svg {
+    stroke: var(--dark);
+}
+
+/* In dark mode: show sun, hide moon */
+body.dark-mode .theme-toggle .sun-icon {
+    display: block;
+}
+
+body.dark-mode .theme-toggle .moon-icon {
+    display: none;
+}
+
+/*
+    Dark Mode - Navigation
+    =======================
+*/
+body.dark-mode nav {
+    background: rgba(26, 32, 44, 0.95);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .logo {
+    color: var(--white);
+}
+
+body.dark-mode .nav-links a {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+body.dark-mode .nav-links a:hover {
+    color: var(--gold);
+}
+
+body.dark-mode .nav-links a::after {
+    background: var(--gold);
+}
+
+body.dark-mode .mobile-menu-btn span {
+    background: var(--white);
+}
+
+/* Mobile menu in dark mode */
+body.dark-mode .nav-links {
+    background: var(--dark);
+}
+
+/*
+    Dark Mode - Body & General
+    ===========================
+*/
+body.dark-mode {
+    background: #0d1117;
+    color: #e6edf3;
+}
+
+/*
+    Dark Mode - About Section
+    ==========================
+*/
+body.dark-mode #about {
+    background: #161b22;
+}
+
+body.dark-mode .section-header h2 {
+    color: var(--white);
+}
+
+body.dark-mode .section-header p {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+body.dark-mode .about-text p {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+body.dark-mode .certifications {
+    background: #21262d;
+}
+
+body.dark-mode .certifications h3 {
+    color: var(--white);
+}
+
+body.dark-mode .cert-item {
+    border-bottom-color: #30363d;
+}
+
+body.dark-mode .cert-item span {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/*
+    Dark Mode - Skills Section
+    ===========================
+*/
+body.dark-mode #skills {
+    background: #0d1117;
+}
+
+body.dark-mode .skill-category {
+    background: #161b22;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .skill-category:hover {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .skill-category h3 {
+    color: var(--white);
+}
+
+body.dark-mode .skill-list li {
+    color: rgba(255, 255, 255, 0.8);
+    border-bottom-color: #30363d;
+}
+
+/*
+    Dark Mode - Experience Section (Timeline)
+    ==========================================
+*/
+body.dark-mode #experience {
+    background: #161b22;
+}
+
+body.dark-mode .timeline-content {
+    background: #21262d;
+}
+
+body.dark-mode .timeline-content:hover {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .timeline-content h3 {
+    color: var(--white);
+}
+
+body.dark-mode .timeline-content p {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+body.dark-mode .timeline-location {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+body.dark-mode .timeline-dot {
+    border-color: #161b22;
+}
+
+/*
+    Dark Mode - Contact Section
+    ============================
+*/
+body.dark-mode #contact {
+    background: #161b22;
+}
+
+body.dark-mode .contact-info h3 {
+    color: var(--white);
+}
+
+body.dark-mode .contact-info p {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+body.dark-mode .contact-link {
+    background: #21262d;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+body.dark-mode .contact-link:hover {
+    background: var(--primary);
+    color: var(--white);
+}
+
+/*
+    Dark Mode - Footer
+    ===================
+*/
+body.dark-mode footer {
+    background: #010409;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/*
+    Dark Mode - Modal
+    ==================
+*/
+body.dark-mode .modal-overlay {
+    background: rgba(1, 4, 9, 0.9);
+}
+
+body.dark-mode .modal {
+    background: linear-gradient(135deg, #161b22 0%, #21262d 100%);
+    border-color: #30363d;
 }

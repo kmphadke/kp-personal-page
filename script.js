@@ -11,6 +11,7 @@
  * 4. Navbar Shadow on Scroll
  * 5. Contact Modal Functions
  * 6. Form Submission Handler
+ * 7. Dark Mode Toggle (NEW)
  *
  * The code is organized into logical sections with comments explaining
  * what each part does for learning purposes.
@@ -251,6 +252,80 @@ function handleSubmit(event) {
 
 
 /* ==========================================================================
+   7. DARK MODE TOGGLE
+   ==========================================================================
+   Allows users to switch between light and dark color schemes.
+
+   How it works:
+   - Clicking the toggle button adds/removes 'dark-mode' class on <body>
+   - CSS rules in styles.css change colors when this class is present
+   - User's preference is saved to localStorage
+   - On page load, we check localStorage and apply the saved preference
+
+   localStorage is a browser feature that stores data even after the
+   browser is closed. It's perfect for remembering user preferences.
+*/
+
+/**
+ * Initialize theme on page load
+ * This runs immediately when the script loads to prevent flash of wrong theme
+ */
+function initializeTheme() {
+    // Check if user has a saved preference in localStorage
+    const savedTheme = localStorage.getItem('theme');
+
+    // Check if user's operating system prefers dark mode
+    // This is a media query that returns true if OS is set to dark mode
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    // Determine which theme to use:
+    // 1. If user has a saved preference, use that
+    // 2. Otherwise, use the OS preference
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        document.body.classList.add('dark-mode');
+    }
+}
+
+/**
+ * Toggle between light and dark mode
+ * Called when user clicks the theme toggle button
+ */
+function toggleTheme() {
+    // Toggle the 'dark-mode' class on the body element
+    // classList.toggle() adds the class if missing, removes if present
+    document.body.classList.toggle('dark-mode');
+
+    // Check if dark mode is now active
+    const isDarkMode = document.body.classList.contains('dark-mode');
+
+    // Save the user's preference to localStorage
+    // This will persist even after closing the browser
+    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+
+    // Log for debugging (can be removed in production)
+    console.log(`Theme switched to: ${isDarkMode ? 'dark' : 'light'} mode`);
+}
+
+// Initialize theme as soon as possible to prevent flash of wrong theme
+// This runs when the script is first loaded
+initializeTheme();
+
+// Optional: Listen for OS theme changes and update automatically
+// This handles cases where user changes their OS theme while on the page
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    // Only auto-switch if user hasn't set a manual preference
+    const savedTheme = localStorage.getItem('theme');
+    if (!savedTheme) {
+        if (e.matches) {
+            document.body.classList.add('dark-mode');
+        } else {
+            document.body.classList.remove('dark-mode');
+        }
+    }
+});
+
+
+/* ==========================================================================
    NOTES FOR DEVELOPERS
    ==========================================================================
 
@@ -262,6 +337,7 @@ function handleSubmit(event) {
    - Event listeners (click, scroll, keydown, submit)
    - Intersection Observer API (for scroll animations)
    - CSS class toggling for showing/hiding elements
+   - localStorage for persisting user preferences (dark mode)
 
    To extend this code:
    1. Add form validation before submission
