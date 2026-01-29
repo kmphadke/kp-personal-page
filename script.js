@@ -11,6 +11,7 @@
  * 4. Navbar Shadow on Scroll & Scroll-to-Top Button
  * 5. Contact Modal Functions
  * 6. Form Validation & Submission (with localStorage storage)
+ * 6b. Experience Timeline - Scroll Detection & Synchronization
  * 7. Dark Mode Toggle
  *
  * The code is organized into logical sections with comments explaining
@@ -894,6 +895,178 @@ document.addEventListener('keydown', function(e) {
         closeMessagesModal();
     }
 });
+
+
+/* ==========================================================================
+   6b. EXPERIENCE TIMELINE - Scroll Detection & Synchronization
+   ==========================================================================
+
+   HOW THE SCROLL DETECTION WORKS:
+   ================================
+   This code synchronizes the sticky timeline navigation with the experience
+   cards as the user scrolls. When a card comes into view, its corresponding
+   dot in the timeline is highlighted.
+
+   INTERSECTION OBSERVER APPROACH:
+   ================================
+   We use Intersection Observer (not scroll events) because:
+   1. More performant - doesn't fire on every pixel scrolled
+   2. Precise control over when detection triggers
+   3. Can specify exactly how much of element must be visible
+
+   The observer watches each experience card. When a card enters the
+   "detection zone" (defined by rootMargin), it becomes the "active" card
+   and its timeline dot is highlighted.
+
+   ROOTMARGIN EXPLAINED:
+   =====================
+   rootMargin: '-30% 0px -60% 0px' means:
+   - Top: Shrink detection zone by 30% from top
+   - Right: No change (0px)
+   - Bottom: Shrink detection zone by 60% from bottom
+   - Left: No change (0px)
+
+   This creates a "trigger zone" in the upper-middle portion of the viewport.
+   A card is considered "active" when it enters this zone, which typically
+   happens when the card is prominently visible on screen.
+
+   Visual representation of viewport with this rootMargin:
+   ┌─────────────────────────┐
+   │      (ignored 30%)      │
+   ├─────────────────────────┤
+   │                         │
+   │    DETECTION ZONE       │  <-- Cards detected here
+   │       (10% of viewport) │
+   │                         │
+   ├─────────────────────────┤
+   │      (ignored 60%)      │
+   └─────────────────────────┘
+*/
+
+/**
+ * Initialize Experience Timeline Scroll Detection
+ * =================================================
+ * Sets up Intersection Observer to watch experience cards and
+ * synchronize the timeline navigation.
+ */
+function initExperienceTimeline() {
+    // Get all experience cards and timeline nav items
+    const expCards = document.querySelectorAll('.exp-card');
+    const timelineNavItems = document.querySelectorAll('.timeline-nav-item');
+
+    // Exit early if elements don't exist (prevents errors)
+    if (expCards.length === 0 || timelineNavItems.length === 0) {
+        return;
+    }
+
+    /*
+        Observer Configuration
+        =======================
+        - threshold: 0 means trigger as soon as any part is visible
+        - rootMargin: Creates a narrow detection band in upper-middle of viewport
+          This ensures only one card is "active" at a time
+    */
+    const observerOptions = {
+        threshold: 0,
+        rootMargin: '-30% 0px -60% 0px'
+    };
+
+    /*
+        Track the currently active card
+        ================================
+        We use this to prevent unnecessary DOM updates when the same
+        card is repeatedly detected (which can happen with observer)
+    */
+    let currentActiveIndex = 0;
+
+    /**
+     * Update which timeline nav item is active
+     * @param {number} index - The index of the card that's now active
+     */
+    function setActiveTimelineItem(index) {
+        // Skip if already active (prevents unnecessary repaints)
+        if (currentActiveIndex === index) return;
+
+        currentActiveIndex = index;
+
+        // Remove 'active' class from all nav items
+        timelineNavItems.forEach(item => {
+            item.classList.remove('active');
+        });
+
+        // Add 'active' class to the corresponding nav item
+        const activeNavItem = document.querySelector(
+            `.timeline-nav-item[data-index="${index}"]`
+        );
+        if (activeNavItem) {
+            activeNavItem.classList.add('active');
+        }
+    }
+
+    /*
+        Create the Intersection Observer
+        ==================================
+        Watches each experience card and updates the timeline when
+        a card enters the detection zone.
+    */
+    const timelineObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            /*
+                Only act when a card is ENTERING the detection zone
+                (isIntersecting = true), not when it's leaving.
+
+                This prevents the highlight from jumping around as
+                cards exit the zone.
+            */
+            if (entry.isIntersecting) {
+                // Get the index from the card's data attribute
+                const index = parseInt(entry.target.dataset.index, 10);
+                setActiveTimelineItem(index);
+            }
+        });
+    }, observerOptions);
+
+    // Start observing each experience card
+    expCards.forEach(card => {
+        timelineObserver.observe(card);
+    });
+
+    /*
+        Click-to-Scroll on Timeline Nav Items
+        ======================================
+        Clicking a timeline dot scrolls to the corresponding card.
+        This provides a secondary navigation method.
+    */
+    timelineNavItems.forEach(navItem => {
+        navItem.addEventListener('click', () => {
+            const index = navItem.dataset.index;
+            const targetCard = document.querySelector(`.exp-card[data-index="${index}"]`);
+
+            if (targetCard) {
+                // Calculate offset to account for fixed navbar
+                const navbarHeight = document.querySelector('nav').offsetHeight;
+                const cardTop = targetCard.getBoundingClientRect().top + window.scrollY;
+                const scrollTarget = cardTop - navbarHeight - 30; // 30px extra padding
+
+                // Smooth scroll to the card
+                window.scrollTo({
+                    top: scrollTarget,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+}
+
+// Initialize when DOM is ready
+// Using DOMContentLoaded ensures all HTML elements exist before we try to access them
+document.addEventListener('DOMContentLoaded', initExperienceTimeline);
+
+// Also try to initialize immediately in case DOMContentLoaded already fired
+// (This handles cases where script is loaded after DOM is ready)
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    initExperienceTimeline();
+}
 
 
 /* ==========================================================================

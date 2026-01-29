@@ -518,107 +518,578 @@ section {
 
 
 /* ==========================================================================
-   8. EXPERIENCE SECTION (Timeline)
+   7b. FEATURED PROJECTS SECTION
    ==========================================================================
+   Visually impressive project showcase with gradient cards and hover effects.
 */
-#experience {
+#projects {
     background: var(--white);
 }
 
-.timeline {
-    position: relative;
-    max-width: 900px;
-    margin: 0 auto;
+/* Projects Grid - 3 columns on desktop, stacks on mobile */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2rem;
 }
 
-/* Vertical line connecting timeline items */
-.timeline::before {
-    content: '';
+/* Individual Project Card */
+.project-card {
+    background: var(--white);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+}
+
+/* Card hover effect - lift up with enhanced shadow */
+.project-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+}
+
+/* Project Image/Gradient Area */
+.project-image {
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Overlay with icon */
+.project-image-overlay {
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 2px;
-    height: 100%;
-    background: linear-gradient(to bottom, var(--accent), var(--gold));
-}
-
-.timeline-item {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     display: flex;
-    justify-content: flex-end;
-    padding-right: 50%;
-    position: relative;
-    margin-bottom: 3rem;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease;
 }
 
-/* Alternate items to opposite side */
-.timeline-item:nth-child(even) {
-    justify-content: flex-start;
-    padding-right: 0;
-    padding-left: 50%;
+.project-card:hover .project-image-overlay {
+    background: rgba(0, 0, 0, 0.2);
 }
 
-.timeline-content {
-    background: var(--light);
-    padding: 2rem;
-    border-radius: 16px;
-    max-width: 420px;
-    margin-right: 2rem;
-    position: relative;
+/* Project Icon */
+.project-icon {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.project-card:hover .project-icon {
+    transform: scale(1.1) rotate(5deg);
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Project Badge (Featured, New, etc.) */
+.project-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--gold);
+    color: var(--dark);
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(214, 158, 46, 0.4);
+}
+
+.project-badge.badge-new {
+    background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(72, 187, 120, 0.4);
+}
+
+/* Project Content Area */
+.project-content {
+    padding: 1.75rem;
+}
+
+.project-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    color: var(--primary);
+    margin-bottom: 0.75rem;
+    transition: color 0.3s ease;
+}
+
+.project-card:hover .project-title {
+    color: var(--accent);
+}
+
+.project-description {
+    color: var(--secondary);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+}
+
+/* Technology Tags */
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.tag {
+    background: linear-gradient(135deg, var(--light) 0%, #e2e8f0 100%);
+    color: var(--secondary);
+    padding: 0.35rem 0.85rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.tag:hover {
+    background: var(--accent);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Project Action Buttons */
+.project-buttons {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.btn-project {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
     transition: all 0.3s ease;
 }
 
-.timeline-item:nth-child(even) .timeline-content {
-    margin-right: 0;
-    margin-left: 2rem;
+.btn-view {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(49, 130, 206, 0.3);
 }
 
-.timeline-content:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+.btn-view:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(49, 130, 206, 0.4);
 }
 
-/* Circular dot on the timeline */
-.timeline-dot {
+.btn-source {
+    background: var(--light);
+    color: var(--secondary);
+    border: 2px solid #e2e8f0;
+}
+
+.btn-source:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+    transform: translateY(-2px);
+}
+
+/* Animated gradient border on hover (using pseudo-element) */
+.project-card::before {
+    content: '';
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 16px;
-    height: 16px;
-    background: var(--gold);
-    border-radius: 50%;
-    border: 4px solid var(--white);
-    box-shadow: 0 0 0 4px var(--accent);
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--gold), var(--accent), var(--gold));
+    background-size: 200% 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
-.timeline-date {
+.project-card:hover::before {
+    opacity: 1;
+    animation: gradientSlide 2s linear infinite;
+}
+
+@keyframes gradientSlide {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
+
+/* ==========================================================================
+   8. EXPERIENCE SECTION - Modern Side-by-Side Timeline
+   ==========================================================================
+
+   LAYOUT OVERVIEW:
+   ================
+   Desktop (>768px):
+   - CSS Grid: 40% sticky timeline | 60% scrollable cards
+   - Timeline uses position: sticky to stay visible
+   - Intersection Observer highlights active position
+
+   Mobile (<=768px):
+   - Single column layout
+   - Timeline nav hidden, replaced by inline dots
+   - Cards stack vertically with left-aligned dots
+
+   STICKY POSITIONING EXPLAINED:
+   =============================
+   position: sticky creates an element that:
+   1. Scrolls normally until it reaches 'top' offset
+   2. Then "sticks" to that position
+   3. Unsticks when parent element scrolls out of view
+
+   For sticky to work, the parent must have:
+   - Defined height (or content that creates height)
+   - No overflow: hidden
+*/
+#experience {
+    background: var(--light);
+}
+
+/*
+    Experience Layout Container
+    ============================
+    Desktop: Two-column grid (40% / 60%)
+    Mobile: Single column (handled in media queries)
+*/
+.experience-layout {
+    display: grid;
+    grid-template-columns: minmax(280px, 40%) 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+/*
+    LEFT SIDE: Sticky Timeline Navigation
+    ======================================
+    - Sticks to viewport while scrolling through cards
+    - Contains clickable nav items with dots and labels
+*/
+.timeline-nav {
+    /*
+        STICKY POSITIONING
+        ==================
+        - position: sticky makes element stick when scrolling
+        - top: 120px = distance from top of viewport when stuck
+          (accounts for fixed navbar + some padding)
+        - Only works when parent (.experience-layout) has scrollable content
+    */
+    position: sticky;
+    top: 120px;
+    height: fit-content;
+    padding: 1rem 0;
+}
+
+.timeline-nav-inner {
+    position: relative;
+    padding-left: 2rem;
+}
+
+/*
+    Vertical Connecting Line
+    =========================
+    Creates the line that connects all timeline dots
+*/
+.timeline-line {
+    position: absolute;
+    left: 8px;
+    top: 12px;
+    bottom: 12px;
+    width: 2px;
+    background: linear-gradient(
+        to bottom,
+        var(--gold) 0%,
+        var(--accent) 50%,
+        var(--gray) 100%
+    );
+    border-radius: 1px;
+}
+
+/*
+    Timeline Navigation Item
+    =========================
+    Each position in the timeline (dot + date + company)
+*/
+.timeline-nav-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.timeline-nav-item:hover .nav-info {
+    transform: translateX(5px);
+}
+
+/*
+    Timeline Dot
+    =============
+    Outer ring with inner dot that scales on active state
+*/
+.nav-dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 2px solid var(--gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.dot-inner {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+/*
+    Active State for Timeline Item
+    ================================
+    Applied by JavaScript when corresponding card is in view
+*/
+.timeline-nav-item.active .nav-dot {
+    width: 24px;
+    height: 24px;
+    border-color: var(--gold);
+    background: var(--gold);
+    box-shadow: 0 0 0 4px rgba(214, 158, 46, 0.2);
+}
+
+.timeline-nav-item.active .dot-inner {
+    width: 10px;
+    height: 10px;
+    background: var(--white);
+}
+
+.timeline-nav-item.active .nav-info .nav-date {
+    color: var(--gold);
+}
+
+.timeline-nav-item.active .nav-info .nav-company {
+    color: var(--primary);
+}
+
+/*
+    Navigation Info (Date & Company)
+*/
+.nav-info {
+    transition: transform 0.3s ease;
+}
+
+.nav-date {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--gray);
+    font-weight: 500;
+    margin-bottom: 0.2rem;
+    transition: color 0.3s ease;
+}
+
+.nav-company {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--secondary);
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+/*
+    RIGHT SIDE: Experience Cards Container
+*/
+.experience-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/*
+    Individual Experience Card
+    ===========================
+    Card-style design with shadow, rounded corners, and hover effects
+*/
+.exp-card {
+    background: var(--white);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+}
+
+.exp-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Accent border on left side of card */
+.exp-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(to bottom, var(--accent), var(--gold));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.exp-card:hover::before {
+    opacity: 1;
+}
+
+/* First card (current role) has permanent accent */
+.exp-card[data-index="0"]::before {
+    opacity: 1;
+    background: var(--gold);
+}
+
+.exp-card-content {
+    padding: 2rem;
+}
+
+/*
+    Mobile Timeline Dot
+    ====================
+    Hidden on desktop, shown on mobile
+*/
+.mobile-dot {
+    display: none;
+}
+
+/*
+    Card Header (Date + Current Badge)
+*/
+.exp-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.exp-date {
     color: var(--accent);
     font-weight: 600;
     font-size: 0.9rem;
-    margin-bottom: 0.5rem;
 }
 
-.timeline-content h3 {
+.exp-current {
+    background: linear-gradient(135deg, var(--gold) 0%, #e6a020 100%);
+    color: var(--dark);
+    padding: 0.3rem 0.8rem;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/*
+    Job Title
+*/
+.exp-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
     color: var(--primary);
-    font-size: 1.1rem;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
 }
 
-.timeline-company {
+/*
+    Company & Location with Icons
+*/
+.exp-company,
+.exp-location {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.exp-company {
     color: var(--gold);
     font-weight: 600;
-    margin-bottom: 0.5rem;
 }
 
-.timeline-location {
+.exp-company svg,
+.exp-location svg {
+    flex-shrink: 0;
+    opacity: 0.7;
+}
+
+.exp-location {
     color: var(--gray);
-    font-size: 0.85rem;
     margin-bottom: 1rem;
 }
 
-.timeline-content p {
+/*
+    Job Description
+*/
+.exp-description {
     color: var(--secondary);
     font-size: 0.95rem;
-    line-height: 1.6;
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+}
+
+/*
+    Highlight Tags
+    ===============
+    Key achievements/skills as badges
+*/
+.exp-highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.highlight {
+    background: linear-gradient(135deg, rgba(49, 130, 206, 0.1) 0%, rgba(99, 179, 237, 0.1) 100%);
+    color: var(--accent);
+    padding: 0.4rem 0.9rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border: 1px solid rgba(49, 130, 206, 0.2);
+    transition: all 0.3s ease;
+}
+
+.highlight:hover {
+    background: var(--accent);
+    color: var(--white);
+    border-color: var(--accent);
 }
 
 
@@ -1420,27 +1891,15 @@ footer p {
         grid-template-columns: 1fr;
     }
 
-    /* Timeline becomes single-column */
-    .timeline::before {
-        left: 20px;
+    /* Projects grid - 2 columns on tablet */
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
     }
 
-    .timeline-item,
-    .timeline-item:nth-child(even) {
-        padding-left: 60px;
-        padding-right: 0;
-        justify-content: flex-start;
-    }
-
-    .timeline-content,
-    .timeline-item:nth-child(even) .timeline-content {
-        margin-left: 0;
-        margin-right: 0;
-        max-width: 100%;
-    }
-
-    .timeline-dot {
-        left: 20px;
+    /* Experience section - reduce gap on tablet */
+    .experience-layout {
+        gap: 2rem;
     }
 }
 
@@ -1478,6 +1937,133 @@ footer p {
 
     section {
         padding: 4rem 1.5rem;
+    }
+
+    /* Projects grid - single column on mobile */
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .project-image {
+        height: 180px;
+    }
+
+    .project-content {
+        padding: 1.5rem;
+    }
+
+    .project-buttons {
+        flex-direction: column;
+    }
+
+    .btn-project {
+        width: 100%;
+    }
+
+    /*
+        MOBILE EXPERIENCE SECTION
+        ==========================
+        RESPONSIVE BREAKPOINT EXPLANATION:
+        At 768px and below, we switch from side-by-side to stacked layout.
+
+        Changes:
+        1. Grid becomes single column
+        2. Sticky timeline nav is hidden
+        3. Mobile dots appear inline with each card
+        4. Cards get left border instead of dot
+    */
+    .experience-layout {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    /* Hide the sticky timeline navigation on mobile */
+    .timeline-nav {
+        display: none;
+    }
+
+    /* Show mobile timeline dots */
+    .mobile-dot {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem 1.5rem;
+        background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+        position: relative;
+    }
+
+    /* Mobile dot circle */
+    .mobile-dot::before {
+        content: '';
+        width: 12px;
+        height: 12px;
+        background: var(--white);
+        border-radius: 50%;
+        flex-shrink: 0;
+        box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+    }
+
+    /* Connecting line between mobile dots */
+    .mobile-dot::after {
+        content: '';
+        position: absolute;
+        left: 2.05rem;
+        bottom: -1.5rem;
+        width: 2px;
+        height: 1.5rem;
+        background: var(--accent);
+        opacity: 0.3;
+    }
+
+    /* Hide line on last card */
+    .exp-card:last-child .mobile-dot::after {
+        display: none;
+    }
+
+    /* Current role badge on mobile */
+    .current-badge {
+        background: var(--gold);
+        color: var(--dark);
+        padding: 0.25rem 0.75rem;
+        border-radius: 50px;
+        font-size: 0.7rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    /* Adjust card styling for mobile */
+    .exp-card {
+        border-radius: 0;
+        margin-bottom: 1.5rem;
+    }
+
+    .exp-card:first-child {
+        border-radius: 16px 16px 0 0;
+    }
+
+    .exp-card:last-child {
+        border-radius: 0 0 16px 16px;
+        margin-bottom: 0;
+    }
+
+    /* Hide the left accent border on mobile (we have top gradient instead) */
+    .exp-card::before {
+        display: none;
+    }
+
+    .exp-card-content {
+        padding: 1.5rem;
+    }
+
+    .exp-title {
+        font-size: 1.2rem;
+    }
+
+    /* Hide "Current Role" badge on mobile (we have the banner) */
+    .exp-current {
+        display: none;
     }
 }
 
@@ -1642,35 +2228,90 @@ body.dark-mode .skill-list li {
 }
 
 /*
-    Dark Mode - Experience Section (Timeline)
-    ==========================================
+    Dark Mode - Experience Section (Modern Timeline)
+    =================================================
 */
 body.dark-mode #experience {
+    background: #0d1117;
+}
+
+/* Timeline Navigation */
+body.dark-mode .timeline-line {
+    background: linear-gradient(
+        to bottom,
+        var(--gold) 0%,
+        var(--accent) 50%,
+        #30363d 100%
+    );
+}
+
+body.dark-mode .nav-dot {
     background: #161b22;
+    border-color: #30363d;
 }
 
-body.dark-mode .timeline-content {
-    background: #21262d;
+body.dark-mode .timeline-nav-item.active .nav-dot {
+    background: var(--gold);
+    border-color: var(--gold);
 }
 
-body.dark-mode .timeline-content:hover {
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-}
-
-body.dark-mode .timeline-content h3 {
-    color: var(--white);
-}
-
-body.dark-mode .timeline-content p {
-    color: rgba(255, 255, 255, 0.8);
-}
-
-body.dark-mode .timeline-location {
+body.dark-mode .nav-date {
     color: rgba(255, 255, 255, 0.5);
 }
 
-body.dark-mode .timeline-dot {
-    border-color: #161b22;
+body.dark-mode .nav-company {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+body.dark-mode .timeline-nav-item.active .nav-company {
+    color: var(--white);
+}
+
+/* Experience Cards */
+body.dark-mode .exp-card {
+    background: #161b22;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .exp-card:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .exp-title {
+    color: var(--white);
+}
+
+body.dark-mode .exp-company {
+    color: var(--gold);
+}
+
+body.dark-mode .exp-location {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+body.dark-mode .exp-description {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+body.dark-mode .highlight {
+    background: rgba(214, 158, 46, 0.1);
+    color: var(--gold);
+    border-color: rgba(214, 158, 46, 0.3);
+}
+
+body.dark-mode .highlight:hover {
+    background: var(--gold);
+    color: var(--dark);
+    border-color: var(--gold);
+}
+
+/* Mobile dark mode */
+body.dark-mode .mobile-dot {
+    background: linear-gradient(135deg, #21262d 0%, #161b22 100%);
+}
+
+body.dark-mode .mobile-dot::after {
+    background: #30363d;
 }
 
 /*
@@ -1747,4 +2388,57 @@ body.dark-mode .message-card {
 body.dark-mode .message-card:hover {
     background: rgba(255, 255, 255, 0.08);
     border-color: #484f58;
+}
+
+/*
+    Dark Mode - Projects Section
+    =============================
+*/
+body.dark-mode #projects {
+    background: #0d1117;
+}
+
+body.dark-mode .project-card {
+    background: #161b22;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .project-card:hover {
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .project-title {
+    color: var(--white);
+}
+
+body.dark-mode .project-card:hover .project-title {
+    color: var(--gold);
+}
+
+body.dark-mode .project-description {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+body.dark-mode .tag {
+    background: #21262d;
+    color: rgba(255, 255, 255, 0.8);
+    border-color: #30363d;
+}
+
+body.dark-mode .tag:hover {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+}
+
+body.dark-mode .btn-source {
+    background: #21262d;
+    color: rgba(255, 255, 255, 0.8);
+    border-color: #30363d;
+}
+
+body.dark-mode .btn-source:hover {
+    background: var(--gold);
+    color: var(--dark);
+    border-color: var(--gold);
 }

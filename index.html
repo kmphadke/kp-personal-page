@@ -12,7 +12,7 @@
         styles.css - All our custom styling (separate file for maintainability)
     -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=4">
+    <link rel="stylesheet" href="styles.css?v=6">
 </head>
 <body>
     <!--
@@ -28,6 +28,7 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#education">Education</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -246,9 +247,220 @@
 
     <!--
         =====================================================================
-        EXPERIENCE SECTION
+        FEATURED PROJECTS SECTION
         =====================================================================
-        Timeline of professional experience.
+        Showcase of notable projects with visually impressive cards.
+
+        To update with real projects:
+        1. Replace the gradient backgrounds with actual screenshots
+        2. Update titles, descriptions, and tags
+        3. Add real links to View Project and Source Code buttons
+
+        Each project card is structured for easy customization.
+    -->
+    <section id="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Projects</h2>
+                <p>Showcasing innovation through technology and education</p>
+                <div class="underline"></div>
+            </div>
+
+            <div class="projects-grid">
+                <!--
+                    PROJECT CARD 1: Business Simulation Platform
+                    ============================================
+                    To customize: Update the gradient, title, description,
+                    tags, and button links below.
+                -->
+                <div class="project-card animate-on-scroll">
+                    <!-- Project Image/Gradient Background -->
+                    <div class="project-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <!-- Decorative elements -->
+                        <div class="project-image-overlay">
+                            <div class="project-icon">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                                    <path d="M2 17l10 5 10-5"></path>
+                                    <path d="M2 12l10 5 10-5"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <!-- Featured badge -->
+                        <span class="project-badge">Featured</span>
+                    </div>
+
+                    <!-- Project Content -->
+                    <div class="project-content">
+                        <h3 class="project-title">Business Simulation Platform</h3>
+                        <p class="project-description">
+                            An interactive web-based platform for teaching business strategy through
+                            real-time market simulations. Students make decisions on pricing,
+                            marketing, and operations while competing against AI-driven competitors.
+                        </p>
+
+                        <!-- Technology Tags -->
+                        <div class="project-tags">
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">Data Analytics</span>
+                            <span class="tag">SQL</span>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="project-buttons">
+                            <a href="#" class="btn-project btn-view">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                    <polyline points="15 3 21 3 21 9"></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                                View Project
+                            </a>
+                            <a href="#" class="btn-project btn-source">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                                </svg>
+                                Source Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!--
+                    PROJECT CARD 2: Analytics Dashboard
+                    ===================================
+                -->
+                <div class="project-card animate-on-scroll">
+                    <div class="project-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <div class="project-image-overlay">
+                            <div class="project-icon">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <line x1="18" y1="20" x2="18" y2="10"></line>
+                                    <line x1="12" y1="20" x2="12" y2="4"></line>
+                                    <line x1="6" y1="20" x2="6" y2="14"></line>
+                                    <rect x="2" y="2" width="20" height="20" rx="2"></rect>
+                                </svg>
+                            </div>
+                        </div>
+                        <span class="project-badge badge-new">New</span>
+                    </div>
+
+                    <div class="project-content">
+                        <h3 class="project-title">Student Performance Dashboard</h3>
+                        <p class="project-description">
+                            A comprehensive analytics dashboard that tracks student progress,
+                            identifies learning gaps, and provides actionable insights for
+                            educators. Features real-time data visualization and predictive analytics.
+                        </p>
+
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">D3.js</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">MongoDB</span>
+                        </div>
+
+                        <div class="project-buttons">
+                            <a href="#" class="btn-project btn-view">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                    <polyline points="15 3 21 3 21 9"></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                                View Project
+                            </a>
+                            <a href="#" class="btn-project btn-source">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                                </svg>
+                                Source Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!--
+                    PROJECT CARD 3: E-Learning Course Builder
+                    =========================================
+                -->
+                <div class="project-card animate-on-scroll">
+                    <div class="project-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        <div class="project-image-overlay">
+                            <div class="project-icon">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                                    <line x1="8" y1="6" x2="16" y2="6"></line>
+                                    <line x1="8" y1="10" x2="16" y2="10"></line>
+                                    <line x1="8" y1="14" x2="12" y2="14"></line>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-content">
+                        <h3 class="project-title">E-Learning Course Builder</h3>
+                        <p class="project-description">
+                            A drag-and-drop course creation tool that enables educators to build
+                            interactive lessons with quizzes, videos, and assessments.
+                            Includes LMS integration and progress tracking capabilities.
+                        </p>
+
+                        <div class="project-tags">
+                            <span class="tag">HTML5</span>
+                            <span class="tag">CSS3</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">REST API</span>
+                        </div>
+
+                        <div class="project-buttons">
+                            <a href="#" class="btn-project btn-view">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                    <polyline points="15 3 21 3 21 9"></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                                View Project
+                            </a>
+                            <a href="#" class="btn-project btn-source">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                                </svg>
+                                Source Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--
+        =====================================================================
+        EXPERIENCE SECTION - Modern Side-by-Side Timeline
+        =====================================================================
+
+        LAYOUT STRUCTURE:
+        =================
+        Desktop (>768px): Two columns
+        - Left (40%): Sticky timeline with navigation dots
+        - Right (60%): Scrollable experience cards
+
+        Mobile (<=768px): Single column
+        - Simplified left-aligned timeline
+        - Cards stack vertically
+
+        SCROLL DETECTION:
+        =================
+        JavaScript uses Intersection Observer to detect which card is
+        currently in view and highlights the corresponding timeline dot.
+        This creates a synchronized scrolling experience.
+
+        DATA ATTRIBUTES:
+        ================
+        Each experience card has data-index="N" to link it with
+        its corresponding timeline nav item.
     -->
     <section id="experience">
         <div class="container">
@@ -257,64 +469,260 @@
                 <p>A journey spanning academia and industry</p>
                 <div class="underline"></div>
             </div>
-            <div class="timeline">
-                <!-- Experience 1: Current Role -->
-                <div class="timeline-item animate-on-scroll">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">December 2024 - Present</span>
-                        <h3>Visiting Faculty</h3>
-                        <p class="timeline-company">Self-employed</p>
-                        <p class="timeline-location">Pune, Maharashtra, India</p>
-                        <p>Teaching Economics, Statistics, Business Simulation & Data Visualization at a leading management institute. Delivered engaging courses to 200+ aspiring professionals, designing hands-on simulations and mentoring students on data visualization tools.</p>
+
+            <!--
+                Experience Layout Container
+                ============================
+                Uses CSS Grid on desktop: 40% timeline | 60% cards
+                On mobile: becomes single column
+            -->
+            <div class="experience-layout">
+
+                <!--
+                    LEFT SIDE: Sticky Timeline Navigation
+                    ======================================
+                    - Uses position: sticky to stay visible while scrolling
+                    - Contains clickable navigation items
+                    - Active state is controlled by JavaScript
+                    - Hidden on mobile (replaced by inline dots)
+                -->
+                <div class="timeline-nav">
+                    <div class="timeline-nav-inner">
+                        <!-- Vertical connecting line -->
+                        <div class="timeline-line"></div>
+
+                        <!-- Timeline nav item 1: Current Role -->
+                        <div class="timeline-nav-item active" data-index="0">
+                            <div class="nav-dot">
+                                <span class="dot-inner"></span>
+                            </div>
+                            <div class="nav-info">
+                                <span class="nav-date">Dec 2024 - Present</span>
+                                <span class="nav-company">Self-employed</span>
+                            </div>
+                        </div>
+
+                        <!-- Timeline nav item 2: Symbiosis -->
+                        <div class="timeline-nav-item" data-index="1">
+                            <div class="nav-dot">
+                                <span class="dot-inner"></span>
+                            </div>
+                            <div class="nav-info">
+                                <span class="nav-date">Aug - Nov 2024</span>
+                                <span class="nav-company">Symbiosis SSPU</span>
+                            </div>
+                        </div>
+
+                        <!-- Timeline nav item 3: NICMAR -->
+                        <div class="timeline-nav-item" data-index="2">
+                            <div class="nav-dot">
+                                <span class="dot-inner"></span>
+                            </div>
+                            <div class="nav-info">
+                                <span class="nav-date">2014 - 2023</span>
+                                <span class="nav-company">NICMAR</span>
+                            </div>
+                        </div>
+
+                        <!-- Timeline nav item 4: State Street -->
+                        <div class="timeline-nav-item" data-index="3">
+                            <div class="nav-dot">
+                                <span class="dot-inner"></span>
+                            </div>
+                            <div class="nav-info">
+                                <span class="nav-date">2007 - 2012</span>
+                                <span class="nav-company">State Street</span>
+                            </div>
+                        </div>
+
+                        <!-- Timeline nav item 5: Harvard -->
+                        <div class="timeline-nav-item" data-index="4">
+                            <div class="nav-dot">
+                                <span class="dot-inner"></span>
+                            </div>
+                            <div class="nav-info">
+                                <span class="nav-date">2001 - 2007</span>
+                                <span class="nav-company">Harvard University</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Experience 2: Symbiosis -->
-                <div class="timeline-item animate-on-scroll">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">August 2024 - November 2024</span>
-                        <h3>Professor | Economics | Financial Technology</h3>
-                        <p class="timeline-company">Symbiosis Skills & Professional University</p>
-                        <p class="timeline-location">Pune, Maharashtra, India</p>
-                        <p>Taught BBA students specializing in FinTech, developing 30+ lectures with real-world case studies. Increased student comprehension by 40% and boosted engagement by 25% through interactive teaching methods.</p>
+                <!--
+                    RIGHT SIDE: Experience Detail Cards
+                    ====================================
+                    - Full job descriptions in card format
+                    - Animate on scroll using Intersection Observer
+                    - Each card has data-index to sync with timeline
+                -->
+                <div class="experience-cards">
+                    <!-- Experience Card 1: Current Role -->
+                    <div class="exp-card animate-on-scroll" data-index="0">
+                        <!-- Mobile timeline dot (hidden on desktop) -->
+                        <div class="mobile-dot">
+                            <span class="current-badge">Current</span>
+                        </div>
+                        <div class="exp-card-content">
+                            <div class="exp-header">
+                                <span class="exp-date">December 2024 - Present</span>
+                                <span class="exp-current">Current Role</span>
+                            </div>
+                            <h3 class="exp-title">Visiting Faculty</h3>
+                            <p class="exp-company">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                </svg>
+                                Self-employed
+                            </p>
+                            <p class="exp-location">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                Pune, Maharashtra, India
+                            </p>
+                            <p class="exp-description">
+                                Teaching Economics, Statistics, Business Simulation & Data Visualization at a leading management institute. Delivered engaging courses to 200+ aspiring professionals, designing hands-on simulations and mentoring students on data visualization tools.
+                            </p>
+                            <div class="exp-highlights">
+                                <span class="highlight">200+ Students</span>
+                                <span class="highlight">Business Simulation</span>
+                                <span class="highlight">Data Visualization</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Experience 3: NICMAR -->
-                <div class="timeline-item animate-on-scroll">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">June 2014 - April 2023</span>
-                        <h3>Associate Professor</h3>
-                        <p class="timeline-company">NICMAR</p>
-                        <p class="timeline-location">Hyderabad, Telangana, India</p>
-                        <p>Applied 20+ years of industry expertise to train 600+ construction management students. Authored 7 peer-reviewed papers and developed interactive lessons combining project management tools with core methodologies.</p>
+                    <!-- Experience Card 2: Symbiosis -->
+                    <div class="exp-card animate-on-scroll" data-index="1">
+                        <div class="mobile-dot"></div>
+                        <div class="exp-card-content">
+                            <div class="exp-header">
+                                <span class="exp-date">August 2024 - November 2024</span>
+                            </div>
+                            <h3 class="exp-title">Professor | Economics | Financial Technology</h3>
+                            <p class="exp-company">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                </svg>
+                                Symbiosis Skills & Professional University
+                            </p>
+                            <p class="exp-location">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                Pune, Maharashtra, India
+                            </p>
+                            <p class="exp-description">
+                                Taught BBA students specializing in FinTech, developing 30+ lectures with real-world case studies. Increased student comprehension by 40% and boosted engagement by 25% through interactive teaching methods.
+                            </p>
+                            <div class="exp-highlights">
+                                <span class="highlight">30+ Lectures</span>
+                                <span class="highlight">40% Better Comprehension</span>
+                                <span class="highlight">FinTech Focus</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Experience 4: State Street -->
-                <div class="timeline-item animate-on-scroll">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">November 2007 - November 2012</span>
-                        <h3>Senior IT Project Manager</h3>
-                        <p class="timeline-company">State Street Global Advisors (SSgA)</p>
-                        <p class="timeline-location">Boston, Massachusetts, USA</p>
-                        <p>Led cross-functional teams across US, India, and China. Boosted quality by 30%, cut defect rates by 20%, and coached 7 junior project managers in Agile best practices.</p>
+                    <!-- Experience Card 3: NICMAR -->
+                    <div class="exp-card animate-on-scroll" data-index="2">
+                        <div class="mobile-dot"></div>
+                        <div class="exp-card-content">
+                            <div class="exp-header">
+                                <span class="exp-date">June 2014 - April 2023</span>
+                            </div>
+                            <h3 class="exp-title">Associate Professor</h3>
+                            <p class="exp-company">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                </svg>
+                                NICMAR (National Institute of Construction Management and Research)
+                            </p>
+                            <p class="exp-location">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                Hyderabad, Telangana, India
+                            </p>
+                            <p class="exp-description">
+                                Applied 20+ years of industry expertise to train 600+ construction management students. Authored 7 peer-reviewed papers and developed interactive lessons combining project management tools with core methodologies.
+                            </p>
+                            <div class="exp-highlights">
+                                <span class="highlight">600+ Students</span>
+                                <span class="highlight">7 Research Papers</span>
+                                <span class="highlight">9 Years</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Experience 5: Harvard -->
-                <div class="timeline-item animate-on-scroll">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">December 2001 - July 2007</span>
-                        <h3>Oracle Database Architect | Senior Developer</h3>
-                        <p class="timeline-company">Harvard University</p>
-                        <p class="timeline-location">Cambridge, Massachusetts, USA</p>
-                        <p>Designed 400+ table structures for the Grants Management Application Suite. Achieved 15% reduction in problem resolution time and improved code quality by 35% through targeted mentoring programs.</p>
+                    <!-- Experience Card 4: State Street -->
+                    <div class="exp-card animate-on-scroll" data-index="3">
+                        <div class="mobile-dot"></div>
+                        <div class="exp-card-content">
+                            <div class="exp-header">
+                                <span class="exp-date">November 2007 - November 2012</span>
+                            </div>
+                            <h3 class="exp-title">Senior IT Project Manager</h3>
+                            <p class="exp-company">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                </svg>
+                                State Street Global Advisors (SSgA)
+                            </p>
+                            <p class="exp-location">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                Boston, Massachusetts, USA
+                            </p>
+                            <p class="exp-description">
+                                Led cross-functional teams across US, India, and China. Boosted quality by 30%, cut defect rates by 20%, and coached 7 junior project managers in Agile best practices.
+                            </p>
+                            <div class="exp-highlights">
+                                <span class="highlight">30% Quality Boost</span>
+                                <span class="highlight">Global Teams</span>
+                                <span class="highlight">Agile Leadership</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Experience Card 5: Harvard -->
+                    <div class="exp-card animate-on-scroll" data-index="4">
+                        <div class="mobile-dot"></div>
+                        <div class="exp-card-content">
+                            <div class="exp-header">
+                                <span class="exp-date">December 2001 - July 2007</span>
+                            </div>
+                            <h3 class="exp-title">Oracle Database Architect | Senior Developer</h3>
+                            <p class="exp-company">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                </svg>
+                                Harvard University
+                            </p>
+                            <p class="exp-location">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                Cambridge, Massachusetts, USA
+                            </p>
+                            <p class="exp-description">
+                                Designed 400+ table structures for the Grants Management Application Suite. Achieved 15% reduction in problem resolution time and improved code quality by 35% through targeted mentoring programs.
+                            </p>
+                            <div class="exp-highlights">
+                                <span class="highlight">400+ Database Tables</span>
+                                <span class="highlight">35% Code Quality</span>
+                                <span class="highlight">Oracle Architecture</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -566,6 +974,6 @@
         External script file loaded at the end of body for better performance.
         This ensures all HTML elements exist before JavaScript runs.
     -->
-    <script src="script.js?v=4"></script>
+    <script src="script.js?v=5"></script>
 </body>
 </html>
