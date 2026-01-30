@@ -728,6 +728,10 @@ function handleSubmit(event) {
     submitBtn.disabled = true;
     submitBtn.textContent = 'Sending...';
 
+    // Debug: Log what we're sending (remove in production)
+    console.log('EmailJS Config:', EMAILJS_CONFIG);
+    console.log('Template Params:', templateParams);
+
     /*
         Send Email via EmailJS
         =======================
@@ -738,7 +742,8 @@ function handleSubmit(event) {
     emailjs.send(
         EMAILJS_CONFIG.serviceId,
         EMAILJS_CONFIG.templateId,
-        templateParams
+        templateParams,
+        EMAILJS_CONFIG.publicKey  // Pass public key directly (more reliable than init)
     )
     .then(function(response) {
         // SUCCESS - Email was sent
