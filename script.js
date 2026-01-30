@@ -728,10 +728,6 @@ function handleSubmit(event) {
     submitBtn.disabled = true;
     submitBtn.textContent = 'Sending...';
 
-    // Debug: Log what we're sending (remove in production)
-    console.log('EmailJS Config:', EMAILJS_CONFIG);
-    console.log('Template Params:', templateParams);
-
     /*
         Send Email via EmailJS
         =======================
