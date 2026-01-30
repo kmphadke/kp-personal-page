@@ -635,6 +635,34 @@ function setupRealtimeValidation() {
 // Initialize real-time validation when page loads
 setupRealtimeValidation();
 
+/*
+    EmailJS Configuration
+    ======================
+    EmailJS allows sending emails directly from client-side JavaScript.
+
+    HOW IT WORKS:
+    1. EmailJS SDK is loaded in the HTML <head>
+    2. We initialize it with a Public Key (safe to expose)
+    3. When form is submitted, we send data to EmailJS servers
+    4. EmailJS uses YOUR email service (Yahoo) to send the email
+    5. The email arrives in your inbox
+
+    SECURITY NOTE:
+    The Public Key is safe to expose - it only allows sending emails
+    through YOUR pre-configured templates. Attackers cannot:
+    - Access your email account
+    - Send emails to arbitrary addresses
+    - Modify the email template
+*/
+const EMAILJS_CONFIG = {
+    serviceId: 'service_4p3l7ij',
+    templateId: 'template_nexpz1u',
+    publicKey: 'Yw0G8w77v-LGyC0a9'
+};
+
+// Initialize EmailJS with your public key
+emailjs.init(EMAILJS_CONFIG.publicKey);
+
 /**
  * Handle form submission
  * =======================
@@ -643,8 +671,9 @@ setupRealtimeValidation();
  * This function:
  * 1. Prevents default form submission
  * 2. Validates all fields
- * 3. If valid, saves message to localStorage
- * 4. Shows success message and closes modal
+ * 3. If valid, sends email via EmailJS
+ * 4. Also saves message to localStorage for backup
+ * 5. Shows success/error message
  */
 function handleSubmit(event) {
     // Prevent the default form submission (would reload the page)
@@ -666,23 +695,50 @@ function handleSubmit(event) {
         return;  // Stop here, don't submit
     }
 
-    // Collect form data
+    // Collect form data for localStorage
     const formData = {
-        id: Date.now(),  // Unique ID based on timestamp
+        id: Date.now(),
         name: document.getElementById('senderName').value.trim(),
         email: document.getElementById('senderEmail').value.trim(),
         subject: document.getElementById('subject').value.trim(),
         message: document.getElementById('message').value.trim(),
-        date: new Date().toISOString()  // ISO format for easy sorting/display
+        date: new Date().toISOString()
+    };
+
+    /*
+        EmailJS Template Parameters
+        ============================
+        These must match the variable names in your EmailJS template:
+        {{from_name}}, {{from_email}}, {{subject}}, {{message}}
+    */
+    const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message
     };
 
     // Show loading state
     submitBtn.disabled = true;
     submitBtn.textContent = 'Sending...';
 
-    // Simulate a brief delay (like an API call would have)
-    setTimeout(() => {
-        // Save message to localStorage
+    /*
+        Send Email via EmailJS
+        =======================
+        emailjs.send() returns a Promise:
+        - .then() runs if email sent successfully
+        - .catch() runs if there's an error
+    */
+    emailjs.send(
+        EMAILJS_CONFIG.serviceId,
+        EMAILJS_CONFIG.templateId,
+        templateParams
+    )
+    .then(function(response) {
+        // SUCCESS - Email was sent
+        console.log('EmailJS Success:', response.status, response.text);
+
+        // Also save to localStorage as backup
         saveMessageToStorage(formData);
 
         // Show success message
@@ -699,15 +755,23 @@ function handleSubmit(event) {
             clearFieldError(document.getElementById(fieldId), false);
         });
 
-        // Log for debugging
-        console.log('Message saved:', formData);
-
         // Auto-close modal after showing success
         setTimeout(() => {
             closeModal();
-        }, 2000);
+        }, 2500);
+    })
+    .catch(function(error) {
+        // ERROR - Something went wrong
+        console.error('EmailJS Error:', error);
 
-    }, 800);  // Brief delay for UX
+        // Show error message
+        formStatus.className = 'form-status error';
+        formStatus.textContent = 'Failed to send message. Please try again or email me directly.';
+
+        // Reset button state
+        submitBtn.textContent = 'Send Message';
+        submitBtn.disabled = false;
+    });
 }
 
 /**
