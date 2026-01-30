@@ -47,11 +47,17 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
     // Add a click event listener to each link
     anchor.addEventListener('click', function(e) {
-        // Prevent the default jump behavior
-        e.preventDefault();
-
         // Get the target section (e.g., "#about" -> the about section element)
         const targetId = this.getAttribute('href');
+
+        // Skip if href is just "#" (not a valid section link - these are used for modals)
+        if (targetId === '#' || targetId.length <= 1) {
+            return;  // Let the default behavior happen (or onclick handler)
+        }
+
+        // Prevent the default jump behavior (only for actual section links)
+        e.preventDefault();
+
         const target = document.querySelector(targetId);
 
         // If the target exists, scroll to it smoothly
