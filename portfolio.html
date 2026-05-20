@@ -3,991 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kedar Phadke, PhD | Academic Leader & Project Management Expert</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <title>Kedar Phadke, PhD | Founder, EduAssess · Building AI for Higher Education</title>
 
-        :root {
-            --primary: #1a365d;
-            --secondary: #2d3748;
-            --accent: #3182ce;
-            --accent-light: #63b3ed;
-            --gold: #d69e2e;
-            --light: #f7fafc;
-            --white: #ffffff;
-            --gray: #718096;
-            --dark: #1a202c;
-        }
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%230F1B2D'/%3E%3Ctext x='50' y='70' font-family='Georgia,serif' font-size='54' font-weight='500' font-style='italic' fill='%23B98E5D' text-anchor='middle'%3EKP%3C/text%3E%3C/svg%3E">
 
-        html {
-            scroll-behavior: smooth;
-        }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@300..700&display=swap" rel="stylesheet">
 
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.7;
-            color: var(--secondary);
-            background: var(--light);
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 1rem 0;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 700;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--secondary);
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(135deg, var(--primary) 0%, #2c5282 100%);
-            padding: 8rem 2rem 4rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        }
-
-        .hero-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-text h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            color: var(--white);
-            margin-bottom: 0.5rem;
-            animation: fadeInUp 0.8s ease;
-        }
-
-        .hero-text .title {
-            font-size: 1.25rem;
-            color: var(--accent-light);
-            margin-bottom: 1.5rem;
-            font-weight: 500;
-            animation: fadeInUp 0.8s ease 0.1s backwards;
-        }
-
-        .hero-text .location {
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 2rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            animation: fadeInUp 0.8s ease 0.2s backwards;
-        }
-
-        .hero-text p {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 2rem;
-            animation: fadeInUp 0.8s ease 0.3s backwards;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            animation: fadeInUp 0.8s ease 0.4s backwards;
-        }
-
-        .btn {
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .btn-primary {
-            background: var(--gold);
-            color: var(--dark);
-        }
-
-        .btn-primary:hover {
-            background: #b7791f;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(214, 158, 46, 0.3);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--white);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: var(--white);
-        }
-
-        .hero-stats {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            animation: fadeInRight 0.8s ease 0.5s backwards;
-        }
-
-        .stat-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 2rem;
-            border-radius: 16px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--gold);
-            display: block;
-        }
-
-        .stat-label {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.95rem;
-        }
-
-        /* Sections */
-        section {
-            padding: 6rem 2rem;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-header h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .section-header p {
-            color: var(--gray);
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .underline {
-            width: 60px;
-            height: 4px;
-            background: var(--gold);
-            margin: 1rem auto 0;
-            border-radius: 2px;
-        }
-
-        /* About Section */
-        #about {
-            background: var(--white);
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 4rem;
-            align-items: start;
-        }
-
-        .about-text p {
-            margin-bottom: 1.5rem;
-            color: var(--secondary);
-            font-size: 1.05rem;
-        }
-
-        .certifications {
-            background: var(--light);
-            padding: 2rem;
-            border-radius: 16px;
-        }
-
-        .certifications h3 {
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem;
-        }
-
-        .cert-item {
-            padding: 1rem 0;
-            border-bottom: 1px solid #e2e8f0;
-            display: flex;
-            align-items: flex-start;
-            gap: 0.75rem;
-        }
-
-        .cert-item:last-child {
-            border-bottom: none;
-        }
-
-        .cert-icon {
-            color: var(--gold);
-            font-size: 1.2rem;
-        }
-
-        .cert-item span {
-            font-size: 0.95rem;
-            color: var(--secondary);
-        }
-
-        /* Skills Section */
-        #skills {
-            background: var(--light);
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .skill-category {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-        }
-
-        .skill-category:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        .skill-category h3 {
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .skill-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-size: 1.2rem;
-        }
-
-        .skill-list {
-            list-style: none;
-        }
-
-        .skill-list li {
-            padding: 0.75rem 0;
-            color: var(--secondary);
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        .skill-list li:last-child {
-            border-bottom: none;
-        }
-
-        .skill-list li::before {
-            content: '';
-            width: 8px;
-            height: 8px;
-            background: var(--gold);
-            border-radius: 50%;
-        }
-
-        /* Experience Section */
-        #experience {
-            background: var(--white);
-        }
-
-        .timeline {
-            position: relative;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
-            height: 100%;
-            background: linear-gradient(to bottom, var(--accent), var(--gold));
-        }
-
-        .timeline-item {
-            display: flex;
-            justify-content: flex-end;
-            padding-right: 50%;
-            position: relative;
-            margin-bottom: 3rem;
-        }
-
-        .timeline-item:nth-child(even) {
-            justify-content: flex-start;
-            padding-right: 0;
-            padding-left: 50%;
-        }
-
-        .timeline-content {
-            background: var(--light);
-            padding: 2rem;
-            border-radius: 16px;
-            max-width: 420px;
-            margin-right: 2rem;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .timeline-item:nth-child(even) .timeline-content {
-            margin-right: 0;
-            margin-left: 2rem;
-        }
-
-        .timeline-content:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        .timeline-dot {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 16px;
-            height: 16px;
-            background: var(--gold);
-            border-radius: 50%;
-            border: 4px solid var(--white);
-            box-shadow: 0 0 0 4px var(--accent);
-        }
-
-        .timeline-date {
-            color: var(--accent);
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .timeline-content h3 {
-            color: var(--primary);
-            font-size: 1.1rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .timeline-company {
-            color: var(--gold);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .timeline-location {
-            color: var(--gray);
-            font-size: 0.85rem;
-            margin-bottom: 1rem;
-        }
-
-        .timeline-content p {
-            color: var(--secondary);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        /* Education Section */
-        #education {
-            background: linear-gradient(135deg, var(--primary) 0%, #2c5282 100%);
-            color: var(--white);
-        }
-
-        #education .section-header h2 {
-            color: var(--white);
-        }
-
-        #education .section-header p {
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .education-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .education-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 2rem;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .education-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        .education-card .degree {
-            color: var(--gold);
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .education-card .school {
-            color: var(--white);
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .education-card .field {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
-        }
-
-        /* Contact Section */
-        #contact {
-            background: var(--white);
-        }
-
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .contact-info h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-info p {
-            color: var(--secondary);
-            margin-bottom: 2rem;
-            font-size: 1.05rem;
-        }
-
-        .contact-links {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .contact-link {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1rem 1.5rem;
-            background: var(--light);
-            border-radius: 12px;
-            text-decoration: none;
-            color: var(--secondary);
-            transition: all 0.3s ease;
-        }
-
-        .contact-link:hover {
-            background: var(--primary);
-            color: var(--white);
-            transform: translateX(10px);
-        }
-
-        .contact-link .icon {
-            width: 45px;
-            height: 45px;
-            background: var(--accent);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-        }
-
-        .contact-link:hover .icon {
-            background: var(--gold);
-        }
-
-        .contact-card {
-            background: linear-gradient(135deg, var(--primary) 0%, #2c5282 100%);
-            padding: 3rem;
-            border-radius: 20px;
-            text-align: center;
-            color: var(--white);
-        }
-
-        .contact-card h4 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .contact-card p {
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 2rem;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: rgba(255, 255, 255, 0.6);
-            padding: 2rem;
-            text-align: center;
-        }
-
-        footer p {
-            font-size: 0.9rem;
-        }
-
-        /* Contact Modal */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(26, 54, 93, 0.9);
-            backdrop-filter: blur(8px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 2000;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .modal-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .modal {
-            background: linear-gradient(135deg, var(--primary) 0%, #2c5282 100%);
-            border-radius: 20px;
-            padding: 2.5rem;
-            max-width: 500px;
-            width: 90%;
-            max-height: 90vh;
-            overflow-y: auto;
-            transform: scale(0.9) translateY(20px);
-            transition: all 0.3s ease;
-            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .modal-overlay.active .modal {
-            transform: scale(1) translateY(0);
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .modal-header h3 {
-            font-family: 'Playfair Display', serif;
-            color: var(--white);
-            font-size: 1.5rem;
-        }
-
-        .modal-close {
-            background: rgba(255, 255, 255, 0.1);
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            color: var(--white);
-            font-size: 1.5rem;
-        }
-
-        .modal-close:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: rotate(90deg);
-        }
-
-        .modal-body p {
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 1.5rem;
-            font-size: 0.95rem;
-        }
-
-        .form-group {
-            margin-bottom: 1.25rem;
-        }
-
-        .form-group label {
-            display: block;
-            color: var(--white);
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.875rem 1rem;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--white);
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--gold);
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        .form-group textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        .modal-submit {
-            width: 100%;
-            padding: 1rem;
-            background: var(--gold);
-            color: var(--dark);
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 0.5rem;
-        }
-
-        .modal-submit:hover {
-            background: #b7791f;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(214, 158, 46, 0.3);
-        }
-
-        .modal-submit:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .form-status {
-            text-align: center;
-            margin-top: 1rem;
-            padding: 0.75rem;
-            border-radius: 8px;
-            display: none;
-        }
-
-        .form-status.success {
-            display: block;
-            background: rgba(72, 187, 120, 0.2);
-            color: #48bb78;
-        }
-
-        .form-status.error {
-            display: block;
-            background: rgba(245, 101, 101, 0.2);
-            color: #fc8181;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        /* Scroll animations */
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .animate-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Mobile menu */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-
-        .mobile-menu-btn span {
-            display: block;
-            width: 25px;
-            height: 3px;
-            background: var(--primary);
-            margin: 5px 0;
-            transition: all 0.3s ease;
-        }
-
-        /* Responsive */
-        @media (max-width: 968px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero-text h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-buttons {
-                justify-content: center;
-            }
-
-            .hero-stats {
-                max-width: 400px;
-                margin: 0 auto;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-content {
-                grid-template-columns: 1fr;
-            }
-
-            .timeline::before {
-                left: 20px;
-            }
-
-            .timeline-item,
-            .timeline-item:nth-child(even) {
-                padding-left: 60px;
-                padding-right: 0;
-                justify-content: flex-start;
-            }
-
-            .timeline-content,
-            .timeline-item:nth-child(even) .timeline-content {
-                margin-left: 0;
-                margin-right: 0;
-                max-width: 100%;
-            }
-
-            .timeline-dot {
-                left: 20px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: var(--white);
-                flex-direction: column;
-                padding: 2rem;
-                gap: 1rem;
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .hero-text h1 {
-                font-size: 2rem;
-            }
-
-            .stat-number {
-                font-size: 2rem;
-            }
-
-            section {
-                padding: 4rem 1.5rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css?v=13">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
+    <!-- NAVIGATION -->
+    <nav class="scrolled">
         <div class="nav-container">
-            <a href="#" class="logo">KP</a>
+            <a href="#" class="logo">Kedar Phadke</a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#about">About</a></li>
+                <li><a href="#building">Building</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#education">Education</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <button class="mobile-menu-btn" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
+            <button class="mobile-menu-btn" onclick="toggleMenu()" aria-label="Menu">
+                <span></span><span></span><span></span>
             </button>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- HERO -->
     <section class="hero">
         <div class="hero-content">
             <div class="hero-text">
-                <h1>Kedar Phadke, PhD</h1>
-                <p class="title">Academic Leader | Project Management Expert</p>
+                <span class="hero-eyebrow">Founder &nbsp;·&nbsp; PhD &nbsp;·&nbsp; Builder</span>
+                <h1>Kedar Phadke, <em>PhD</em></h1>
+                <p class="title">Founder, EduAssess &nbsp;·&nbsp; AI Products for Higher Education</p>
                 <p class="location">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                         <circle cx="12" cy="10" r="3"></circle>
                     </svg>
                     Pune, Maharashtra, India
                 </p>
-                <p>Advocate for technology-driven education in management and analytics. With over 30 years in consulting and academia, I equip tomorrow's professionals with the skills they need to excel in technology-driven environments.</p>
+                <p class="intro">Founder of EduAssess — an AI-powered platform helping universities run mock interviews, generate smart assessments, and prepare students for placement success. I'm building for the academic world I've spent 30+ years inside, combining hands-on AI product execution with deep operational knowledge of how higher education actually works.</p>
                 <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary">Get In Touch</a>
-                    <a href="https://www.linkedin.com/in/kedarphadke" target="_blank" class="btn btn-secondary">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <a href="#contact" class="btn btn-primary">
+                        Get in Touch
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/kedarphadke" target="_blank" rel="noopener" class="btn btn-secondary">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                         </svg>
                         LinkedIn
@@ -995,37 +64,26 @@
                 </div>
             </div>
             <div class="hero-stats">
-                <div class="stat-card">
-                    <span class="stat-number">30+</span>
-                    <span class="stat-label">Years Experience</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">1000+</span>
-                    <span class="stat-label">Students Mentored</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">7</span>
-                    <span class="stat-label">Research Papers</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">30%</span>
-                    <span class="stat-label">Efficiency Gains</span>
-                </div>
+                <div class="stat-card"><span class="stat-number">30+</span><span class="stat-label">Years Experience</span></div>
+                <div class="stat-card"><span class="stat-number">1,000+</span><span class="stat-label">Students Mentored</span></div>
+                <div class="stat-card"><span class="stat-number">AI Catalyst</span><span class="stat-label">Graduate</span></div>
+                <div class="stat-card"><span class="stat-number">30%</span><span class="stat-label">Efficiency Gains</span></div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- ABOUT -->
     <section id="about">
         <div class="container">
             <div class="section-header">
                 <h2>About Me</h2>
-                <p>Blending practical insights with rigorous academic frameworks</p>
+                <p>Bringing academic rigor and three decades of operational depth to AI product building</p>
                 <div class="underline"></div>
             </div>
             <div class="about-content">
                 <div class="about-text animate-on-scroll">
                     <p>With over 30 years in consulting and academia, I equip tomorrow's professionals with the skills they need to excel in technology-driven environments. To date, I have guided more than 1,000 students and industry participants, blending practical insights with rigorous academic frameworks to make complex ideas clear and actionable.</p>
+                    <p>Today, I'm building EduAssess, an AI-powered platform that helps universities run multi-round mock interviews, generate smart assessments, and prepare students for placements with detailed analytics. The product applies what I learned in the 24-week AI Catalyst Program — agentic systems, multi-agent workflows, AI-driven product development — to a domain I know from the inside out. With 23 years in industry and 13 years in academia teaching and mentoring 1,000+ students, EduAssess is what happens when operational depth meets modern AI tooling.</p>
                     <p>As an independent consultant and visiting faculty at a top management institute in Pune, I have designed and taught Economics, Statistics, and Business Simulation courses. By breaking down challenging concepts into relatable examples and hands-on exercises, I help learners apply theory to real-world problems.</p>
                     <p>At State Street Global Advisors, I led cross-departmental projects that boosted operational efficiency by 30% and streamlined workflows across multiple teams. During my tenure as Senior Developer and Data Architect at Harvard University, I designed and implemented over 400 table structures for the Grants Management Application Suite.</p>
                     <p>Outside of the classroom, I mentor students through capstone projects and community education initiatives, helping them develop the confidence and critical-thinking skills to succeed.</p>
@@ -1033,88 +91,187 @@
                 <div class="certifications animate-on-scroll">
                     <h3>Certifications</h3>
                     <div class="cert-item">
-                        <span class="cert-icon">&#10003;</span>
-                        <span>Introduction to Agile Development and Scrum (with Honors) - IBM Skills Network</span>
+                        <span class="cert-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        <span>AI Catalyst Program — Outskill (24-week intensive: agentic product building, multi-agent workflows, AI-powered marketing, monetization &amp; growth)</span>
                     </div>
                     <div class="cert-item">
-                        <span class="cert-icon">&#10003;</span>
-                        <span>EPAT - Certificate of Excellence</span>
+                        <span class="cert-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        <span>Introduction to Agile Development and Scrum (with Honors) — IBM Skills Network</span>
                     </div>
                     <div class="cert-item">
-                        <span class="cert-icon">&#10003;</span>
-                        <span>DevOps, Cloud, and Agile Foundations - IBM Skills Network</span>
+                        <span class="cert-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        <span>EPAT — Certificate of Excellence</span>
+                    </div>
+                    <div class="cert-item">
+                        <span class="cert-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        <span>DevOps, Cloud, and Agile Foundations — IBM Skills Network</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
+    <!-- CURRENTLY BUILDING — featured EduAssess card -->
+    <section id="building">
+        <div class="container">
+            <div class="section-header">
+                <h2>Currently Building</h2>
+                <p>What I'm working on right now</p>
+                <div class="underline"></div>
+            </div>
+
+            <div class="building-card animate-on-scroll">
+
+                <div class="building-header">
+                    <div class="building-wordmark">
+                        <h3>EduAssess</h3>
+                        <p>AI-powered platform for student placement preparation and smart assessments</p>
+                    </div>
+                    <p class="building-overview">A purpose-built platform for higher education that helps universities prepare students for placements, run intelligent assessments, and map academic outcomes — combining AI capabilities with deep understanding of how Indian higher education actually works.</p>
+                </div>
+
+                <hr class="building-divider">
+
+                <div class="building-panels">
+                    <div class="building-panel">
+                        <span class="building-panel-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <rect x="2" y="7" width="20" height="14" rx="2"></rect>
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                            </svg>
+                        </span>
+                        <h4>Placement Preparation</h4>
+                        <p>Progressive multi-round mock interviews that build student confidence and reduce the workload on placement offices. AI generates contextual questions, simulates realistic interview scenarios, and delivers detailed analytics on student readiness.</p>
+                        <div class="building-pills">
+                            <span class="highlight">Progressive Mock Interviews</span>
+                            <span class="highlight">AI Question Generation</span>
+                            <span class="highlight">Readiness Analytics</span>
+                        </div>
+                    </div>
+
+                    <div class="building-panel">
+                        <span class="building-panel-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <rect x="5" y="3" width="14" height="18" rx="2"></rect>
+                                <path d="M9 7h6"></path>
+                                <polyline points="9 13 11 15 15 11"></polyline>
+                            </svg>
+                        </span>
+                        <h4>Smart Assessments &amp; Outcome Mapping</h4>
+                        <p>AI-powered quiz creation that turns a tutor's content into question banks and generates multiple question paper sets. Each question maps to Program and Course Outcomes — a capability that meaningfully reduces the cycle time of NBA accreditation reporting.</p>
+                        <div class="building-pills">
+                            <span class="highlight">AI Quiz Generation</span>
+                            <span class="highlight">Multi-Set Question Papers</span>
+                            <span class="highlight">Online Administration</span>
+                            <span class="highlight">PO/CO Mapping</span>
+                            <span class="highlight">NBA Workflow — In Development</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="building-footer">
+                    <a href="https://www.eduassess.co.in" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                        Visit eduassess.co.in &rarr;
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
     <section id="skills">
         <div class="container">
             <div class="section-header">
-                <h2>Skills & Expertise</h2>
+                <h2>Skills &amp; Expertise</h2>
                 <p>A comprehensive skill set built over three decades</p>
                 <div class="underline"></div>
             </div>
+            <div class="skill-featured animate-on-scroll">
+                <h3>
+                    <span class="skill-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M12 3l1.4 3.6L17 8l-3.6 1.4L12 13l-1.4-3.6L7 8l3.6-1.4L12 3z"></path>
+                            <path d="M19 14l.8 2.2L22 17l-2.2.8L19 20l-.8-2.2L16 17l2.2-.8L19 14z"></path>
+                            <path d="M5 14l.6 1.5L7 16l-1.4.5L5 18l-.6-1.5L3 16l1.4-.5L5 14z"></path>
+                        </svg>
+                    </span>
+                    AI &amp; Product Development
+                </h3>
+                <ul class="skill-list">
+                    <li>Agentic Product Building</li>
+                    <li>Multi-Agent AI Workflows</li>
+                    <li>AI-Powered Marketing &amp; Lead Generation</li>
+                    <li>Autonomous AI Delivery Systems</li>
+                    <li>Product Launch &amp; Monetization</li>
+                    <li>Client Acquisition with AI</li>
+                </ul>
+            </div>
+
             <div class="skills-grid">
                 <div class="skill-category animate-on-scroll">
                     <h3>
-                        <span class="skill-icon">&#9881;</span>
+                        <span class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></span>
                         Project Management
                     </h3>
                     <ul class="skill-list">
-                        <li>Agile & Scrum Methodologies</li>
-                        <li>Waterfall Project Management</li>
-                        <li>MS Project & Primavera P6</li>
-                        <li>JIRA & Project Tracking</li>
-                        <li>Risk Assessment & Mitigation</li>
+                        <li>Agile &amp; Scrum methodologies</li>
+                        <li>Waterfall project management</li>
+                        <li>MS Project &amp; Primavera P6</li>
+                        <li>JIRA &amp; project tracking</li>
+                        <li>Risk assessment &amp; mitigation</li>
                     </ul>
                 </div>
                 <div class="skill-category animate-on-scroll">
                     <h3>
-                        <span class="skill-icon">&#128202;</span>
-                        Data & Analytics
+                        <span class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line><line x1="3" y1="20" x2="21" y2="20"></line></svg></span>
+                        Data &amp; Analytics
                     </h3>
                     <ul class="skill-list">
-                        <li>Data Strategy & Architecture</li>
-                        <li>Oracle Database Design</li>
-                        <li>Data Visualization Tools</li>
-                        <li>Statistical Analysis</li>
-                        <li>Business Intelligence</li>
+                        <li>Data strategy &amp; architecture</li>
+                        <li>Oracle database design</li>
+                        <li>Data visualization tools</li>
+                        <li>Statistical analysis</li>
+                        <li>Business intelligence</li>
                     </ul>
                 </div>
                 <div class="skill-category animate-on-scroll">
                     <h3>
-                        <span class="skill-icon">&#127891;</span>
-                        Education & Training
+                        <span class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 10v6"></path><path d="M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg></span>
+                        Education &amp; Training
                     </h3>
                     <ul class="skill-list">
-                        <li>Curriculum Design</li>
-                        <li>Economics & Statistics Instruction</li>
-                        <li>Business Simulation Design</li>
-                        <li>E-learning Module Development</li>
-                        <li>Student Mentorship</li>
+                        <li>Curriculum design</li>
+                        <li>Economics &amp; statistics instruction</li>
+                        <li>Business simulation design</li>
+                        <li>E-learning module development</li>
+                        <li>Student mentorship</li>
                     </ul>
                 </div>
                 <div class="skill-category animate-on-scroll">
                     <h3>
-                        <span class="skill-icon">&#128101;</span>
+                        <span class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></span>
                         Leadership
                     </h3>
                     <ul class="skill-list">
-                        <li>Cross-functional Team Leadership</li>
-                        <li>Global Team Coordination</li>
-                        <li>Stakeholder Management</li>
-                        <li>Change Management</li>
-                        <li>Mentoring & Coaching</li>
+                        <li>Cross-functional team leadership</li>
+                        <li>Global team coordination</li>
+                        <li>Stakeholder management</li>
+                        <li>Change management</li>
+                        <li>Mentoring &amp; coaching</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Experience Section -->
+    <!--
+        EXPERIENCE
+        ==========
+        portfolio.html uses a single-column stack (no sticky timeline nav)
+        since its inline script doesn't run the IntersectionObserver that
+        synchronizes the timeline. Cards still use the unified .exp-card style.
+    -->
     <section id="experience">
         <div class="container">
             <div class="section-header">
@@ -1122,62 +279,128 @@
                 <p>A journey spanning academia and industry</p>
                 <div class="underline"></div>
             </div>
-            <div class="timeline">
-                <div class="timeline-item animate-on-scroll">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">December 2024 - Present</span>
-                        <h3>Visiting Faculty</h3>
-                        <p class="timeline-company">Self-employed</p>
-                        <p class="timeline-location">Pune, Maharashtra, India</p>
-                        <p>Teaching Economics, Statistics, Business Simulation & Data Visualization at a leading management institute. Delivered engaging courses to 200+ aspiring professionals, designing hands-on simulations and mentoring students on data visualization tools.</p>
+
+            <div class="experience-cards">
+                <div class="exp-card animate-on-scroll">
+                    <div class="exp-card-content">
+                        <div class="exp-header">
+                            <span class="exp-date">December 2024 — Present</span>
+                            <span class="exp-current">Current Role</span>
+                        </div>
+                        <h3 class="exp-title">Founder, EduAssess &amp; Visiting Faculty</h3>
+                        <p class="exp-company">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                            Self-employed
+                        </p>
+                        <p class="exp-location">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            Pune, Maharashtra, India
+                        </p>
+                        <p class="exp-description">Building EduAssess — an AI-powered platform delivering mock interviews and smart assessments to universities, helping students prepare for placement success. In parallel, teaching Economics, Statistics, Business Simulation &amp; Data Visualization at a leading management institute. Recently completed the 24-week AI Catalyst Program at Outskill, focused on agentic product building, multi-agent workflows, and AI-driven product launches.</p>
+                        <div class="exp-highlights">
+                            <span class="highlight">Founder · EduAssess</span>
+                            <span class="highlight">200+ Students</span>
+                            <span class="highlight">AI Catalyst Graduate</span>
+                        </div>
                     </div>
                 </div>
-                <div class="timeline-item animate-on-scroll">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">August 2024 - November 2024</span>
-                        <h3>Professor | Economics | Financial Technology</h3>
-                        <p class="timeline-company">Symbiosis Skills & Professional University</p>
-                        <p class="timeline-location">Pune, Maharashtra, India</p>
-                        <p>Taught BBA students specializing in FinTech, developing 30+ lectures with real-world case studies. Increased student comprehension by 40% and boosted engagement by 25% through interactive teaching methods.</p>
+
+                <div class="exp-card animate-on-scroll">
+                    <div class="exp-card-content">
+                        <div class="exp-header">
+                            <span class="exp-date">August 2024 — November 2024</span>
+                        </div>
+                        <h3 class="exp-title">Professor — Economics &amp; Financial Technology</h3>
+                        <p class="exp-company">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                            Symbiosis Skills &amp; Professional University
+                        </p>
+                        <p class="exp-location">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            Pune, Maharashtra, India
+                        </p>
+                        <p class="exp-description">Taught BBA students specializing in FinTech, developing 30+ lectures with real-world case studies. Increased student comprehension by 40% and boosted engagement by 25% through interactive teaching methods.</p>
+                        <div class="exp-highlights">
+                            <span class="highlight">30+ Lectures</span>
+                            <span class="highlight">40% Better Comprehension</span>
+                            <span class="highlight">FinTech Focus</span>
+                        </div>
                     </div>
                 </div>
-                <div class="timeline-item animate-on-scroll">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">June 2014 - April 2023</span>
-                        <h3>Associate Professor</h3>
-                        <p class="timeline-company">NICMAR</p>
-                        <p class="timeline-location">Hyderabad, Telangana, India</p>
-                        <p>Applied 20+ years of industry expertise to train 600+ construction management students. Authored 7 peer-reviewed papers and developed interactive lessons combining project management tools with core methodologies.</p>
+
+                <div class="exp-card animate-on-scroll">
+                    <div class="exp-card-content">
+                        <div class="exp-header">
+                            <span class="exp-date">June 2014 — April 2023</span>
+                        </div>
+                        <h3 class="exp-title">Associate Professor</h3>
+                        <p class="exp-company">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                            NICMAR
+                        </p>
+                        <p class="exp-location">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            Hyderabad, Telangana, India
+                        </p>
+                        <p class="exp-description">Applied 20+ years of industry expertise to train 600+ construction management students. Authored 7 peer-reviewed papers and developed interactive lessons combining project management tools with core methodologies.</p>
+                        <div class="exp-highlights">
+                            <span class="highlight">600+ Students</span>
+                            <span class="highlight">7 Research Papers</span>
+                            <span class="highlight">9 Years</span>
+                        </div>
                     </div>
                 </div>
-                <div class="timeline-item animate-on-scroll">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">November 2007 - November 2012</span>
-                        <h3>Senior IT Project Manager</h3>
-                        <p class="timeline-company">State Street Global Advisors (SSgA)</p>
-                        <p class="timeline-location">Boston, Massachusetts, USA</p>
-                        <p>Led cross-functional teams across US, India, and China. Boosted quality by 30%, cut defect rates by 20%, and coached 7 junior project managers in Agile best practices.</p>
+
+                <div class="exp-card animate-on-scroll">
+                    <div class="exp-card-content">
+                        <div class="exp-header">
+                            <span class="exp-date">November 2007 — November 2012</span>
+                        </div>
+                        <h3 class="exp-title">Senior IT Project Manager</h3>
+                        <p class="exp-company">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                            State Street Global Advisors (SSgA)
+                        </p>
+                        <p class="exp-location">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            Boston, Massachusetts, USA
+                        </p>
+                        <p class="exp-description">Led cross-functional teams across the US, India, and China. Boosted quality by 30%, cut defect rates by 20%, and coached 7 junior project managers in Agile best practices.</p>
+                        <div class="exp-highlights">
+                            <span class="highlight">30% Quality Boost</span>
+                            <span class="highlight">Global Teams</span>
+                            <span class="highlight">Agile Leadership</span>
+                        </div>
                     </div>
                 </div>
-                <div class="timeline-item animate-on-scroll">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">December 2001 - July 2007</span>
-                        <h3>Oracle Database Architect | Senior Developer</h3>
-                        <p class="timeline-company">Harvard University</p>
-                        <p class="timeline-location">Cambridge, Massachusetts, USA</p>
-                        <p>Designed 400+ table structures for the Grants Management Application Suite. Achieved 15% reduction in problem resolution time and improved code quality by 35% through targeted mentoring programs.</p>
+
+                <div class="exp-card animate-on-scroll">
+                    <div class="exp-card-content">
+                        <div class="exp-header">
+                            <span class="exp-date">December 2001 — July 2007</span>
+                        </div>
+                        <h3 class="exp-title">Oracle Database Architect &amp; Senior Developer</h3>
+                        <p class="exp-company">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                            Harvard University
+                        </p>
+                        <p class="exp-location">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            Cambridge, Massachusetts, USA
+                        </p>
+                        <p class="exp-description">Designed 400+ table structures for the Grants Management Application Suite. Achieved a 15% reduction in problem resolution time and improved code quality by 35% through targeted mentoring programs.</p>
+                        <div class="exp-highlights">
+                            <span class="highlight">400+ Database Tables</span>
+                            <span class="highlight">35% Code Quality</span>
+                            <span class="highlight">Oracle Architecture</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Education Section -->
+    <!-- EDUCATION -->
     <section id="education">
         <div class="container">
             <div class="section-header">
@@ -1188,7 +411,7 @@
             <div class="education-grid">
                 <div class="education-card animate-on-scroll">
                     <p class="degree">Doctor of Philosophy (PhD)</p>
-                    <p class="school">Goa University - Goa Business School</p>
+                    <p class="school">Goa University — Goa Business School</p>
                     <p class="field">Commerce</p>
                 </div>
                 <div class="education-card animate-on-scroll">
@@ -1210,7 +433,7 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- CONTACT -->
     <section id="contact">
         <div class="container">
             <div class="section-header">
@@ -1220,27 +443,31 @@
             </div>
             <div class="contact-content">
                 <div class="contact-info animate-on-scroll">
-                    <h3>Let's Start a Conversation</h3>
-                    <p>I welcome conversations about innovative teaching methods, project management strategies, or data-driven insights. Feel free to reach out for consulting engagements or academic collaborations.</p>
+                    <h3>Let's start a conversation</h3>
+                    <p>I'm open to conversations about EduAssess (we work with universities and educational institutions), AI consulting engagements, academic collaborations, and innovative teaching partnerships. If you're at a university or college thinking about AI-powered student preparation — or you're building something that needs depth and rigor — let's talk.</p>
                     <div class="contact-links">
                         <a href="#" class="contact-link" onclick="openModal(); return false;">
-                            <span class="icon">&#9993;</span>
+                            <span class="icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-10 5L2 7"></path></svg>
+                            </span>
                             <div>
-                                <strong>Email</strong><br>
+                                <strong>Email</strong>
                                 <span>kphadke@yahoo.com</span>
                             </div>
                         </a>
-                        <a href="https://www.linkedin.com/in/kedarphadke" target="_blank" class="contact-link">
-                            <span class="icon">in</span>
+                        <a href="https://www.linkedin.com/in/kedarphadke" target="_blank" rel="noopener" class="contact-link">
+                            <span class="icon">
+                                <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                            </span>
                             <div>
-                                <strong>LinkedIn</strong><br>
+                                <strong>LinkedIn</strong>
                                 <span>linkedin.com/in/kedarphadke</span>
                             </div>
                         </a>
                     </div>
                 </div>
                 <div class="contact-card animate-on-scroll">
-                    <h4>Open for Opportunities</h4>
+                    <h4>Open for opportunities</h4>
                     <p>Whether you're looking for a visiting faculty member, a project management consultant, or a collaborator on educational initiatives, I'd love to hear from you.</p>
                     <a href="#" class="btn btn-primary" onclick="openModal(); return false;">Send a Message</a>
                 </div>
@@ -1248,49 +475,32 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- FOOTER -->
     <footer>
-        <p>&copy; 2025 Kedar Phadke, PhD. All rights reserved.</p>
+        <p>&copy; 2025 Kedar Phadke, PhD &nbsp;·&nbsp; All rights reserved</p>
     </footer>
 
-    <!-- Contact Modal -->
+    <!-- CONTACT MODAL -->
     <div class="modal-overlay" id="contactModal">
         <div class="modal">
             <div class="modal-header">
                 <h3>Send a Message</h3>
-                <button class="modal-close" onclick="closeModal()">&times;</button>
+                <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
             </div>
             <div class="modal-body">
                 <p>I'd love to hear from you. Fill out the form below and I'll get back to you as soon as possible.</p>
                 <form id="contactForm" onsubmit="handleSubmit(event)">
                     <div class="form-group">
                         <label for="senderEmail">Your Email</label>
-                        <input
-                            type="email"
-                            id="senderEmail"
-                            name="senderEmail"
-                            placeholder="your@email.com"
-                            required
-                        >
+                        <input type="email" id="senderEmail" name="senderEmail" placeholder="your@email.com" required>
                     </div>
                     <div class="form-group">
                         <label for="subject">Subject</label>
-                        <input
-                            type="text"
-                            id="subject"
-                            name="subject"
-                            placeholder="What is this regarding?"
-                            required
-                        >
+                        <input type="text" id="subject" name="subject" placeholder="What is this regarding?" required>
                     </div>
                     <div class="form-group">
                         <label for="message">Message</label>
-                        <textarea
-                            id="message"
-                            name="message"
-                            placeholder="Write your message here..."
-                            required
-                        ></textarea>
+                        <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
                     </div>
                     <button type="submit" class="modal-submit" id="submitBtn">Send Message</button>
                 </form>
@@ -1300,117 +510,75 @@
     </div>
 
     <script>
-        // Mobile menu toggle
+        // ----- Mobile menu toggle -----
         function toggleMenu() {
             document.getElementById('navLinks').classList.toggle('active');
         }
 
-        // Smooth scroll for navigation links
+        // ----- Smooth scroll for nav -----
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href === '#' || href.length <= 1) return;
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
+                const target = document.querySelector(href);
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
-                // Close mobile menu if open
                 document.getElementById('navLinks').classList.remove('active');
             });
         });
 
-        // Scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
+        // ----- Scroll-triggered fade-in -----
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-        document.querySelectorAll('.animate-on-scroll').forEach(el => {
-            observer.observe(el);
-        });
+        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
 
-        // Navbar background on scroll
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 100) {
-                nav.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
-            } else {
-                nav.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.05)';
-            }
-        });
-
-        // Contact Modal Functions
+        // ----- Modal -----
         function openModal() {
             document.getElementById('contactModal').classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            document.body.style.overflow = 'hidden';
         }
 
         function closeModal() {
             document.getElementById('contactModal').classList.remove('active');
-            document.body.style.overflow = ''; // Restore scrolling
-            // Reset form
+            document.body.style.overflow = '';
             document.getElementById('contactForm').reset();
-            document.getElementById('formStatus').className = 'form-status';
-            document.getElementById('formStatus').textContent = '';
+            const status = document.getElementById('formStatus');
+            status.className = 'form-status';
+            status.textContent = '';
         }
 
-        // Close modal when clicking outside
-        document.getElementById('contactModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal();
-            }
+        document.getElementById('contactModal').addEventListener('click', function (e) {
+            if (e.target === this) closeModal();
         });
 
-        // Close modal with Escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeModal();
-            }
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeModal();
         });
 
-        // Form submission handler (placeholder - will be updated with Resend API)
+        // ----- Form submit (placeholder simulation) -----
         function handleSubmit(event) {
             event.preventDefault();
-
             const submitBtn = document.getElementById('submitBtn');
             const formStatus = document.getElementById('formStatus');
 
-            // Get form data
-            const formData = {
-                email: document.getElementById('senderEmail').value,
-                subject: document.getElementById('subject').value,
-                message: document.getElementById('message').value
-            };
-
-            // Disable button and show loading state
             submitBtn.disabled = true;
             submitBtn.textContent = 'Sending...';
 
-            // TODO: Replace with actual Resend API call
-            // For now, simulate a delay and show success
             setTimeout(() => {
                 formStatus.className = 'form-status success';
-                formStatus.textContent = 'Message sent successfully! I\'ll get back to you soon.';
+                formStatus.textContent = "Message sent successfully! I'll get back to you soon.";
                 submitBtn.textContent = 'Send Message';
                 submitBtn.disabled = false;
-
-                // Reset form after success
                 document.getElementById('contactForm').reset();
-
-                // Close modal after 2 seconds
-                setTimeout(() => {
-                    closeModal();
-                }, 2000);
+                setTimeout(closeModal, 2000);
             }, 1500);
         }
     </script>

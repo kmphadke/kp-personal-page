@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview · Hero Redesign · Kedar Phadke, PhD</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400;9..144,500;9..144,600;9..144,700;9..144,500..600..italic&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@300..700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ==========================================================================
+           DESIGN TOKENS — "Editorial Academic" palette from DESIGN-REVIEW.md
+           ========================================================================== */
+        :root {
+            /* Ink */
+            --ink-900: #0F1B2D;
+            --ink-700: #2D3A4F;
+            --ink-500: #5A6577;
+
+            /* Surfaces */
+            --cream:  #FAF7F1;
+            --paper:  #FFFFFF;
+            --border: #E8E2D6;
+
+            /* Accents */
+            --bronze:      #8A6438;
+            --bronze-soft: #B98E5D;
+            --teal:        #2C5F66;
+
+            /* Type scale (modular, 1.250) */
+            --text-xs:   0.78rem;
+            --text-sm:   0.9rem;
+            --text-base: 1rem;
+            --text-lg:   1.125rem;
+            --text-xl:   1.4rem;
+            --text-2xl:  1.85rem;
+            --text-3xl:  2.4rem;
+            --text-4xl:  3.4rem;
+
+            /* Elevation (ink-tinted shadows) */
+            --shadow-1: 0 1px 2px rgba(15, 27, 45, 0.04), 0 1px 3px rgba(15, 27, 45, 0.06);
+            --shadow-2: 0 4px 8px rgba(15, 27, 45, 0.06), 0 8px 24px rgba(15, 27, 45, 0.08);
+        }
+
+        /* ==========================================================================
+           RESET & BASE
+           ========================================================================== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            font-size: var(--text-base);
+            line-height: 1.6;
+            color: var(--ink-700);
+            background: var(--cream);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ==========================================================================
+           NAVIGATION — refined editorial bar
+           ========================================================================== */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 27, 45, 0.85);
+            backdrop-filter: saturate(180%) blur(12px);
+            -webkit-backdrop-filter: saturate(180%) blur(12px);
+            z-index: 1000;
+            padding: 1.1rem 0;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s ease, background 0.3s ease;
+        }
+
+        /* Nav sits on the ink hero — keep it continuous (no visible seam).
+           Once the user scrolls past the hero onto the cream sections, the hairline
+           cream divider gives the floating bar a quiet edge. */
+        nav.scrolled {
+            border-bottom-color: rgba(250, 247, 241, 0.08);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Fraunces', Georgia, serif;
+            font-weight: 500;
+            font-size: 1.35rem;
+            color: var(--cream);
+            text-decoration: none;
+            letter-spacing: 0.005em;
+            font-variation-settings: "SOFT" 50, "opsz" 36;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.25rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: rgba(250, 247, 241, 0.8);
+            font-weight: 500;
+            font-size: var(--text-sm);
+            letter-spacing: 0.01em;
+            position: relative;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 0;
+            height: 1px;
+            background: var(--bronze);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--cream);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            padding: 0.5rem;
+            cursor: pointer;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 22px;
+            height: 1.5px;
+            background: var(--cream);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        /* ==========================================================================
+           HERO — flat ink with a single soft radial glow
+           ========================================================================== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: var(--ink-900);
+            padding: 9rem 2rem 5rem;
+            position: relative;
+            overflow: hidden;
+            color: var(--cream);
+        }
+
+        /* Soft bronze glow — replaces the busy '+' pattern. Just one quiet light source. */
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 60% 50% at 85% 0%, rgba(185, 142, 93, 0.18) 0%, transparent 60%),
+                radial-gradient(ellipse 40% 40% at 10% 100%, rgba(44, 95, 102, 0.18) 0%, transparent 55%);
+            pointer-events: none;
+        }
+
+        /*
+            Film-grain noise overlay
+            =========================
+            Warm-tinted SVG fractal noise at ~1.5% effective opacity.
+            Just enough to break the flat-ink "PowerPoint slide" feel
+            and give the background a hint of printed-paper texture.
+            Not decorative — should be barely perceptible.
+        */
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='320'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 0.95  0 0 0 0 0.88  0 0 0 1 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+            opacity: 0.025;
+            mix-blend-mode: overlay;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1.15fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ----- Hero text ----- */
+        .hero-eyebrow {
+            display: inline-block;
+            font-size: var(--text-xs);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.22em;
+            color: var(--bronze-soft);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(185, 142, 93, 0.35);
+        }
+
+        .hero-text h1 {
+            font-family: 'Fraunces', Georgia, serif;
+            font-weight: 500;
+            font-size: var(--text-4xl);
+            line-height: 1.05;
+            letter-spacing: -0.015em;
+            color: var(--cream);
+            margin-bottom: 1rem;
+            font-variation-settings: "SOFT" 30, "opsz" 96;
+        }
+
+        /* Subtle italic accent in the name — the editorial move */
+        .hero-text h1 em {
+            font-style: italic;
+            font-weight: 400;
+            color: var(--bronze-soft);
+        }
+
+        .hero-text .title {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: var(--text-lg);
+            letter-spacing: 0.02em;
+            color: rgba(250, 247, 241, 0.8);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-text .location {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(250, 247, 241, 0.62);
+            font-size: var(--text-sm);
+            margin-bottom: 2rem;
+        }
+
+        .hero-text .location svg {
+            stroke: var(--bronze-soft);
+            opacity: 0.9;
+        }
+
+        .hero-text .intro {
+            font-size: var(--text-lg);
+            line-height: 1.65;
+            color: rgba(250, 247, 241, 0.82);
+            margin-bottom: 2.5rem;
+            max-width: 56ch;
+        }
+
+        /* ----- Buttons — primary pill in bronze, secondary 8px outline ----- */
+        .hero-buttons {
+            display: flex;
+            gap: 0.875rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding: 0.85rem 1.5rem;
+            font-family: 'Inter', sans-serif;
+            font-size: var(--text-sm);
+            font-weight: 600;
+            letter-spacing: 0.01em;
+            text-decoration: none;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition:
+                transform 0.2s ease,
+                background-color 0.2s ease,
+                border-color 0.2s ease,
+                color 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .btn-primary {
+            background: var(--cream);
+            color: var(--ink-900);
+            border-radius: 999px;
+            padding: 0.95rem 1.75rem;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+        }
+
+        .btn-primary:hover {
+            background: #F0E9D8;
+            transform: translateY(-1px);
+            box-shadow: 0 10px 26px rgba(0, 0, 0, 0.32);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--cream);
+            border: 1px solid rgba(250, 247, 241, 0.28);
+            border-radius: 8px;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(250, 247, 241, 0.06);
+            border-color: rgba(250, 247, 241, 0.5);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary svg {
+            opacity: 0.85;
+        }
+
+        /* ----- Stats — serif numerals, hairline cards ----- */
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+        }
+
+        .stat-card {
+            position: relative;
+            padding: 1.75rem 1.5rem;
+            background: #18253B;
+            border: 1px solid rgba(250, 247, 241, 0.10);
+            border-radius: 4px;
+            transition:
+                background 0.3s ease,
+                border-color 0.3s ease,
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .stat-card:hover {
+            border-color: rgba(250, 247, 241, 0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.32);
+        }
+
+        .stat-number {
+            display: block;
+            font-family: 'Fraunces', Georgia, serif;
+            font-weight: 500;
+            font-size: 2.75rem;
+            line-height: 1;
+            color: var(--bronze-soft);
+            letter-spacing: -0.02em;
+            margin-bottom: 0.6rem;
+            font-variation-settings: "opsz" 72;
+        }
+
+        .stat-label {
+            display: block;
+            font-size: var(--text-xs);
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: rgba(250, 247, 241, 0.58);
+            font-weight: 500;
+        }
+
+        /* ==========================================================================
+           BELOW-HERO STRIP — proves the cream/ink transition
+           ========================================================================== */
+        .below-hero {
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .below-hero p {
+            font-family: 'Fraunces', Georgia, serif;
+            font-style: italic;
+            font-weight: 400;
+            font-size: var(--text-lg);
+            color: var(--ink-500);
+            max-width: 50ch;
+            margin: 0 auto;
+        }
+
+        /* ==========================================================================
+           RESPONSIVE
+           ========================================================================== */
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                text-align: left;
+            }
+
+            :root {
+                --text-4xl: 2.6rem;
+            }
+
+            .hero-stats {
+                max-width: 480px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1.5rem 2rem 2rem;
+                background: var(--ink-900);
+                border-top: 1px solid rgba(250, 247, 241, 0.08);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                padding: 7rem 1.5rem 4rem;
+                min-height: auto;
+            }
+
+            :root {
+                --text-4xl: 2.2rem;
+            }
+
+            .hero-text .title {
+                font-size: 1.15rem;
+            }
+
+            .hero-text .intro {
+                font-size: var(--text-base);
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn {
+                justify-content: center;
+                width: 100%;
+            }
+
+            .stat-number {
+                font-size: 2.25rem;
+            }
+
+            .stat-card {
+                padding: 1.25rem 1rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .hero-stats {
+                gap: 0.75rem;
+            }
+            .stat-number {
+                font-size: 1.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ====================================================================
+         NAVIGATION
+         ==================================================================== -->
+    <nav class="scrolled">
+        <div class="nav-container">
+            <a href="#" class="logo">Kedar Phadke</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" onclick="document.getElementById('navLinks').classList.toggle('active')" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ====================================================================
+         HERO
+         ==================================================================== -->
+    <section class="hero">
+        <div class="hero-content">
+
+            <!-- Left: text -->
+            <div class="hero-text">
+                <span class="hero-eyebrow">PhD &nbsp;·&nbsp; Educator &nbsp;·&nbsp; Consultant</span>
+
+                <h1>Kedar Phadke, <em>PhD</em></h1>
+                <p class="title">Academic leader &amp; project-management expert</p>
+
+                <p class="location">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    Pune, Maharashtra, India
+                </p>
+
+                <p class="intro">
+                    Advocate for technology-driven education in management and analytics. With over 30 years in consulting and academia, I equip tomorrow's professionals with the skills they need to excel in technology-driven environments.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">
+                        Get in Touch
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/kedarphadke" target="_blank" rel="noopener" class="btn btn-secondary">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                        LinkedIn
+                    </a>
+                    <a href="https://mtreeconsult.com" target="_blank" rel="noopener" class="btn btn-secondary">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M7 17L17 7"></path>
+                            <polyline points="7 7 17 7 17 17"></polyline>
+                        </svg>
+                        Mapletree Consulting
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right: stats -->
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <span class="stat-number">30+</span>
+                    <span class="stat-label">Years Experience</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">1,000+</span>
+                    <span class="stat-label">Students Mentored</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">7</span>
+                    <span class="stat-label">Research Papers</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">30%</span>
+                    <span class="stat-label">Efficiency Gains</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ====================================================================
+         BELOW-HERO STRIP — shows the cream-on-ink handoff
+         ==================================================================== -->
+    <section class="below-hero">
+        <p>The rest of the page would continue here on a warm cream background.</p>
+    </section>
+
+</body>
+</html>
+</content>
+</invoke>

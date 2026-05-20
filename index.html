@@ -3,31 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kedar Phadke, PhD | Academic Leader & Project Management Expert</title>
+    <title>Kedar Phadke, PhD | Founder, EduAssess · Building AI for Higher Education</title>
 
     <!--
-        Favicon - Stylized "KP" initials
-        ==================================
-        Using inline SVG as a data URI - no separate file needed.
-        Navy blue background with gold "KP" text matching the site's color scheme.
+        Favicon — ink-on-bronze "KP" monogram, italic serif
+        matches the editorial palette.
     -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%231a365d'/%3E%3Cstop offset='100%25' style='stop-color:%232c5282'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='20' fill='url(%23bg)'/%3E%3Ctext x='50' y='68' font-family='Georgia,serif' font-size='48' font-weight='bold' fill='%23d69e2e' text-anchor='middle'%3EKP%3C/text%3E%3C/svg%3E">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%230F1B2D'/%3E%3Ctext x='50' y='70' font-family='Georgia,serif' font-size='54' font-weight='500' font-style='italic' fill='%23B98E5D' text-anchor='middle'%3EKP%3C/text%3E%3C/svg%3E">
 
     <!--
-        EXTERNAL RESOURCES
-        ===================
-        Google Fonts - Loading custom fonts for typography
-        styles.css - All our custom styling (separate file for maintainability)
+        Google Fonts — Fraunces (variable, with italic + optical-size axes)
+        for editorial headings, Inter for body, nav, and UI.
     -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=10">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@300..700&display=swap" rel="stylesheet">
 
-    <!--
-        EmailJS SDK
-        ===========
-        This script enables sending emails directly from JavaScript.
-        No backend server required - EmailJS handles the email delivery.
-    -->
+    <link rel="stylesheet" href="styles.css?v=13">
+
+    <!-- EmailJS SDK for the contact form -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
@@ -35,157 +29,156 @@
         =====================================================================
         NAVIGATION
         =====================================================================
-        Fixed navigation bar at the top of the page.
-        Contains logo and links to page sections.
+        Fixed nav over the ink hero — no seam, just a glass blur. Logo on the
+        left is the full wordmark in Fraunces, not a monogram.
     -->
-    <nav>
+    <nav class="scrolled">
         <div class="nav-container">
-            <a href="#" class="logo">KP</a>
+            <a href="#" class="logo">Kedar Phadke</a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#about">About</a></li>
+                <li><a href="#building">Building</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#education">Education</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
 
-            <!--
-                Dark Mode Toggle Button
-                =======================
-                Switches between light and dark color schemes.
-                Contains both sun (light mode) and moon (dark mode) icons.
-                JavaScript toggles visibility based on current mode.
-            -->
-            <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
-                <!-- Sun icon - shown when in dark mode (click to switch to light) -->
-                <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="5"></circle>
-                    <line x1="12" y1="1" x2="12" y2="3"></line>
-                    <line x1="12" y1="21" x2="12" y2="23"></line>
-                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                    <line x1="1" y1="12" x2="3" y2="12"></line>
-                    <line x1="21" y1="12" x2="23" y2="12"></line>
-                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                </svg>
-                <!-- Moon icon - shown when in light mode (click to switch to dark) -->
-                <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                </svg>
-            </button>
-
-            <!-- Hamburger menu button for mobile (hidden on desktop) -->
-            <button class="mobile-menu-btn" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
+            <button class="mobile-menu-btn" onclick="toggleMenu()" aria-label="Menu">
+                <span></span><span></span><span></span>
             </button>
         </div>
     </nav>
 
     <!--
         =====================================================================
-        HERO SECTION
+        HERO
         =====================================================================
-        Full-screen introduction with name, title, and key stats.
     -->
     <section class="hero">
         <div class="hero-content">
-            <!-- Left side: Text content -->
+
+            <!-- Left: text -->
             <div class="hero-text">
-                <h1>Kedar Phadke, PhD</h1>
-                <p class="title">Academic Leader | Project Management Expert</p>
+                <span class="hero-eyebrow">Founder &nbsp;·&nbsp; PhD &nbsp;·&nbsp; Builder</span>
+
+                <h1>Kedar Phadke, <em>PhD</em></h1>
+                <p class="title">Founder, EduAssess &nbsp;·&nbsp; AI Products for Higher Education</p>
+
                 <p class="location">
-                    <!-- Location pin icon (inline SVG) -->
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                         <circle cx="12" cy="10" r="3"></circle>
                     </svg>
                     Pune, Maharashtra, India
                 </p>
-                <p>Advocate for technology-driven education in management and analytics. With over 30 years in consulting and academia, I equip tomorrow's professionals with the skills they need to excel in technology-driven environments.</p>
 
-                <!-- Call-to-action buttons -->
+                <p class="intro">
+                    Founder of EduAssess — an AI-powered platform helping universities run mock interviews, generate smart assessments, and prepare students for placement success. I'm building for the academic world I've spent 30+ years inside, combining hands-on AI product execution with deep operational knowledge of how higher education actually works.
+                </p>
+
                 <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary">Get In Touch</a>
-                    <a href="https://www.linkedin.com/in/kedarphadke" target="_blank" class="btn btn-secondary">
-                        <!-- LinkedIn icon (inline SVG) -->
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <a href="#contact" class="btn btn-primary">
+                        Get in Touch
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/kedarphadke" target="_blank" rel="noopener" class="btn btn-secondary">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                         </svg>
                         LinkedIn
                     </a>
-                    <a href="https://mtreeconsult.com" target="_blank" class="btn btn-secondary">
-                        <!-- Globe icon (inline SVG) -->
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <line x1="2" y1="12" x2="22" y2="12"></line>
-                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                    <a href="https://mtreeconsult.com" target="_blank" rel="noopener" class="btn btn-secondary">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M7 17L17 7"></path>
+                            <polyline points="7 7 17 7 17 17"></polyline>
                         </svg>
-                        Mapletree (Consultancy)
+                        Mapletree Consulting
                     </a>
                 </div>
             </div>
 
-            <!-- Right side: Statistics cards -->
+            <!-- Right: stats -->
             <div class="hero-stats">
                 <div class="stat-card">
                     <span class="stat-number">30+</span>
                     <span class="stat-label">Years Experience</span>
                 </div>
                 <div class="stat-card">
-                    <span class="stat-number">1000+</span>
+                    <span class="stat-number">1,000+</span>
                     <span class="stat-label">Students Mentored</span>
                 </div>
                 <div class="stat-card">
-                    <span class="stat-number">7</span>
-                    <span class="stat-label">Research Papers</span>
+                    <span class="stat-number">AI Catalyst</span>
+                    <span class="stat-label">Graduate</span>
                 </div>
                 <div class="stat-card">
                     <span class="stat-number">30%</span>
                     <span class="stat-label">Efficiency Gains</span>
                 </div>
             </div>
+
         </div>
     </section>
 
     <!--
         =====================================================================
-        ABOUT SECTION
+        ABOUT
         =====================================================================
-        Professional summary and certifications.
     -->
     <section id="about">
         <div class="container">
             <div class="section-header">
                 <h2>About Me</h2>
-                <p>Blending practical insights with rigorous academic frameworks</p>
+                <p>Bringing academic rigor and three decades of operational depth to AI product building</p>
                 <div class="underline"></div>
             </div>
+
             <div class="about-content">
-                <!-- Main text content -->
                 <div class="about-text animate-on-scroll">
                     <p>With over 30 years in consulting and academia, I equip tomorrow's professionals with the skills they need to excel in technology-driven environments. To date, I have guided more than 1,000 students and industry participants, blending practical insights with rigorous academic frameworks to make complex ideas clear and actionable.</p>
+                    <p>Today, I'm building EduAssess, an AI-powered platform that helps universities run multi-round mock interviews, generate smart assessments, and prepare students for placements with detailed analytics. The product applies what I learned in the 24-week AI Catalyst Program — agentic systems, multi-agent workflows, AI-driven product development — to a domain I know from the inside out. With 23 years in industry and 13 years in academia teaching and mentoring 1,000+ students, EduAssess is what happens when operational depth meets modern AI tooling.</p>
                     <p>As an independent consultant and visiting faculty at a top management institute in Pune, I have designed and taught Economics, Statistics, and Business Simulation courses. By breaking down challenging concepts into relatable examples and hands-on exercises, I help learners apply theory to real-world problems.</p>
                     <p>At State Street Global Advisors, I led cross-departmental projects that boosted operational efficiency by 30% and streamlined workflows across multiple teams. During my tenure as Senior Developer and Data Architect at Harvard University, I designed and implemented over 400 table structures for the Grants Management Application Suite.</p>
                     <p>Outside of the classroom, I mentor students through capstone projects and community education initiatives, helping them develop the confidence and critical-thinking skills to succeed.</p>
                 </div>
 
-                <!-- Certifications sidebar -->
                 <div class="certifications animate-on-scroll">
                     <h3>Certifications</h3>
                     <div class="cert-item">
-                        <span class="cert-icon">&#10003;</span>
-                        <span>Introduction to Agile Development and Scrum (with Honors) - IBM Skills Network</span>
+                        <span class="cert-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                        </span>
+                        <span>AI Catalyst Program — Outskill (24-week intensive: agentic product building, multi-agent workflows, AI-powered marketing, monetization &amp; growth)</span>
                     </div>
                     <div class="cert-item">
-                        <span class="cert-icon">&#10003;</span>
-                        <span>EPAT - Certificate of Excellence</span>
+                        <span class="cert-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                        </span>
+                        <span>Introduction to Agile Development and Scrum (with Honors) — IBM Skills Network</span>
                     </div>
                     <div class="cert-item">
-                        <span class="cert-icon">&#10003;</span>
-                        <span>DevOps, Cloud, and Agile Foundations - IBM Skills Network</span>
+                        <span class="cert-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                        </span>
+                        <span>EPAT — Certificate of Excellence</span>
+                    </div>
+                    <div class="cert-item">
+                        <span class="cert-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                        </span>
+                        <span>DevOps, Cloud, and Agile Foundations — IBM Skills Network</span>
                     </div>
                 </div>
             </div>
@@ -194,106 +187,218 @@
 
     <!--
         =====================================================================
-        SKILLS SECTION
+        CURRENTLY BUILDING — featured EduAssess card
         =====================================================================
-        Skills organized into four categories.
+        One prominent card on the page. Logo + wordmark + subtitle in the
+        header, overarching paragraph below, then two product-module panels
+        side by side, then a CTA footer.
+    -->
+    <section id="building">
+        <div class="container">
+            <div class="section-header">
+                <h2>Currently Building</h2>
+                <p>What I'm working on right now</p>
+                <div class="underline"></div>
+            </div>
+
+            <div class="building-card animate-on-scroll">
+
+                <!-- Header: wordmark + overview -->
+                <div class="building-header">
+                    <div class="building-wordmark">
+                        <h3>EduAssess</h3>
+                        <p>AI-powered platform for student placement preparation and smart assessments</p>
+                    </div>
+                    <p class="building-overview">A purpose-built platform for higher education that helps universities prepare students for placements, run intelligent assessments, and map academic outcomes — combining AI capabilities with deep understanding of how Indian higher education actually works.</p>
+                </div>
+
+                <hr class="building-divider">
+
+                <!-- Two product modules -->
+                <div class="building-panels">
+
+                    <!-- Left: Placement Preparation -->
+                    <div class="building-panel">
+                        <span class="building-panel-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <rect x="2" y="7" width="20" height="14" rx="2"></rect>
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                            </svg>
+                        </span>
+                        <h4>Placement Preparation</h4>
+                        <p>Progressive multi-round mock interviews that build student confidence and reduce the workload on placement offices. AI generates contextual questions, simulates realistic interview scenarios, and delivers detailed analytics on student readiness.</p>
+                        <div class="building-pills">
+                            <span class="highlight">Progressive Mock Interviews</span>
+                            <span class="highlight">AI Question Generation</span>
+                            <span class="highlight">Readiness Analytics</span>
+                        </div>
+                    </div>
+
+                    <!-- Right: Smart Assessments & Outcome Mapping -->
+                    <div class="building-panel">
+                        <span class="building-panel-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <rect x="5" y="3" width="14" height="18" rx="2"></rect>
+                                <path d="M9 7h6"></path>
+                                <polyline points="9 13 11 15 15 11"></polyline>
+                            </svg>
+                        </span>
+                        <h4>Smart Assessments &amp; Outcome Mapping</h4>
+                        <p>AI-powered quiz creation that turns a tutor's content into question banks and generates multiple question paper sets. Each question maps to Program and Course Outcomes — a capability that meaningfully reduces the cycle time of NBA accreditation reporting.</p>
+                        <div class="building-pills">
+                            <span class="highlight">AI Quiz Generation</span>
+                            <span class="highlight">Multi-Set Question Papers</span>
+                            <span class="highlight">Online Administration</span>
+                            <span class="highlight">PO/CO Mapping</span>
+                            <span class="highlight">NBA Workflow — In Development</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Footer: CTA -->
+                <div class="building-footer">
+                    <a href="https://www.eduassess.co.in" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                        Visit eduassess.co.in &rarr;
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!--
+        =====================================================================
+        SKILLS
+        =====================================================================
+        Featured AI card above the 2×2 grid of category cards. All icons
+        are Lucide-style strokes in bronze; no emojis, no gradient backgrounds.
     -->
     <section id="skills">
         <div class="container">
             <div class="section-header">
-                <h2>Skills & Expertise</h2>
+                <h2>Skills &amp; Expertise</h2>
                 <p>A comprehensive skill set built over three decades</p>
                 <div class="underline"></div>
             </div>
+
+            <!-- Featured: AI & Product Development -->
+            <div class="skill-featured animate-on-scroll">
+                <h3>
+                    <span class="skill-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M12 3l1.4 3.6L17 8l-3.6 1.4L12 13l-1.4-3.6L7 8l3.6-1.4L12 3z"></path>
+                            <path d="M19 14l.8 2.2L22 17l-2.2.8L19 20l-.8-2.2L16 17l2.2-.8L19 14z"></path>
+                            <path d="M5 14l.6 1.5L7 16l-1.4.5L5 18l-.6-1.5L3 16l1.4-.5L5 14z"></path>
+                        </svg>
+                    </span>
+                    AI &amp; Product Development
+                </h3>
+                <ul class="skill-list">
+                    <li>Agentic Product Building</li>
+                    <li>Multi-Agent AI Workflows</li>
+                    <li>AI-Powered Marketing &amp; Lead Generation</li>
+                    <li>Autonomous AI Delivery Systems</li>
+                    <li>Product Launch &amp; Monetization</li>
+                    <li>Client Acquisition with AI</li>
+                </ul>
+            </div>
+
             <div class="skills-grid">
+
                 <!-- Project Management -->
                 <div class="skill-category animate-on-scroll">
                     <h3>
-                        <span class="skill-icon">&#9881;</span>
+                        <span class="skill-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <rect x="2" y="7" width="20" height="14" rx="2"></rect>
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                            </svg>
+                        </span>
                         Project Management
                     </h3>
                     <ul class="skill-list">
-                        <li>Agile & Scrum Methodologies</li>
-                        <li>Waterfall Project Management</li>
-                        <li>MS Project & Primavera P6</li>
-                        <li>JIRA & Project Tracking</li>
-                        <li>Risk Assessment & Mitigation</li>
+                        <li>Agile &amp; Scrum methodologies</li>
+                        <li>Waterfall project management</li>
+                        <li>MS Project &amp; Primavera P6</li>
+                        <li>JIRA &amp; project tracking</li>
+                        <li>Risk assessment &amp; mitigation</li>
                     </ul>
                 </div>
 
                 <!-- Data & Analytics -->
                 <div class="skill-category animate-on-scroll">
                     <h3>
-                        <span class="skill-icon">&#128202;</span>
-                        Data & Analytics
+                        <span class="skill-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <line x1="12" y1="20" x2="12" y2="10"></line>
+                                <line x1="18" y1="20" x2="18" y2="4"></line>
+                                <line x1="6" y1="20" x2="6" y2="16"></line>
+                                <line x1="3" y1="20" x2="21" y2="20"></line>
+                            </svg>
+                        </span>
+                        Data &amp; Analytics
                     </h3>
                     <ul class="skill-list">
-                        <li>Data Strategy & Architecture</li>
-                        <li>Oracle Database Design</li>
-                        <li>Data Visualization Tools</li>
-                        <li>Statistical Analysis</li>
-                        <li>Business Intelligence</li>
+                        <li>Data strategy &amp; architecture</li>
+                        <li>Oracle database design</li>
+                        <li>Data visualization tools</li>
+                        <li>Statistical analysis</li>
+                        <li>Business intelligence</li>
                     </ul>
                 </div>
 
                 <!-- Education & Training -->
                 <div class="skill-category animate-on-scroll">
                     <h3>
-                        <span class="skill-icon">&#127891;</span>
-                        Education & Training
+                        <span class="skill-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M22 10v6"></path>
+                                <path d="M2 10l10-5 10 5-10 5z"></path>
+                                <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                            </svg>
+                        </span>
+                        Education &amp; Training
                     </h3>
                     <ul class="skill-list">
-                        <li>Curriculum Design</li>
-                        <li>Economics & Statistics Instruction</li>
-                        <li>Business Simulation Design</li>
-                        <li>E-learning Module Development</li>
-                        <li>Student Mentorship</li>
+                        <li>Curriculum design</li>
+                        <li>Economics &amp; statistics instruction</li>
+                        <li>Business simulation design</li>
+                        <li>E-learning module development</li>
+                        <li>Student mentorship</li>
                     </ul>
                 </div>
 
                 <!-- Leadership -->
                 <div class="skill-category animate-on-scroll">
                     <h3>
-                        <span class="skill-icon">&#128101;</span>
+                        <span class="skill-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                        </span>
                         Leadership
                     </h3>
                     <ul class="skill-list">
-                        <li>Cross-functional Team Leadership</li>
-                        <li>Global Team Coordination</li>
-                        <li>Stakeholder Management</li>
-                        <li>Change Management</li>
-                        <li>Mentoring & Coaching</li>
+                        <li>Cross-functional team leadership</li>
+                        <li>Global team coordination</li>
+                        <li>Stakeholder management</li>
+                        <li>Change management</li>
+                        <li>Mentoring &amp; coaching</li>
                     </ul>
                 </div>
+
             </div>
         </div>
     </section>
 
     <!--
         =====================================================================
-        EXPERIENCE SECTION - Modern Side-by-Side Timeline
+        EXPERIENCE — sticky timeline + scrollable cards
         =====================================================================
-
-        LAYOUT STRUCTURE:
-        =================
-        Desktop (>768px): Two columns
-        - Left (40%): Sticky timeline with navigation dots
-        - Right (60%): Scrollable experience cards
-
-        Mobile (<=768px): Single column
-        - Simplified left-aligned timeline
-        - Cards stack vertically
-
-        SCROLL DETECTION:
-        =================
-        JavaScript uses Intersection Observer to detect which card is
-        currently in view and highlights the corresponding timeline dot.
-        This creates a synchronized scrolling experience.
-
-        DATA ATTRIBUTES:
-        ================
-        Each experience card has data-index="N" to link it with
-        its corresponding timeline nav item.
     -->
     <section id="experience">
         <div class="container">
@@ -303,146 +408,111 @@
                 <div class="underline"></div>
             </div>
 
-            <!--
-                Experience Layout Container
-                ============================
-                Uses CSS Grid on desktop: 40% timeline | 60% cards
-                On mobile: becomes single column
-            -->
             <div class="experience-layout">
 
-                <!--
-                    LEFT SIDE: Sticky Timeline Navigation
-                    ======================================
-                    - Uses position: sticky to stay visible while scrolling
-                    - Contains clickable navigation items
-                    - Active state is controlled by JavaScript
-                    - Hidden on mobile (replaced by inline dots)
-                -->
+                <!-- LEFT: Sticky timeline -->
                 <div class="timeline-nav">
                     <div class="timeline-nav-inner">
-                        <!-- Vertical connecting line -->
                         <div class="timeline-line"></div>
 
-                        <!-- Timeline nav item 1: Current Role -->
                         <div class="timeline-nav-item active" data-index="0">
-                            <div class="nav-dot">
-                                <span class="dot-inner"></span>
-                            </div>
+                            <div class="nav-dot"><span class="dot-inner"></span></div>
                             <div class="nav-info">
-                                <span class="nav-date">Dec 2024 - Present</span>
+                                <span class="nav-date">Dec 2024 — Present</span>
                                 <span class="nav-company">Self-employed</span>
                             </div>
                         </div>
 
-                        <!-- Timeline nav item 2: Symbiosis -->
                         <div class="timeline-nav-item" data-index="1">
-                            <div class="nav-dot">
-                                <span class="dot-inner"></span>
-                            </div>
+                            <div class="nav-dot"><span class="dot-inner"></span></div>
                             <div class="nav-info">
-                                <span class="nav-date">Aug - Nov 2024</span>
+                                <span class="nav-date">Aug — Nov 2024</span>
                                 <span class="nav-company">Symbiosis SSPU</span>
                             </div>
                         </div>
 
-                        <!-- Timeline nav item 3: NICMAR -->
                         <div class="timeline-nav-item" data-index="2">
-                            <div class="nav-dot">
-                                <span class="dot-inner"></span>
-                            </div>
+                            <div class="nav-dot"><span class="dot-inner"></span></div>
                             <div class="nav-info">
-                                <span class="nav-date">2014 - 2023</span>
+                                <span class="nav-date">2014 — 2023</span>
                                 <span class="nav-company">NICMAR</span>
                             </div>
                         </div>
 
-                        <!-- Timeline nav item 4: State Street -->
                         <div class="timeline-nav-item" data-index="3">
-                            <div class="nav-dot">
-                                <span class="dot-inner"></span>
-                            </div>
+                            <div class="nav-dot"><span class="dot-inner"></span></div>
                             <div class="nav-info">
-                                <span class="nav-date">2007 - 2012</span>
+                                <span class="nav-date">2007 — 2012</span>
                                 <span class="nav-company">State Street</span>
                             </div>
                         </div>
 
-                        <!-- Timeline nav item 5: Harvard -->
                         <div class="timeline-nav-item" data-index="4">
-                            <div class="nav-dot">
-                                <span class="dot-inner"></span>
-                            </div>
+                            <div class="nav-dot"><span class="dot-inner"></span></div>
                             <div class="nav-info">
-                                <span class="nav-date">2001 - 2007</span>
+                                <span class="nav-date">2001 — 2007</span>
                                 <span class="nav-company">Harvard University</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!--
-                    RIGHT SIDE: Experience Detail Cards
-                    ====================================
-                    - Full job descriptions in card format
-                    - Animate on scroll using Intersection Observer
-                    - Each card has data-index to sync with timeline
-                -->
+                <!-- RIGHT: Detail cards -->
                 <div class="experience-cards">
-                    <!-- Experience Card 1: Current Role -->
+
+                    <!-- Card 1: Current Role -->
                     <div class="exp-card animate-on-scroll" data-index="0">
-                        <!-- Mobile timeline dot (hidden on desktop) -->
                         <div class="mobile-dot">
                             <span class="current-badge">Current</span>
                         </div>
                         <div class="exp-card-content">
                             <div class="exp-header">
-                                <span class="exp-date">December 2024 - Present</span>
+                                <span class="exp-date">December 2024 — Present</span>
                                 <span class="exp-current">Current Role</span>
                             </div>
-                            <h3 class="exp-title">Visiting Faculty</h3>
+                            <h3 class="exp-title">Founder, EduAssess &amp; Visiting Faculty</h3>
                             <p class="exp-company">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                                     <polyline points="9 22 9 12 15 12 15 22"></polyline>
                                 </svg>
                                 Self-employed
                             </p>
                             <p class="exp-location">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                                     <circle cx="12" cy="10" r="3"></circle>
                                 </svg>
                                 Pune, Maharashtra, India
                             </p>
                             <p class="exp-description">
-                                Teaching Economics, Statistics, Business Simulation & Data Visualization at a leading management institute. Delivered engaging courses to 200+ aspiring professionals, designing hands-on simulations and mentoring students on data visualization tools.
+                                Building EduAssess — an AI-powered platform delivering mock interviews and smart assessments to universities, helping students prepare for placement success. In parallel, teaching Economics, Statistics, Business Simulation &amp; Data Visualization at a leading management institute. Recently completed the 24-week AI Catalyst Program at Outskill, focused on agentic product building, multi-agent workflows, and AI-driven product launches.
                             </p>
                             <div class="exp-highlights">
+                                <span class="highlight">Founder · EduAssess</span>
                                 <span class="highlight">200+ Students</span>
-                                <span class="highlight">Business Simulation</span>
-                                <span class="highlight">Data Visualization</span>
+                                <span class="highlight">AI Catalyst Graduate</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Experience Card 2: Symbiosis -->
+                    <!-- Card 2: Symbiosis -->
                     <div class="exp-card animate-on-scroll" data-index="1">
                         <div class="mobile-dot"></div>
                         <div class="exp-card-content">
                             <div class="exp-header">
-                                <span class="exp-date">August 2024 - November 2024</span>
+                                <span class="exp-date">August 2024 — November 2024</span>
                             </div>
-                            <h3 class="exp-title">Professor | Economics | Financial Technology</h3>
+                            <h3 class="exp-title">Professor — Economics &amp; Financial Technology</h3>
                             <p class="exp-company">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                                     <polyline points="9 22 9 12 15 12 15 22"></polyline>
                                 </svg>
-                                Symbiosis Skills & Professional University
+                                Symbiosis Skills &amp; Professional University
                             </p>
                             <p class="exp-location">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                                     <circle cx="12" cy="10" r="3"></circle>
                                 </svg>
@@ -459,23 +529,23 @@
                         </div>
                     </div>
 
-                    <!-- Experience Card 3: NICMAR -->
+                    <!-- Card 3: NICMAR -->
                     <div class="exp-card animate-on-scroll" data-index="2">
                         <div class="mobile-dot"></div>
                         <div class="exp-card-content">
                             <div class="exp-header">
-                                <span class="exp-date">June 2014 - April 2023</span>
+                                <span class="exp-date">June 2014 — April 2023</span>
                             </div>
                             <h3 class="exp-title">Associate Professor</h3>
                             <p class="exp-company">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                                     <polyline points="9 22 9 12 15 12 15 22"></polyline>
                                 </svg>
                                 NICMAR (National Institute of Construction Management and Research)
                             </p>
                             <p class="exp-location">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                                     <circle cx="12" cy="10" r="3"></circle>
                                 </svg>
@@ -492,30 +562,30 @@
                         </div>
                     </div>
 
-                    <!-- Experience Card 4: State Street -->
+                    <!-- Card 4: State Street -->
                     <div class="exp-card animate-on-scroll" data-index="3">
                         <div class="mobile-dot"></div>
                         <div class="exp-card-content">
                             <div class="exp-header">
-                                <span class="exp-date">November 2007 - November 2012</span>
+                                <span class="exp-date">November 2007 — November 2012</span>
                             </div>
                             <h3 class="exp-title">Senior IT Project Manager</h3>
                             <p class="exp-company">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                                     <polyline points="9 22 9 12 15 12 15 22"></polyline>
                                 </svg>
                                 State Street Global Advisors (SSgA)
                             </p>
                             <p class="exp-location">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                                     <circle cx="12" cy="10" r="3"></circle>
                                 </svg>
                                 Boston, Massachusetts, USA
                             </p>
                             <p class="exp-description">
-                                Led cross-functional teams across US, India, and China. Boosted quality by 30%, cut defect rates by 20%, and coached 7 junior project managers in Agile best practices.
+                                Led cross-functional teams across the US, India, and China. Boosted quality by 30%, cut defect rates by 20%, and coached 7 junior project managers in Agile best practices.
                             </p>
                             <div class="exp-highlights">
                                 <span class="highlight">30% Quality Boost</span>
@@ -525,30 +595,30 @@
                         </div>
                     </div>
 
-                    <!-- Experience Card 5: Harvard -->
+                    <!-- Card 5: Harvard -->
                     <div class="exp-card animate-on-scroll" data-index="4">
                         <div class="mobile-dot"></div>
                         <div class="exp-card-content">
                             <div class="exp-header">
-                                <span class="exp-date">December 2001 - July 2007</span>
+                                <span class="exp-date">December 2001 — July 2007</span>
                             </div>
-                            <h3 class="exp-title">Oracle Database Architect | Senior Developer</h3>
+                            <h3 class="exp-title">Oracle Database Architect &amp; Senior Developer</h3>
                             <p class="exp-company">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                                     <polyline points="9 22 9 12 15 12 15 22"></polyline>
                                 </svg>
                                 Harvard University
                             </p>
                             <p class="exp-location">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                                     <circle cx="12" cy="10" r="3"></circle>
                                 </svg>
                                 Cambridge, Massachusetts, USA
                             </p>
                             <p class="exp-description">
-                                Designed 400+ table structures for the Grants Management Application Suite. Achieved 15% reduction in problem resolution time and improved code quality by 35% through targeted mentoring programs.
+                                Designed 400+ table structures for the Grants Management Application Suite. Achieved a 15% reduction in problem resolution time and improved code quality by 35% through targeted mentoring programs.
                             </p>
                             <div class="exp-highlights">
                                 <span class="highlight">400+ Database Tables</span>
@@ -557,6 +627,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -564,9 +635,8 @@
 
     <!--
         =====================================================================
-        EDUCATION SECTION
+        EDUCATION
         =====================================================================
-        Academic qualifications displayed as cards.
     -->
     <section id="education">
         <div class="container">
@@ -575,10 +645,11 @@
                 <p>A strong academic foundation across multiple disciplines</p>
                 <div class="underline"></div>
             </div>
+
             <div class="education-grid">
                 <div class="education-card animate-on-scroll">
                     <p class="degree">Doctor of Philosophy (PhD)</p>
-                    <p class="school">Goa University - Goa Business School</p>
+                    <p class="school">Goa University — Goa Business School</p>
                     <p class="field">Commerce</p>
                 </div>
                 <div class="education-card animate-on-scroll">
@@ -602,9 +673,8 @@
 
     <!--
         =====================================================================
-        CONTACT SECTION
+        CONTACT
         =====================================================================
-        Contact information and call-to-action.
     -->
     <section id="contact">
         <div class="container">
@@ -613,33 +683,50 @@
                 <p>Let's connect and explore collaboration opportunities</p>
                 <div class="underline"></div>
             </div>
+
             <div class="contact-content">
-                <!-- Contact info and links -->
+
+                <!-- Contact links -->
                 <div class="contact-info animate-on-scroll">
-                    <h3>Let's Start a Conversation</h3>
-                    <p>I welcome conversations about innovative teaching methods, project management strategies, or data-driven insights. Feel free to reach out for consulting engagements or academic collaborations.</p>
+                    <h3>Let's start a conversation</h3>
+                    <p>I'm open to conversations about EduAssess (we work with universities and educational institutions), AI consulting engagements, academic collaborations, and innovative teaching partnerships. If you're at a university or college thinking about AI-powered student preparation — or you're building something that needs depth and rigor — let's talk.</p>
+
                     <div class="contact-links">
-                        <!-- Email link - opens modal instead of mailto -->
                         <a href="#" class="contact-link" onclick="openModal(); return false;">
-                            <span class="icon">&#9993;</span>
+                            <span class="icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                                    <path d="m22 7-10 5L2 7"></path>
+                                </svg>
+                            </span>
                             <div>
-                                <strong>Email</strong><br>
+                                <strong>Email</strong>
                                 <span>kphadke@yahoo.com</span>
                             </div>
                         </a>
-                        <!-- LinkedIn link - opens in new tab -->
-                        <a href="https://www.linkedin.com/in/kedarphadke" target="_blank" class="contact-link">
-                            <span class="icon">in</span>
+
+                        <a href="https://www.linkedin.com/in/kedarphadke" target="_blank" rel="noopener" class="contact-link">
+                            <span class="icon">
+                                <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                </svg>
+                            </span>
                             <div>
-                                <strong>LinkedIn</strong><br>
+                                <strong>LinkedIn</strong>
                                 <span>linkedin.com/in/kedarphadke</span>
                             </div>
                         </a>
-                        <!-- Business website - opens in new tab -->
-                        <a href="https://mtreeconsult.com" target="_blank" class="contact-link">
-                            <span class="icon">&#127760;</span>
+
+                        <a href="https://mtreeconsult.com" target="_blank" rel="noopener" class="contact-link">
+                            <span class="icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                                </svg>
+                            </span>
                             <div>
-                                <strong>Mapletree (Consultancy)</strong><br>
+                                <strong>Mapletree Consultancy</strong>
                                 <span>mtreeconsult.com</span>
                             </div>
                         </a>
@@ -648,10 +735,11 @@
 
                 <!-- CTA card -->
                 <div class="contact-card animate-on-scroll">
-                    <h4>Open for Opportunities</h4>
+                    <h4>Open for opportunities</h4>
                     <p>Whether you're looking for a visiting faculty member, a project management consultant, or a collaborator on educational initiatives, I'd love to hear from you.</p>
                     <a href="#" class="btn btn-primary" onclick="openModal(); return false;">Send a Message</a>
                 </div>
+
             </div>
         </div>
     </section>
@@ -662,88 +750,51 @@
         =====================================================================
     -->
     <footer>
-        <p>&copy; 2025 Kedar Phadke, PhD. All rights reserved.</p>
+        <p>&copy; 2025 Kedar Phadke, PhD &nbsp;·&nbsp; All rights reserved</p>
     </footer>
 
     <!--
         =====================================================================
         CONTACT MODAL
         =====================================================================
-        Popup form for sending messages.
-        Hidden by default, shown when user clicks email link or CTA button.
-
-        Features:
-        - Form validation with visual feedback
-        - localStorage storage for messages
-        - Success/error messages
     -->
     <div class="modal-overlay" id="contactModal">
         <div class="modal">
             <div class="modal-header">
                 <h3>Send a Message</h3>
-                <button class="modal-close" onclick="closeModal()">&times;</button>
+                <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
             </div>
             <div class="modal-body">
                 <p>I'd love to hear from you. Fill out the form below and I'll get back to you as soon as possible.</p>
 
-                <!-- Contact form with validation -->
                 <form id="contactForm" onsubmit="handleSubmit(event)" novalidate>
-                    <!--
-                        novalidate attribute disables browser's default validation
-                        so we can use our own custom validation with better UX
-                    -->
-
-                    <!-- Name Field -->
                     <div class="form-group">
                         <label for="senderName">Your Name <span class="required">*</span></label>
-                        <input
-                            type="text"
-                            id="senderName"
-                            name="senderName"
-                            placeholder="John Doe"
-                        >
+                        <input type="text" id="senderName" name="senderName" placeholder="John Doe">
                         <span class="error-message" id="nameError"></span>
                     </div>
 
-                    <!-- Email Field -->
                     <div class="form-group">
                         <label for="senderEmail">Your Email <span class="required">*</span></label>
-                        <input
-                            type="email"
-                            id="senderEmail"
-                            name="senderEmail"
-                            placeholder="your@email.com"
-                        >
+                        <input type="email" id="senderEmail" name="senderEmail" placeholder="your@email.com">
                         <span class="error-message" id="emailError"></span>
                     </div>
 
-                    <!-- Subject Field -->
                     <div class="form-group">
                         <label for="subject">Subject <span class="required">*</span></label>
-                        <input
-                            type="text"
-                            id="subject"
-                            name="subject"
-                            placeholder="What is this regarding?"
-                        >
+                        <input type="text" id="subject" name="subject" placeholder="What is this regarding?">
                         <span class="error-message" id="subjectError"></span>
                     </div>
 
-                    <!-- Message Field -->
                     <div class="form-group">
                         <label for="message">Message <span class="required">*</span></label>
-                        <textarea
-                            id="message"
-                            name="message"
-                            placeholder="Write your message here..."
-                        ></textarea>
+                        <textarea id="message" name="message" placeholder="Write your message here..."></textarea>
                         <span class="error-message" id="messageError"></span>
                     </div>
 
                     <button type="submit" class="modal-submit" id="submitBtn">Send Message</button>
                 </form>
 
-                <!-- Status message (shown after form submission) -->
                 <div class="form-status" id="formStatus"></div>
             </div>
         </div>
@@ -751,32 +802,25 @@
 
     <!--
         =====================================================================
-        VIEW MESSAGES MODAL
+        VIEW MESSAGES MODAL (kept for script.js compatibility)
         =====================================================================
-        Shows all messages stored in localStorage.
-        Accessible via a button in the contact section.
     -->
     <div class="modal-overlay" id="messagesModal">
         <div class="modal modal-wide">
             <div class="modal-header">
-                <h3>Stored Messages</h3>
-                <button class="modal-close" onclick="closeMessagesModal()">&times;</button>
+                <h3>Stored <em>Messages</em></h3>
+                <button class="modal-close" onclick="closeMessagesModal()" aria-label="Close">&times;</button>
             </div>
             <div class="modal-body">
                 <p class="messages-intro">Messages are stored locally in your browser. In a production environment, these would be sent to a server.</p>
 
-                <!-- Message count and clear button -->
                 <div class="messages-toolbar">
                     <span class="message-count" id="messageCount">0 messages</span>
                     <button class="btn-clear" id="clearMessagesBtn" onclick="clearAllMessages()">Clear All</button>
                 </div>
 
-                <!-- Messages list container -->
-                <div class="messages-list" id="messagesList">
-                    <!-- Messages will be dynamically inserted here by JavaScript -->
-                </div>
+                <div class="messages-list" id="messagesList"></div>
 
-                <!-- Empty state (shown when no messages) -->
                 <div class="messages-empty" id="messagesEmpty">
                     <span class="empty-icon">&#128233;</span>
                     <p>No messages yet</p>
@@ -788,25 +832,15 @@
 
     <!--
         =====================================================================
-        SCROLL TO TOP BUTTON
+        SCROLL TO TOP
         =====================================================================
-        Floating button that appears when user scrolls down.
-        Clicking it smoothly scrolls back to the top of the page.
     -->
     <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
-        <!-- Upward arrow icon -->
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M18 15l-6-6-6 6"></path>
         </svg>
     </button>
 
-    <!--
-        =====================================================================
-        JAVASCRIPT
-        =====================================================================
-        External script file loaded at the end of body for better performance.
-        This ensures all HTML elements exist before JavaScript runs.
-    -->
     <script src="script.js?v=9"></script>
 </body>
 </html>
