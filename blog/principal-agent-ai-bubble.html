@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Everyone Sees the AI Risk. Almost No One Is Selling. | Kedar Phadke</title>
+    <meta name="description" content="In BofA's August 2026 survey, the managers who call an AI bubble the top risk are also the most invested in it. Why that is the principal-agent problem, not irrationality, and why waiting for markets to price the risk is a poor plan.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%230F1B2D'/%3E%3Ctext x='50' y='70' font-family='Georgia,serif' font-size='54' font-weight='500' font-style='italic' fill='%23B98E5D' text-anchor='middle'%3EKP%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css?v=13">
+    <style>
+        .article-wrap { max-width: 720px; margin: 0 auto; padding: 9rem var(--space-6) 4rem; }
+        .back-link { font-family: var(--font-sans); font-size: var(--text-sm); font-weight: 600; color: var(--bronze-soft); text-decoration: none; letter-spacing: 0.02em; }
+        .back-link:hover { color: var(--cream); }
+        .article-meta { font-family: var(--font-sans); font-size: var(--text-xs); letter-spacing: 0.1em; text-transform: uppercase; color: var(--bronze-soft); margin: 2rem 0 0.7rem; }
+        article h1 { font-family: var(--font-serif); font-size: var(--text-4xl); font-weight: 500; color: var(--cream); line-height: 1.12; margin: 0 0 1.6rem; }
+        article h2 { font-family: var(--font-serif); font-size: var(--text-2xl); font-weight: 500; color: var(--cream); margin: 2.6rem 0 0.9rem; }
+        article p { font-family: var(--font-sans); font-size: var(--text-lg); line-height: 1.85; color: var(--cream-80); margin: 0 0 1.3rem; }
+        article p strong { color: var(--cream); font-weight: 600; }
+        article a { color: var(--bronze-soft); text-decoration: underline; text-underline-offset: 3px; }
+        .pull { font-family: var(--font-serif); font-style: italic; font-size: var(--text-xl); color: var(--bronze-soft); border-left: 2px solid var(--bronze); padding-left: 1.3rem; margin: 2rem 0; line-height: 1.5; }
+        figure.chart { margin: 2.4rem 0; }
+        figure.chart img { width: 100%; height: auto; display: block; border-radius: 12px; border: 1px solid var(--cream-08); }
+        figure.chart figcaption { font-family: var(--font-sans); font-size: var(--text-sm); color: var(--cream-60); margin-top: 0.7rem; line-height: 1.6; }
+        .article-foot { margin-top: 3rem; padding-top: 1.6rem; border-top: 1px solid var(--cream-10); font-family: var(--font-sans); font-size: var(--text-sm); color: var(--cream-60); line-height: 1.7; }
+        .article-foot a { color: var(--bronze-soft); }
+        .article-foot h3 { font-family: var(--font-serif); font-size: var(--text-lg); font-weight: 500; color: var(--cream); margin: 1.4rem 0 0.5rem; }
+        .article-foot ul { padding-left: 1.2rem; margin: 0 0 1rem; }
+        .article-foot li { margin-bottom: 0.6rem; }
+    </style>
+</head>
+<body>
+    <nav class="scrolled">
+        <div class="nav-container">
+            <a href="/" class="logo">Kedar Phadke</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/#about">About</a></li>
+                <li><a href="/#building">Building</a></li>
+                <li><a href="/#skills">Skills</a></li>
+                <li><a href="/#experience">Experience</a></li>
+                <li><a href="/blog/">Writing</a></li>
+                <li><a href="/#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" onclick="document.getElementById('navLinks').classList.toggle('active')" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="article-wrap">
+        <a class="back-link" href="/blog/">&larr; All writing</a>
+        <p class="article-meta">26 August 2026 &middot; Economics &amp; Markets</p>
+
+        <article>
+            <h1>Everyone Sees the AI Risk. Almost No One Is Selling.</h1>
+
+            <p>Bank of America's August 2026 Global Fund Manager Survey highlights two numbers that sit surprisingly close together.</p>
+
+            <p>Among the more than 200 managers surveyed, cash levels have dropped to 3.5 per cent, one of the lowest readings since 1998. Global equity allocations are at their highest since November 2021. Meanwhile, 32 per cent of these managers see an AI bubble as the biggest tail risk in global markets, and 38 per cent believe hyperscaler AI spending is the most likely cause of a future systemic credit event.</p>
+
+            <p>Think about that for a moment. The same people who say AI is the biggest threat to their portfolios are also investing the most in it, and they are not backing away from the trade they just called risky. At first glance, this seems irrational. But it is not.</p>
+
+            <figure class="chart">
+                <img src="principal-agent-blog.png" alt="Two columns. What managers say: an AI bubble is the top tail risk (32%), hyperscaler capex is the likeliest credit-event trigger (38%). What managers do: cash down to 3.5% near a record low, equity allocation at its highest since November 2021. A double-headed arrow between them marks the principal-agent gap.">
+                <figcaption>The distance between what managers say and what they hold is not irrational. It is the principal-agent gap, and it is what benchmarking produces. Source: BofA Global Fund Manager Survey, August 2026.</figcaption>
+            </figure>
+
+            <h2>The Principal-Agent Problem Hiding in Plain Sight</h2>
+
+            <p>Economists have a name for this. It is the principal-agent problem, and it arises when the person managing an asset is not the person who owns it. A fund manager's job is not just to maximise returns. It is also to avoid falling behind the benchmark. If the benchmark is full of AI positions, leaving AI, even when the manager believes it is overvalued, means underperforming, no matter whether that belief turns out to be right.</p>
+
+            <p>Benchmarks hold this power because they are how a manager is judged, paid, and kept. Beating the market is the reward, but falling behind the index is what ends careers. So the index, not the manager's own conviction, quietly sets how much risk they are able to take.</p>
+
+            <p>John Maynard Keynes described this in 1936. He noted that professional investors do not focus on an asset's true value, but on what most people will think it is worth. This is not a personal failing. It is a logical response to the incentives they face. A manager who calls the AI bubble correctly but six months too early still loses assets, as clients move to peers who stayed in the trade. Being right too soon can harm a career almost as much as being wrong.</p>
+
+            <p>The most famous illustration comes from one of the best investors who ever lived. In early 2000, Stanley Druckenmiller, then the lead manager of George Soros's Quantum Fund, had correctly judged the dot-com boom to be a bubble and sold out of technology. He then watched other managers at the firm keep winning without him, could not stand being left behind, and bought about $6 billion of tech stocks near the top. He later admitted he knew it was a mistake even as he made it. Within six weeks he had lost roughly $3 billion and left Soros. He was right about the bubble, and being right early cost him anyway. If relative-performance pressure can do that to Druckenmiller, consider what a formal benchmark does to an ordinary manager.</p>
+
+            <p class="pull">Being right too soon can harm a career almost as much as being wrong.</p>
+
+            <h2>What the Data Really Means for Decision-Makers</h2>
+
+            <p>This is a structural issue. Markets can hold both recognised risks and concentrated exposure for longer than most investors can wait, or stay in their jobs. Managers do see the risk. But seeing a risk and acting on it are two different things, and the way the industry uses benchmarks keeps them apart.</p>
+
+            <p>BofA's own strategists point out that cash levels this low usually signal it is time to sell. The survey shows the bank's clients ignoring the very model the bank's own team runs. Yet both sides are acting logically, given the incentives each faces. This is exactly what the principal-agent problem predicts.</p>
+
+            <p>If you are allocating capital to an AI-related business, there is a clear takeaway. Waiting for public markets to reflect a possible AI slowdown is not a sound plan. When principal-agent friction is this visible, markets are not reliable for price discovery in the short term. If a correction comes, it will likely be faster and larger than current prices suggest, because so much risk has been recognised but not acted upon.</p>
+
+            <p>For students and early-career professionals, this lesson lasts. Knowing a trade is crowded and being able to act on that knowledge are not the same thing. Understanding why the two come apart is one of the more durable ideas in modern finance, and it reaches well beyond investing.</p>
+
+            <p>You can see the same trap inside companies. A team will keep funding a failing project long after most people privately know it is failing, because whoever says so out loud owns the failure, while everyone who stays silent shares it. Breaking from the group is the real risk, exactly as it is for the manager who distrusts a trade but holds it anyway. The asset changes. The incentive does not.</p>
+
+            <p>So the BofA data raises a genuine question for anyone who manages money or runs a capital allocation process. If you privately believe AI valuations are stretched, what is the specific incentive structure inside your organisation that would let you act on that view? If none exists, what does that tell you about who is really making your decisions?</p>
+
+		#AI #InvestmentFinance #Economics #Markets #FutureOfWork
+
+            <div class="article-foot">
+                <p>The anchor is an institutional survey and a well-documented market episode, not a vendor or marketing source.</p>
+
+                <h3>Sources</h3>
+                <ul>
+                    <li>BofA August 2026 Global Fund Manager Survey (led by Michael Hartnett; 203 investors, $581 billion): cash at 3.5 per cent, the sixth-lowest since 1998 and a trigger of the contrarian sell signal at or below 4 per cent; net 56 per cent equity overweight, the highest since November 2021; an AI bubble the top tail risk at 32 per cent; hyperscaler capex the most likely systemic-credit-event trigger at 38 per cent. Coverage at <a href="https://www.benzinga.com/markets/equities/26/08/61270333/bofa-august-fund-manager-survey-wall-street-bullishness-warning-sell-signal" target="_blank" rel="noopener">Benzinga</a>, <a href="https://www.investing.com/news/stock-market-news/ai-bubble-named-top-tail-risk-in-bofa-survey-time-to-rotate-tech-profits-93CH-4865313" target="_blank" rel="noopener">Investing.com</a>, and <a href="https://finance.yahoo.com/markets/articles/investor-bullishness-surges-bofa-survey-141800790.html" target="_blank" rel="noopener">Yahoo Finance</a>.</li>
+                    <li>Stanley Druckenmiller and the 2000 dot-com bubble: after correctly avoiding tech and exiting in January 2000, he capitulated near the March peak, bought about $6 billion of tech stocks, lost roughly $3 billion within six weeks, and left Soros's Quantum Fund, which finished the period down about 22 per cent. In his own account he knew it was a mistake as he made it. <a href="https://novelinvestor.com/stan-druckenmillers-worst-mistake-ever/" target="_blank" rel="noopener">Novel Investor</a> and <a href="https://www.banyantreeinvestmentgroup.com/insights/three-stopped-calls-before-a-us6bn-technology-purchase" target="_blank" rel="noopener">Banyan Tree Investment Group</a>.</li>
+                    <li>John Maynard Keynes, The General Theory of Employment, Interest and Money (1936), Chapter 12, on the professional investor anticipating consensus rather than intrinsic value. Paraphrased, not quoted.</li>
+                </ul>
+
+                <p>A version of this essay was first shared on <a href="https://www.linkedin.com/in/kedarphadke" target="_blank" rel="noopener">LinkedIn</a>.</p>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Kedar Phadke, PhD &nbsp;&middot;&nbsp; All rights reserved</p>
+    </footer>
+</body>
+</html>
