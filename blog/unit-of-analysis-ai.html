@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two Numbers From the Same Survey, Measuring Two Different Things | Kedar Phadke</title>
+    <meta name="description" content="McKinsey finds 80% of employees say AI made them more productive, but only 37% of organisations report any earnings impact. Why that gap is a unit-of-analysis problem, not proof AI is overhyped, and what it means for how boards measure returns.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%230F1B2D'/%3E%3Ctext x='50' y='70' font-family='Georgia,serif' font-size='54' font-weight='500' font-style='italic' fill='%23B98E5D' text-anchor='middle'%3EKP%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css?v=13">
+    <style>
+        .article-wrap { max-width: 720px; margin: 0 auto; padding: 9rem var(--space-6) 4rem; }
+        .back-link { font-family: var(--font-sans); font-size: var(--text-sm); font-weight: 600; color: var(--bronze-soft); text-decoration: none; letter-spacing: 0.02em; }
+        .back-link:hover { color: var(--cream); }
+        .article-meta { font-family: var(--font-sans); font-size: var(--text-xs); letter-spacing: 0.1em; text-transform: uppercase; color: var(--bronze-soft); margin: 2rem 0 0.7rem; }
+        article h1 { font-family: var(--font-serif); font-size: var(--text-4xl); font-weight: 500; color: var(--cream); line-height: 1.12; margin: 0 0 1.6rem; }
+        article h2 { font-family: var(--font-serif); font-size: var(--text-2xl); font-weight: 500; color: var(--cream); margin: 2.6rem 0 0.9rem; }
+        article p { font-family: var(--font-sans); font-size: var(--text-lg); line-height: 1.85; color: var(--cream-80); margin: 0 0 1.3rem; }
+        article p strong { color: var(--cream); font-weight: 600; }
+        article a { color: var(--bronze-soft); text-decoration: underline; text-underline-offset: 3px; }
+        .pull { font-family: var(--font-serif); font-style: italic; font-size: var(--text-xl); color: var(--bronze-soft); border-left: 2px solid var(--bronze); padding-left: 1.3rem; margin: 2rem 0; line-height: 1.5; }
+        figure.chart { margin: 2.4rem 0; }
+        figure.chart img { width: 100%; height: auto; display: block; border-radius: 12px; border: 1px solid var(--cream-08); }
+        figure.chart figcaption { font-family: var(--font-sans); font-size: var(--text-sm); color: var(--cream-60); margin-top: 0.7rem; line-height: 1.6; }
+        .article-foot { margin-top: 3rem; padding-top: 1.6rem; border-top: 1px solid var(--cream-10); font-family: var(--font-sans); font-size: var(--text-sm); color: var(--cream-60); line-height: 1.7; }
+        .article-foot a { color: var(--bronze-soft); }
+        .article-foot h3 { font-family: var(--font-serif); font-size: var(--text-lg); font-weight: 500; color: var(--cream); margin: 1.4rem 0 0.5rem; }
+        .article-foot ul { padding-left: 1.2rem; margin: 0 0 1rem; }
+        .article-foot li { margin-bottom: 0.6rem; }
+    </style>
+</head>
+<body>
+    <nav class="scrolled">
+        <div class="nav-container">
+            <a href="/" class="logo">Kedar Phadke</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/#about">About</a></li>
+                <li><a href="/#building">Building</a></li>
+                <li><a href="/#skills">Skills</a></li>
+                <li><a href="/#experience">Experience</a></li>
+                <li><a href="/blog/">Writing</a></li>
+                <li><a href="/#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" onclick="document.getElementById('navLinks').classList.toggle('active')" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="article-wrap">
+        <a class="back-link" href="/blog/">&larr; All writing</a>
+        <p class="article-meta">9 September 2026 &middot; Statistics &amp; AI</p>
+
+        <article>
+            <h1>Two Numbers From the Same Survey, Measuring Two Different Things</h1>
+
+            <p>According to the latest McKinsey State of AI survey, 80 per cent of employees say AI has made them more productive, but only 37 per cent of organisations report any impact on their earnings. The survey included 1,719 respondents and was published recently. Many articles have described this as a puzzle, or used it as evidence that AI is overhyped. I think it points to something more specific. It is a measurement error.</p>
+
+            <figure class="chart">
+                <img src="unit-of-analysis-blog.png" alt="Two panels. Measured at the individual: 80% say AI made them more productive. Measured at the firm: 37% report any EBIT impact, 6% call it significant. A broken dashed arrow with a question mark runs between them.">
+                <figcaption>Same survey. Two different units of analysis. Individual speed does not automatically become firm margin. Source: McKinsey State of AI, 2026.</figcaption>
+            </figure>
+
+            <h2>Two Numbers, Two Different Questions</h2>
+
+            <p>What a number measures is not always the same as what we conclude from it. Productivity at the individual level considers whether someone finished a task more quickly. Earnings at the organisational level ask whether the organisation gained more value than it spent. These ideas are related, but they are not the same, and they only connect if something specific links them.</p>
+
+            <p>Statisticians call this the unit of analysis problem. Data collected from individuals does not automatically add up to conclusions about the whole organisation. For example, if a worker finishes a report in twenty minutes instead of forty, they are faster. However, what happens to those saved twenty minutes depends on how the organisation is structured. The time could be used for more valuable work, filled with extra tasks, or lost to additional coordination and review, which AI often requires. The survey does not distinguish between these outcomes.</p>
+
+            <h2>What Boards Should Actually Be Asking</h2>
+
+            <p>Asking, "do your employees feel more productive with AI?" is a real and valid question. But it is not the same as asking how individual speed leads to higher profits. The first question gives positive survey results. The second requires a clear link from faster work to extra time, then to using that time for activities that increase revenue or reduce costs, and finally to higher earnings. Most organisations using AI today can only demonstrate the first step.</p>
+
+            <p>McKinsey's data shows where the link breaks. Only a small group, about six per cent called high performers, report significant earnings from AI, with at least five per cent of EBIT coming from it. These organisations have one thing in common. They redesigned their workflows around AI rather than simply adding it to existing processes. In other words, the companies that converted faster work into higher earnings did so by changing how work is organised, not merely by providing staff with better tools. Microsoft's 2026 research supports this, finding that about two thirds of AI's impact comes from organisational changes, and only a third from individual skills.</p>
+
+            <p class="pull">The firms that turned individual speed into earnings did it by changing the system the work runs on, not by handing better tools to individuals.</p>
+
+            <h2>The Implication Worth Taking Seriously</h2>
+
+            <p>When a leadership team approves AI investments based solely on employee productivity surveys, they are measuring input, not output. This is like counting gym visits to judge heart health. Going to the gym matters, but it is not sufficient. The real question is whether anything changes where performance is actually measured.</p>
+
+            <p>In practice, the test is simple. Look at the unit economics of the function where AI was deployed, and see whether the freed-up time shows up there as higher revenue or lower cost, rather than only as a better survey score.</p>
+
+            <p>The 37 per cent who report some earnings impact, and the six per cent who report a significant one, have managed to connect individual gains to company results. McKinsey's data shows they did this by redesigning workflows. Yet the larger question is why some organisations succeed at this redesign while most do not. This is really a question about how organisations are structured, not merely about the technology.</p>
+
+            <p>If you are developing your analytical skills, there is a useful habit to cultivate. Before using a statistic, check what level it measures and what level the conclusion addresses. If those levels differ, the conclusion is weak, however confident it sounds. The 80 per cent and 37 per cent figures are a good example. Both are accurate, but they answer different questions.</p>
+
+            <p>If your organisation already surveys employees about AI productivity, what process do you have to turn those individual gains into results that show up on the income statement?</p>
+
+		#AI #Statistics #FutureOfWork #Leadership #Economics
+
+            <div class="article-foot">
+                <p>The anchor is McKinsey's flagship annual survey, whose central finding runs against the promotional interest of a firm whose clients invest in AI, and it is verified against McKinsey's own report rather than secondary coverage.</p>
+
+                <h3>Sources</h3>
+                <ul>
+                    <li>McKinsey, "The State of AI in 2026" (published 25 August 2026; online survey of 1,719 respondents across 97 nations, fielded 4 May to 8 June 2026): 80 per cent of respondents say AI improved their own productivity; 37 per cent attribute at least some EBIT impact to AI, essentially unchanged from 2025; about 6 per cent are "high performers" attributing at least 5 per cent of EBIT to AI and calling the impact significant, and these firms fundamentally redesign their workflows around AI. <a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai" target="_blank" rel="noopener">McKinsey</a>.</li>
+                    <li>Microsoft's 2026 research, cited for the finding that roughly two-thirds of AI's measured impact traces to organisational factors and about one-third to individual skill, used here as independent corroboration of the same pattern.</li>
+                </ul>
+
+                <p>A version of this essay was first shared on <a href="https://www.linkedin.com/in/kedarphadke" target="_blank" rel="noopener">LinkedIn</a>.</p>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Kedar Phadke, PhD &nbsp;&middot;&nbsp; All rights reserved</p>
+    </footer>
+</body>
+</html>
