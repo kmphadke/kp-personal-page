@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Who Pays for the Rating? | Kedar Phadke</title>
+    <meta name="description" content="Banks have asked the agencies to grant OpenAI and Anthropic investment-grade ratings at IPO, despite heavy losses. Why the issuer-pays model, and the absence of any track record, means the rating cannot function as an independent signal here.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%230F1B2D'/%3E%3Ctext x='50' y='70' font-family='Georgia,serif' font-size='54' font-weight='500' font-style='italic' fill='%23B98E5D' text-anchor='middle'%3EKP%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css?v=13">
+    <style>
+        .article-wrap { max-width: 720px; margin: 0 auto; padding: 9rem var(--space-6) 4rem; }
+        .back-link { font-family: var(--font-sans); font-size: var(--text-sm); font-weight: 600; color: var(--bronze-soft); text-decoration: none; letter-spacing: 0.02em; }
+        .back-link:hover { color: var(--cream); }
+        .article-meta { font-family: var(--font-sans); font-size: var(--text-xs); letter-spacing: 0.1em; text-transform: uppercase; color: var(--bronze-soft); margin: 2rem 0 0.7rem; }
+        article h1 { font-family: var(--font-serif); font-size: var(--text-4xl); font-weight: 500; color: var(--cream); line-height: 1.12; margin: 0 0 1.6rem; }
+        article h2 { font-family: var(--font-serif); font-size: var(--text-2xl); font-weight: 500; color: var(--cream); margin: 2.6rem 0 0.9rem; }
+        article p { font-family: var(--font-sans); font-size: var(--text-lg); line-height: 1.85; color: var(--cream-80); margin: 0 0 1.3rem; }
+        article p strong { color: var(--cream); font-weight: 600; }
+        article a { color: var(--bronze-soft); text-decoration: underline; text-underline-offset: 3px; }
+        .pull { font-family: var(--font-serif); font-style: italic; font-size: var(--text-xl); color: var(--bronze-soft); border-left: 2px solid var(--bronze); padding-left: 1.3rem; margin: 2rem 0; line-height: 1.5; }
+        figure.chart { margin: 2.4rem 0; }
+        figure.chart img { width: 100%; height: auto; display: block; border-radius: 12px; border: 1px solid var(--cream-08); }
+        figure.chart figcaption { font-family: var(--font-sans); font-size: var(--text-sm); color: var(--cream-60); margin-top: 0.7rem; line-height: 1.6; }
+        .article-foot { margin-top: 3rem; padding-top: 1.6rem; border-top: 1px solid var(--cream-10); font-family: var(--font-sans); font-size: var(--text-sm); color: var(--cream-60); line-height: 1.7; }
+        .article-foot a { color: var(--bronze-soft); }
+        .article-foot h3 { font-family: var(--font-serif); font-size: var(--text-lg); font-weight: 500; color: var(--cream); margin: 1.4rem 0 0.5rem; }
+        .article-foot ul { padding-left: 1.2rem; margin: 0 0 1rem; }
+        .article-foot li { margin-bottom: 0.6rem; }
+    </style>
+</head>
+<body>
+    <nav class="scrolled">
+        <div class="nav-container">
+            <a href="/" class="logo">Kedar Phadke</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/#about">About</a></li>
+                <li><a href="/#building">Building</a></li>
+                <li><a href="/#skills">Skills</a></li>
+                <li><a href="/#experience">Experience</a></li>
+                <li><a href="/blog/">Writing</a></li>
+                <li><a href="/#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" onclick="document.getElementById('navLinks').classList.toggle('active')" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="article-wrap">
+        <a class="back-link" href="/blog/">&larr; All writing</a>
+        <p class="article-meta">16 September 2026 &middot; Investment Finance &amp; AI</p>
+
+        <article>
+            <h1>Who Pays for the Rating?</h1>
+
+            <p>The Financial Times reports that Morgan Stanley and Goldman Sachs have asked Moody's, Fitch, and S&amp;P to provide OpenAI and Anthropic with investment-grade credit ratings when they become public companies. Both firms are currently making losses. OpenAI recorded an operating loss of roughly $20.9 billion on $13.1 billion of revenue in 2025, and neither expects to achieve profitability before the end of the decade.</p>
+
+            <p>Most news reports focus on whether the agencies will agree to grant these ratings. However, that is not the most important question.</p>
+
+            <h2>The Rating Is Not the Risk Assessment</h2>
+
+            <p>Credit rating agencies use an issuer-pays model, meaning the company seeking the rating pays the agency to provide it. This is standard practice for nearly every corporate bond and is a recognised conflict of interest. What sets this situation apart is not the payment model itself, but the extra factors involved.</p>
+
+            <figure class="chart">
+                <img src="issuer-pays-blog.png" alt="A flow diagram. The AI company gives a listing mandate to the investment bank, which earns from both the listing and the debt. The bank asks the rating agency, paid by the issuer, for an investment-grade rating. The agency passes the signal to bond buyers, pension funds and insurers.">
+                <figcaption>When the seller pays the certifier, the certificate loses its value to the buyer. After George Akerlof, 1970.</figcaption>
+            </figure>
+
+            <p>First, the banks requesting the ratings are also expected to underwrite the IPOs. They earn fees both from a successful public offering and from the debt sales enabled by a favourable rating. Both sources of income rely on a positive result. Second, and perhaps most significantly, the agencies are being asked to rate companies with no earnings history and operating in a business model with no historical precedent. Traditional rating methods were designed for firms with steady cash flows and established interest coverage, which these companies do not yet possess.</p>
+
+            <p>So the real issue is not that someone pays for the rating; someone always does. The problem is that there is no track record on which to base a credit assessment, and those requesting the rating stand to gain more if the outcome is positive.</p>
+
+            <h2>What the Rating Would Actually Move</h2>
+
+            <p>It is important to be clear about what an investment-grade rating means in this context. It is not simply a question of securing cheaper loans. For example, Nvidia has guaranteed up to $105 billion in lease obligations for OpenAI's data centre in Ohio, but that guarantee ceases once OpenAI attains a sufficiently high rating. Google and Broadcom have made similar commitments for Anthropic. Thus, the rating does more than grant access to the bond market. It transfers tens of billions of dollars in risk from these technology companies to those who purchase the bonds.</p>
+
+            <p>The buyers are a specific group. Investment-grade status is what allows pension funds, insurers, and endowments, which are institutions permitted to hold only higher-rated debt, to purchase these bonds in the first place. The rating is intended as an independent signal, enabling large investors with strict requirements to trust an asset without carrying out all the research themselves. That is its principal role in the system.</p>
+
+            <p class="pull">The rating does more than open the bond market. It shifts tens of billions of risk off the technology companies and onto whoever buys the bonds.</p>
+
+            <h2>A Problem Akerlof Would Recognise</h2>
+
+            <p>In 1970, George Akerlof demonstrated that when the party certifying a product's quality is paid by the seller, the certificate gradually loses its value for the buyer. The information flows in the wrong direction. His solution was independent verification by someone with no interest in the result, which the issuer-pays model cannot provide, particularly when the certifier has no track record for comparison.</p>
+
+            <p>There is a recent example as well as a historical one. When SpaceX received investment-grade ratings from all three agencies after its IPO earlier this year and raised approximately $25 billion in bonds, those bonds traded at almost junk prices within days. The market promptly adjusted the risk, revealing what the rating did and did not represent. The 2008 misrating of mortgage securities is a more significant precedent, but SpaceX is a recent case involving the same agencies and a similar type of company.</p>
+
+            <h2>What This Means</h2>
+
+            <p>If you are a trustee or chief investment officer with an investment-grade mandate, it is important to recognise the difference between a rating as a minimum requirement and a rating as a genuine credit assessment. The minimum may be valid, as it allows you to purchase the bond under your rules. However, for a company that has never made a profit and operates in a new type of business, the assessment behind the rating might not exist in the way your mandate assumes. The label permits your entry, but it does not reveal what is inside.</p>
+
+            <p>If you are studying finance now, this is not merely a textbook example. It is taking place at present, involving some of the world's most significant companies. The lesson is simple and enduring. Before placing trust in a signal, ask who paid for it, and whether the person issuing the rating had anything tangible to measure.</p>
+
+            <p>Here is a question for anyone on an investment committee or advising a fixed-income mandate. What would genuinely make you trust an investment-grade rating for a company with no profit history and no precedent? If those conditions cannot truly be met, what does your mandate's rating requirement really protect you from?</p>
+
+		#InvestmentFinance #CreditRatings #AI #Markets #Economics
+
+            <div class="article-foot">
+                <p>The anchor is independent financial journalism on a matter of public record, verified across multiple outlets, not a vendor or marketing source.</p>
+
+                <h3>Sources</h3>
+                <ul>
+                    <li>Morgan Stanley and Goldman Sachs have asked S&amp;P, Moody's, and Fitch to grant OpenAI and Anthropic investment-grade ratings effective at their planned listings, so that pension funds and insurers can buy their bonds despite current losses. Financial Times, 8 September 2026, carried by the Reuters wire and reported independently by <a href="https://finance.yahoo.com/technology/ai/articles/openai-anthropic-seek-investment-grade-121024955.html" target="_blank" rel="noopener">Yahoo Finance</a> and others. OpenAI's roughly $20.9 billion 2025 operating loss on $13.1 billion of revenue traces to the same reporting and is consistent with widely reported financials.</li>
+                    <li>Nvidia has guaranteed up to $105 billion of lease obligations for OpenAI's Ohio campus, and that guarantee ends once OpenAI secures a satisfactory credit rating (Nvidia regulatory filing, per the same coverage); Google and Broadcom provide comparable backing for Anthropic. SpaceX secured investment-grade ratings after its 2026 listing and raised about $25 billion in bonds, which then traded near junk pricing within days.</li>
+                    <li>George Akerlof, "The Market for 'Lemons': Quality Uncertainty and the Market Mechanism," Quarterly Journal of Economics (1970). The issuer-pays conflict is documented by the US SEC (2008) and the Financial Crisis Inquiry Commission (2011).</li>
+                </ul>
+
+                <p>A version of this essay was first shared on <a href="https://www.linkedin.com/in/kedarphadke" target="_blank" rel="noopener">LinkedIn</a>.</p>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Kedar Phadke, PhD &nbsp;&middot;&nbsp; All rights reserved</p>
+    </footer>
+</body>
+</html>
