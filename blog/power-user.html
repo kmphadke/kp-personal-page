@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Power User Is Not the Average User | Kedar Phadke</title>
+    <meta name="description" content="An AI scribe study found heavy users saved 2.5 minutes per patient visit, but everyone who signed up saved 1.21. Why rollout decisions should use intention-to-treat, the average across everyone a tool is offered to.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%230F1B2D'/%3E%3Ctext x='50' y='70' font-family='Georgia,serif' font-size='54' font-weight='500' font-style='italic' fill='%23B98E5D' text-anchor='middle'%3EKP%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css?v=13">
+    <style>
+        .article-wrap { max-width: 720px; margin: 0 auto; padding: 9rem var(--space-6) 4rem; }
+        .back-link { font-family: var(--font-sans); font-size: var(--text-sm); font-weight: 600; color: var(--bronze-soft); text-decoration: none; letter-spacing: 0.02em; }
+        .back-link:hover { color: var(--cream); }
+        .article-meta { font-family: var(--font-sans); font-size: var(--text-xs); letter-spacing: 0.1em; text-transform: uppercase; color: var(--bronze-soft); margin: 2rem 0 0.7rem; }
+        article h1 { font-family: var(--font-serif); font-size: var(--text-4xl); font-weight: 500; color: var(--cream); line-height: 1.12; margin: 0 0 1.6rem; }
+        article h2 { font-family: var(--font-serif); font-size: var(--text-2xl); font-weight: 500; color: var(--cream); margin: 2.6rem 0 0.9rem; }
+        article p { font-family: var(--font-sans); font-size: var(--text-lg); line-height: 1.85; color: var(--cream-80); margin: 0 0 1.3rem; }
+        article p strong { color: var(--cream); font-weight: 600; }
+        article a { color: var(--bronze-soft); text-decoration: underline; text-underline-offset: 3px; }
+        .pull { font-family: var(--font-serif); font-style: italic; font-size: var(--text-xl); color: var(--bronze-soft); border-left: 2px solid var(--bronze); padding-left: 1.3rem; margin: 2rem 0; line-height: 1.5; }
+        figure.chart { margin: 2.4rem 0; }
+        figure.chart img { width: 100%; height: auto; display: block; border-radius: 12px; border: 1px solid var(--cream-08); }
+        figure.chart figcaption { font-family: var(--font-sans); font-size: var(--text-sm); color: var(--cream-60); margin-top: 0.7rem; line-height: 1.6; }
+        .article-foot { margin-top: 3rem; padding-top: 1.6rem; border-top: 1px solid var(--cream-10); font-family: var(--font-sans); font-size: var(--text-sm); color: var(--cream-60); line-height: 1.7; }
+        .article-foot a { color: var(--bronze-soft); }
+        .article-foot h3 { font-family: var(--font-serif); font-size: var(--text-lg); font-weight: 500; color: var(--cream); margin: 1.4rem 0 0.5rem; }
+        .article-foot ul { padding-left: 1.2rem; margin: 0 0 1rem; }
+        .article-foot li { margin-bottom: 0.6rem; }
+    </style>
+</head>
+<body>
+    <nav class="scrolled">
+        <div class="nav-container">
+            <a href="/" class="logo">Kedar Phadke</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/#about">About</a></li>
+                <li><a href="/#building">Building</a></li>
+                <li><a href="/#skills">Skills</a></li>
+                <li><a href="/#experience">Experience</a></li>
+                <li><a href="/blog/">Writing</a></li>
+                <li><a href="/#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" onclick="document.getElementById('navLinks').classList.toggle('active')" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="article-wrap">
+        <a class="back-link" href="/blog/">&larr; All writing</a>
+        <p class="article-meta">4 November 2026 &middot; Statistics &amp; AI</p>
+
+        <article>
+            <h1>The Power User Is Not the Average User</h1>
+
+            <p>On 27 October 2026, Annals of Internal Medicine published a study of an AI scribe used in a 14-hospital health system in Boston. An AI scribe listens to a consultation between doctor and patient and drafts the clinical note. The study covered 902 clinicians in outpatient clinics who signed up for the tool, and more than 1.6 million patient visits between July 2024 and January 2026.</p>
+
+            <p>The study reports two numbers that are easy to confuse. Clinicians who used the scribe heavily spent 2.5 fewer minutes per patient visit working on their notes. Across everyone who signed up, the saving was 1.21 minutes. Of those 902 clinicians, 297 never used it at all.</p>
+
+            <p>If you are deciding whether to roll out a tool like this, only one of those numbers matters.</p>
+
+            <figure class="chart">
+                <img src="power-user-blog.png" alt="Graphic titled The power user is not the average user. A bar chart shows minutes saved per patient visit on notes, with 95 per cent confidence intervals: heavy users 2.50 minutes, and everyone who signed up 1.21 minutes, including 297 clinicians who never used the tool. A third row notes that the saving across every clinician in the health system was not measured and may be lower. A box marked as the author&rsquo;s view shows saving per user multiplied by the share who use it equals what the organisation gets.">
+                <figcaption>Figures come from the study in Annals of Internal Medicine, 27 October 2026, and are the immediate change at sign-up estimated by the study. The formula is my interpretation, not a calculation from the study.</figcaption>
+            </figure>
+
+            <h2>Who Chose to Use It</h2>
+
+            <p>Statisticians have names for these two kinds of number. Picture a company that offers every employee free gym membership. One question is how much fitter the regular gym-goers become. Statisticians call this treatment-on-the-treated. Another question is how much fitter the whole workforce becomes because the company made the offer. This is called intention-to-treat, because it counts everyone the company meant to reach, including those who never went.</p>
+
+            <p>The two answers can be very different. The people who go to the gym most were probably fitter and keener to begin with. That is why international rules for drug trials judge a medicine mainly on everyone who was assigned to receive it, not only on the patients who took every dose.</p>
+
+            <p>The same is true here. Nobody told these clinicians to become heavy users. They chose to. The clinicians who rely on the tool most may be the ones whose work suits it best. The authors say so themselves. They warn that the study cannot rule out hidden differences between the groups.</p>
+
+            <h2>Where the Gap Comes From</h2>
+
+            <p>None of this means the tool does not work. A second study, of emergency doctors, compared each doctor&rsquo;s notes with and without the scribe. It found a similar saving, about 2.4 minutes per note. For people who use it, the saving looks real.</p>
+
+            <p>The gap is between the people who use it and the people who do not. In Boston, a third of the clinicians who signed up never used it at all, and some may have had good reasons. An organisation does not get the saving per user. It gets the saving per user multiplied by the share of people who actually use it. That share depends on people, not on the technology.</p>
+
+            <h2>Budget for Everyone You Offer It To</h2>
+
+            <p>The same trap appears in AI business cases everywhere. A case built on what the keenest users achieved quietly assumes everyone will behave like them. The keen users are telling the truth about themselves. They are just not typical.</p>
+
+            <p>So I think a rollout should be judged on the lower number, the average across everyone offered the tool, including those who will never open it. Even 1.21 may be generous, because it only counts clinicians who signed up, not everyone in the health system. If the case only works at the heavy-user number, roll the tool out to people like the heavy users, not to everyone.</p>
+
+            <p>A fair objection is that use spreads over time, so today&rsquo;s average understates next year&rsquo;s. But that is a forecast, and it needs its own evidence. It should not be slipped in through the heavy-user figure.</p>
+
+            <p>Leaders should ask every internal AI pilot one question. Of everyone we offered this to, what changed? Students should build one habit. Whenever you read that users of something did better, ask who chose to become a user, and why.</p>
+
+            <p class="pull">Budget for everyone you offer it to.</p>
+
+            <p>If you have led an AI rollout, what share of the people you offered it to were still using it six months later, and did your business case assume that share?</p>
+
+            <div class="article-foot">
+                <p>The Boston study is observational, so it shows links rather than proof of cause and effect, and signing up for the tool was itself a choice. Its figures are estimates of the immediate change at sign-up. The abstract implies that clinicians who never used the scribe also saw a small change, so the gap is not simply users against zero. The emergency-department study compares the same doctors with and without the scribe, in a different setting. One co-author of the Boston study is reported to be affiliated with Heidi Health, the vendor of the tool; disclosures are published with the article. The argument about budgeting for uptake is my interpretation.</p>
+
+                <h3>Sources</h3>
+                <ul>
+                    <li>Sara E. Booth, Jennifer P. Stevens and colleagues, <a href="https://doi.org/10.7326/ANNALS-25-05294" target="_blank" rel="noopener">&ldquo;Impact of Unrestricted Artificial Intelligence Scribe Deployment in a Single Health System on Clinician Workload and Productivity: A Quality Improvement Study&rdquo;</a>, Annals of Internal Medicine, 27 October 2026. 902 outpatient clinicians enrolled in the Heidi AI scribe (605 users, 297 enrolled nonusers) in a 14-hospital Boston health system; 1,637,227 encounters from 1 July 2024 to 31 January 2026. Enrolment was associated with an immediate reduction in note-active time of 1.21 minutes (95% CI 0.68 to 1.74), and high users with 2.50 minutes (CI 1.45 to 3.55). No differences in same-day or after-hours note closure or wRVUs.</li>
+                    <li>Wayne A. Martini and colleagues, <a href="https://doi.org/10.1016/j.annemergmed.2026.08.737" target="_blank" rel="noopener">&ldquo;Ambient Artificial Intelligence Scribe Use and Objective Documentation Effort Among Emergency Physicians&rdquo;</a>, Annals of Emergency Medicine, 27 October 2026. 275 attending physicians across 20 emergency departments; a within-physician comparison of AI-scribed and unassisted notes found about 2.4 minutes less active time after adjustment.</li>
+                    <li>International Council for Harmonisation, E9 Statistical Principles for Clinical Trials, section 5.2.1, on the intention-to-treat principle.</li>
+                </ul>
+
+                <p>A version of this essay was first shared on <a href="https://www.linkedin.com/in/kedarphadke" target="_blank" rel="noopener">LinkedIn</a>.</p>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Kedar Phadke, PhD &nbsp;&middot;&nbsp; All rights reserved</p>
+    </footer>
+</body>
+</html>
