@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Tomato Farmer&rsquo;s Problem | Kedar Phadke</title>
+    <meta name="description" content="US computer science enrolment fell 12.4% in autumn 2026. Read through the cobweb model, students choosing on today&rsquo;s job market may be swinging supply too far, setting up a shortage of graduates in the years ahead.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%230F1B2D'/%3E%3Ctext x='50' y='70' font-family='Georgia,serif' font-size='54' font-weight='500' font-style='italic' fill='%23B98E5D' text-anchor='middle'%3EKP%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css?v=13">
+    <style>
+        .article-wrap { max-width: 720px; margin: 0 auto; padding: 9rem var(--space-6) 4rem; }
+        .back-link { font-family: var(--font-sans); font-size: var(--text-sm); font-weight: 600; color: var(--bronze-soft); text-decoration: none; letter-spacing: 0.02em; }
+        .back-link:hover { color: var(--cream); }
+        .article-meta { font-family: var(--font-sans); font-size: var(--text-xs); letter-spacing: 0.1em; text-transform: uppercase; color: var(--bronze-soft); margin: 2rem 0 0.7rem; }
+        article h1 { font-family: var(--font-serif); font-size: var(--text-4xl); font-weight: 500; color: var(--cream); line-height: 1.12; margin: 0 0 1.6rem; }
+        article h2 { font-family: var(--font-serif); font-size: var(--text-2xl); font-weight: 500; color: var(--cream); margin: 2.6rem 0 0.9rem; }
+        article p { font-family: var(--font-sans); font-size: var(--text-lg); line-height: 1.85; color: var(--cream-80); margin: 0 0 1.3rem; }
+        article p strong { color: var(--cream); font-weight: 600; }
+        article a { color: var(--bronze-soft); text-decoration: underline; text-underline-offset: 3px; }
+        .pull { font-family: var(--font-serif); font-style: italic; font-size: var(--text-xl); color: var(--bronze-soft); border-left: 2px solid var(--bronze); padding-left: 1.3rem; margin: 2rem 0; line-height: 1.5; }
+        figure.chart { margin: 2.4rem 0; }
+        figure.chart img { width: 100%; height: auto; display: block; border-radius: 12px; border: 1px solid var(--cream-08); }
+        figure.chart figcaption { font-family: var(--font-sans); font-size: var(--text-sm); color: var(--cream-60); margin-top: 0.7rem; line-height: 1.6; }
+        .article-foot { margin-top: 3rem; padding-top: 1.6rem; border-top: 1px solid var(--cream-10); font-family: var(--font-sans); font-size: var(--text-sm); color: var(--cream-60); line-height: 1.7; }
+        .article-foot a { color: var(--bronze-soft); }
+        .article-foot h3 { font-family: var(--font-serif); font-size: var(--text-lg); font-weight: 500; color: var(--cream); margin: 1.4rem 0 0.5rem; }
+        .article-foot ul { padding-left: 1.2rem; margin: 0 0 1rem; }
+        .article-foot li { margin-bottom: 0.6rem; }
+    </style>
+</head>
+<body>
+    <nav class="scrolled">
+        <div class="nav-container">
+            <a href="/" class="logo">Kedar Phadke</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/#about">About</a></li>
+                <li><a href="/#building">Building</a></li>
+                <li><a href="/#skills">Skills</a></li>
+                <li><a href="/#experience">Experience</a></li>
+                <li><a href="/blog/">Writing</a></li>
+                <li><a href="/#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" onclick="document.getElementById('navLinks').classList.toggle('active')" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="article-wrap">
+        <a class="back-link" href="/blog/">&larr; All writing</a>
+        <p class="article-meta">18 November 2026 &middot; Economics &amp; Higher Education</p>
+
+        <article>
+            <h1>The Tomato Farmer&rsquo;s Problem</h1>
+
+            <p>In September I wrote that <a href="door-and-room.html">a computer science degree still opens the door</a>. In autumn 2026, fewer students were walking towards it.</p>
+
+            <p>Undergraduate enrolment in computer science at American four-year colleges fell 12.4% in autumn 2026, compared with a year earlier. That is the early estimate from the National Student Clearinghouse Research Center, which collects enrolment records from colleges across the United States. It is based on the colleges that reported early, just under half of them, and the final figures arrive in January. The Clearinghouse&rsquo;s final report for autumn 2025 had already shown declines across every degree and college type.</p>
+
+            <p>The headlines have mostly tied this to AI, as if students were fleeing a field that AI is emptying. One widely syndicated news report framed the drop as students leaving because AI is replacing jobs.</p>
+
+            <p>That reading may be partly right. But an old idea from economics explains the pattern better, and it points somewhere less comfortable.</p>
+
+            <h2>An Old Idea From Economics</h2>
+
+            <p>The idea is the cobweb model. It describes any market where people decide how much to supply based on today&rsquo;s price, but the supply only arrives much later.</p>
+
+            <p>Picture a village where tomatoes fetched a very high price this season. Next season, many farmers plant tomatoes. By harvest the market is flooded, and the price collapses. So the season after, few farmers plant them, and the price shoots up again. Each farmer acted sensibly on the price in front of them. Together they produced a cycle of gluts and shortages. Drawn on a chart of price against quantity, the path spirals like a spider&rsquo;s web, which gives the model its name.</p>
+
+            <p>The same is true here. A student choosing a major in autumn 2026 is reading today&rsquo;s job market. Many such students will graduate around 2030, into a market nobody can see yet. The labour economist Richard Freeman used exactly this model in 1976 to explain swings in the supply and starting pay of new American engineers.</p>
+
+            <figure class="chart">
+                <img src="tomato-blog.png" alt="Graphic titled The tomato farmer&rsquo;s problem. A bar chart shows the change in US enrolment in computer and information science from autumn 2025 to autumn 2026: minus 12.4% for undergraduates at four-year colleges, minus 12.3% at two-year colleges, and minus 10.4% for graduate programmes, based on early estimates. A box marked as the author&rsquo;s view shows a cycle: today&rsquo;s job market, then years of study, then the job market at graduation, with a dashed arrow back to the start labelled the next students react to what this group finds.">
+                <figcaption>Enrolment figures are early estimates from the National Student Clearinghouse Research Center, based on colleges that reported by late September 2026, with final figures due in January. The cycle diagram is the cobweb model applied by me to this case.</figcaption>
+            </figure>
+
+            <h2>What the Job Data Shows</h2>
+
+            <p>The timing fits. Indeed&rsquo;s Hiring Lab is the research team at the job site Indeed. It reports that software development job postings fell for years, and that the occupations most exposed to AI generally saw the biggest falls between 2022 and 2026. The enrolment decline shows up later, in 2025 and 2026. That lag is what the cobweb model predicts.</p>
+
+            <p>Meanwhile the signal has started to turn. Software development postings on Indeed rose almost 15% between late February 2025 and mid-2026, while job postings overall fell. They are still well below their level before the pandemic.</p>
+
+            <p>There is a serious objection to my argument, and it comes from the same data. Hiring Lab found that 71% of the increase in software postings between May 2025 and May 2026 came from senior roles. So demand for beginners may be lower for good, not just in a slump. If that is true, some fall in enrolment is the correct response.</p>
+
+            <p>An economist will also object that students should look ahead. Some do. But a good forecast for 2030 means guessing what every other student is choosing right now, and the data on that arrives only after everyone has chosen.</p>
+
+            <h2>Too Far, Too Fast</h2>
+
+            <p>I think the likely error is the size of the swing, not its direction. When every student reads the same headlines in the same year, supply moves as a block. A real but gradual shift in demand is being met by a double-digit fall in a single year, on top of last year&rsquo;s decline. My guess is that the classes graduating over the next few years will be smaller than employers then want. The shortfall may be sharpest among people who can build and check systems, not only use them.</p>
+
+            <h2>What This Means</h2>
+
+            <p>For leaders, the graduate supply of the next few years is being decided in admissions offices now. A hiring plan that assumes today&rsquo;s supply will continue is planning on the wrong number.</p>
+
+            <p>For those of us in universities, the temptation is to shrink programmes in line with this year&rsquo;s enrolment. That turns a student-level reaction into an institution-level one. I suspect it is also much slower to reverse, because teaching teams and laboratories are not rebuilt in a single admissions cycle.</p>
+
+            <p>For a student, the better question is not which field is hiring today. It is which field everyone else is leaving, and why.</p>
+
+            <p class="pull">When everyone reads the same signal at once, supply swings too far.</p>
+
+            <p>If you hire graduates or run a department, are you planning for the graduates you see today, or for the smaller classes still to come?</p>
+
+            <div class="article-foot">
+                <p>The enrolment figures are preliminary, cover all students enrolled in computer and information science rather than only new entrants, and may be revised in January 2027. The same release shows enrolment in health majors rising, which is consistent with students moving towards fields with stronger signals today. The job postings data come from Indeed, a company research team using its own platform. The size of any future shortage is my judgement, not a forecast in the data.</p>
+
+                <h3>Sources</h3>
+                <ul>
+                    <li>National Student Clearinghouse Research Center, <a href="https://nscresearchcenter.org/prelim-fall-enrollment-trends/" target="_blank" rel="noopener">&ldquo;Preliminary Fall Enrollment Trends&rdquo;</a>, 29 October 2026. Enrolment in Computer and Information Science programmes fell 12.4% at four-year institutions, 12.3% at two-year institutions and 10.4% at graduate institutions; health majors rose 6.2% at four-year institutions.</li>
+                    <li>National Student Clearinghouse Research Center, <a href="https://nscresearchcenter.org/final-fall-enrollment-trends/" target="_blank" rel="noopener">&ldquo;Final Fall Enrollment Trends 2025&rdquo;</a>, 15 January 2026, showing declines in Computer and Information Science enrolment across all award and institution types.</li>
+                    <li>Guillermo Gallacher, <a href="https://hiringlab.indeed.com/2026/07/08/ai-and-job-postings-from-destruction-to-creation/" target="_blank" rel="noopener">&ldquo;AI and Job Postings: From Destruction to Creation?&rdquo;</a>, Indeed Hiring Lab, 8 July 2026. Software development postings rose almost 15% from late February 2025 while overall postings fell 7%; they remain about 27.5% below their pre-pandemic level; 71% of the increase between May 2025 and May 2026 came from senior roles.</li>
+                    <li>Richard B. Freeman, &ldquo;A Cobweb Model of the Supply and Starting Salary of New Engineers&rdquo;, Industrial and Labor Relations Review 29, no. 2 (1976).</li>
+                </ul>
+
+                <p>A version of this essay was first shared on <a href="https://www.linkedin.com/in/kedarphadke" target="_blank" rel="noopener">LinkedIn</a>.</p>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Kedar Phadke, PhD &nbsp;&middot;&nbsp; All rights reserved</p>
+    </footer>
+</body>
+</html>
